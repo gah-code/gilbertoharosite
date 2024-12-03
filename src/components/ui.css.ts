@@ -14,8 +14,8 @@ export const container = style({
   maxWidth: theme.sizes.container,
   marginLeft: "auto",
   marginRight: "auto",
-  paddingLeft: theme.space[4],
-  paddingRight: theme.space[4],
+  paddingLeft: theme.space[3],
+  paddingRight: theme.space[3],
 })
 
 export type Containers = "normal" | "wide" | "narrow" | "tight" | "fullbleed"
@@ -51,8 +51,8 @@ export const containers: Record<Containers, string> = styleVariants({
       paddingBottom: theme.space[4],
       "@media": {
         [media.medium]: {
-          paddingLeft: theme.space[4],
-          paddingRight: theme.space[4],
+          paddingLeft: theme.space[3],
+          paddingRight: theme.space[3],
           paddingTop: theme.space[5],
           paddingBottom: theme.space[5],
         },
