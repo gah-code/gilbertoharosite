@@ -14,9 +14,9 @@ import {
 
 export default function Feature(props) {
   return (
-    <Section padding={3} background="muted">
+    <Section padding={3} background="background">
       <Container>
-        <Flex gap={4} variant="responsive">
+        <Flex gap={3} variant="responsive">
           <Box width="half" order={props.flip ? 1 : null}>
             {props.image && (
               <GatsbyImage

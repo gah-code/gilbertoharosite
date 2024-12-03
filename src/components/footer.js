@@ -7,6 +7,7 @@ import {
   Facebook,
   Youtube,
   GitHub,
+  Linkedin,
 } from "react-feather"
 import {
   Container,
@@ -22,35 +23,21 @@ import {
 import BrandLogo from "./brand-logo"
 
 const socialMedia = {
-  TWITTER: {
-    url: "https://twitter.com",
-    name: "Twitter",
-    icon: <Twitter />,
+  LINKEDIN: {
+    url: "https://www.linkedin.com/in",
+    name: "LinkedIn",
+    icon: <Linkedin />,
   },
   INSTAGRAM: {
     url: "https://instagram.com",
     name: "Instagram",
     icon: <Instagram />,
   },
-  FACEBOOK: {
-    url: "https://facebook.com",
-    name: "Facebook",
-    icon: <Facebook />,
-  },
-  YOUTUBE: {
-    url: "https://youtube.com",
-    name: "YouTube",
-    icon: <Youtube />,
-  },
+
   GITHUB: {
     url: "https://github.com",
     name: "GitHub",
     icon: <GitHub />,
-  },
-  TWITCH: {
-    url: "https://twitch.tv",
-    name: "Twitch",
-    icon: <Twitch />,
   },
 }
 
@@ -125,14 +112,14 @@ export default function Footer() {
         </Flex>
         <Space size={5} />
         <Flex variant="start" responsive>
-          <FlexList variant="start" responsive>
+          {/* <FlexList variant="start" responsive>
             {links &&
               links.map((link) => (
                 <li key={link.id}>
                   <NavLink to={link.href}>{link.text}</NavLink>
                 </li>
               ))}
-          </FlexList>
+          </FlexList> */}
           <Space />
           <FlexList>
             {meta &&

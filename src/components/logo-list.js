@@ -1,6 +1,15 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { Space, Container, Section, FlexList, Text, Logo } from "./ui"
+import {
+  Space,
+  Container,
+  Section,
+  FlexList,
+  Text,
+  Logo,
+  Box,
+  Subhead,
+} from "./ui"
 
 export function LogoItem(props) {
   if (!props.image) return null
@@ -20,7 +29,7 @@ export default function LogoList(props) {
           </Text>
         )}
         <Space size={4} />
-        <FlexList gap={4} variant="center">
+        {/* <FlexList gap={4} variant="center">
           {props.logos.map(
             (logo) =>
               logo && (
@@ -29,7 +38,26 @@ export default function LogoList(props) {
                 </li>
               )
           )}
-        </FlexList>
+        </FlexList> */}
+        <Container>
+          <Box paddingY={4}>
+            <Subhead as="h2">Thanks for Visting</Subhead>
+            <Text as="p">
+              I enjoy tackling creative technical challenges, especially in
+              content management systems and design-focused UI development. My
+              journey in technology began before the pandemic, and my background
+              in photography and film continues to influence my development
+              approach. Passionate about creating digital experiences that are
+              both functional and visually appealing!
+            </Text>
+            <Text>
+              <p>
+                This is where I compile some of my favorite discoveries and
+                concepts.
+              </p>
+            </Text>
+          </Box>
+        </Container>
       </Container>
     </Section>
   )

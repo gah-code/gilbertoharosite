@@ -73,13 +73,13 @@ export default function Header() {
   return (
     <header>
       <Container className={desktopHeaderNavWrapper}>
-        <Space size={2} />
+        <Space size={3} />
         <Flex variant="spaceBetween">
           <NavLink to="/">
             <VisuallyHidden>Home</VisuallyHidden>
             <BrandLogo />
           </NavLink>
-          <nav>
+          {/* <nav>
             <FlexList gap={4}>
               {navItems &&
                 navItems.map((navItem) => (
@@ -95,11 +95,11 @@ export default function Header() {
                   </li>
                 ))}
             </FlexList>
-          </nav>
-          <div>{cta && <Button to={cta.href}>{cta.text}</Button>}</div>
+          </nav> */}
+          {/* <div>{cta && <Button to={cta.href}>{cta.text}</Button>}</div> */}
         </Flex>
       </Container>
-      <Container className={mobileHeaderNavWrapper[isOpen ? "open" : "closed"]}>
+      {/* <Container className={mobileHeaderNavWrapper[isOpen ? "open" : "closed"]}>
         <Space size={2} />
         <Flex variant="spaceBetween">
           <span
@@ -156,7 +156,7 @@ export default function Header() {
             </FlexList>
           </nav>
         </div>
-      )}
+      )} */}
     </header>
   )
 }
