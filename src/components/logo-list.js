@@ -23,7 +23,14 @@ export default function LogoList(props) {
   return (
     <Section paddingY={4}>
       <Container width="narrow">
-        <Box paddingY={3}>
+        {/* <Box paddingY={4}>
+          {props.text && (
+            <Text center variant="lead" bold>
+              {props.text}
+            </Text>
+          )}
+        </Box> */}
+        <Box>
           <Subhead as="h2">Thanks for Visting</Subhead>
           <Text as="p">
             I enjoy tackling creative technical challenges, especially in
@@ -37,12 +44,11 @@ export default function LogoList(props) {
             This is where I compile some of my favorite discoveries and
             concepts.
           </Text>
-        </Box>
-        {props.text && (
-          <Text center variant="lead">
+          <Text variant="lead" bold>
             {props.text}
           </Text>
-        )}
+        </Box>
+
         <Space size={4} />
         {/* <FlexList gap={4} variant="center">
           {props.logos.map(

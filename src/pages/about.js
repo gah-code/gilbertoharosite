@@ -5,6 +5,7 @@ import * as sections from "../components/sections"
 import Fallback from "../components/fallback"
 import SEOHead from "../components/head"
 import { Container, Section, Box, Subhead, Text } from "../components/ui"
+import CVLayout from "../components/CVLayout"
 
 export default function About(props) {
   const { aboutPage } = props.data
