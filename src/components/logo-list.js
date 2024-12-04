@@ -21,7 +21,7 @@ export function LogoItem(props) {
 
 export default function LogoList(props) {
   return (
-    <Section paddingY={4} padding={3}>
+    <Section paddingY={4}>
       <Container width="narrow">
         <Box paddingY={3}>
           <Subhead as="h2">Thanks for Visting</Subhead>
