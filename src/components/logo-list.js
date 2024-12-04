@@ -21,8 +21,23 @@ export function LogoItem(props) {
 
 export default function LogoList(props) {
   return (
-    <Section paddingY={4}>
+    <Section paddingY={4} padding={3}>
       <Container width="narrow">
+        <Box paddingY={3}>
+          <Subhead as="h2">Thanks for Visting</Subhead>
+          <Text as="p">
+            I enjoy tackling creative technical challenges, especially in
+            content management systems and design-focused UI development. My
+            journey in technology began before the pandemic, and my background
+            in photography and film continues to influence my development
+            approach. Passionate about creating digital experiences that are
+            both functional and visually appealing!
+          </Text>
+          <Text as="p">
+            This is where I compile some of my favorite discoveries and
+            concepts.
+          </Text>
+        </Box>
         {props.text && (
           <Text center variant="lead">
             {props.text}
@@ -39,25 +54,6 @@ export default function LogoList(props) {
               )
           )}
         </FlexList> */}
-        <Container>
-          <Box paddingY={4}>
-            <Subhead as="h2">Thanks for Visting</Subhead>
-            <Text as="p">
-              I enjoy tackling creative technical challenges, especially in
-              content management systems and design-focused UI development. My
-              journey in technology began before the pandemic, and my background
-              in photography and film continues to influence my development
-              approach. Passionate about creating digital experiences that are
-              both functional and visually appealing!
-            </Text>
-            <Text>
-              <p>
-                This is where I compile some of my favorite discoveries and
-                concepts.
-              </p>
-            </Text>
-          </Box>
-        </Container>
       </Container>
     </Section>
   )

@@ -269,7 +269,7 @@ export const text: Record<TextVariants, string> = styleVariants({
     {
       marginBottom: theme.space[3],
       fontSize: theme.fontSizes[2],
-      fontWeight: theme.fontWeights.medium,
+      fontWeight: theme.fontWeights.normal,
       lineHeight: theme.lineHeights.text,
       letterSpacing: theme.letterSpacings.normal,
     },
