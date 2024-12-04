@@ -34,11 +34,11 @@ export default function LogoList(props) {
           <Subhead as="h2">Thanks for Visting</Subhead>
           <Text as="p">
             I enjoy tackling creative technical challenges, especially in
-            content management systems and design-focused UI development. My
-            journey in technology began before the pandemic, and my background
-            in photography and film continues to influence my development
-            approach. Passionate about creating digital experiences that are
-            both functional and visually appealing!
+            content management systems and design-focused development. Journey
+            in technology began before the pandemic, and my background in
+            photography and film continues to influence my development approach.
+            Passionate about creating digital experiences that are both
+            functional and visually appealing!
           </Text>
           <Text as="p">
             This is where I compile some of my favorite discoveries and

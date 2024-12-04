@@ -13,6 +13,7 @@ import {
   List,
   Flex,
 } from "./ui"
+import { padding } from "./ui.css"
 
 export default function CV() {
   const experiences = [
@@ -22,7 +23,7 @@ export default function CV() {
       company: "Robert Half International",
       duration: "April 2023 - November 2025",
       description:
-        "Assisted in migration from a legacy CMS to AEM in a fast-paced environment across different countries.",
+        "On the FED team, I helped move content from a Drupal CMS to Adobe Experience Manager (AEM) in a fast-paced, multi-country setting. I focused on spotting design, component, and CMS issues each day, carefully writing them up in detailed Jira tickets. I also looked into AEM tools to make workflows smoother, cut down on redundant tasks, and keep data updates efficient globally. Plus, I worked on improving page data to boost global SEO rankings, speed up loading times, and enhance indexing for better visibility and performance on search engines.",
     },
     {
       id: 2,
@@ -30,37 +31,24 @@ export default function CV() {
       company: "DigitalNEST",
       duration: "Aug 2022 - Apirl 2023",
       description:
-        "Built custom WordPress themes and plugins. Optimized websites for performance and accessibility.",
+        "When working for a non-profit, I coordinated interns to ensure the timely completion of WordPress projects within established timelines, budgets, and resource constraints. I also managed and maintained the company's website and its clients to guarantee optimal performance, security, and design. Additionally, I troubleshot and stabilized multiple client WordPress websites, effectively resolving issues to ensure smooth functionality and reliability.",
     },
     {
       id: 2,
       role: "Web Developer & Photographer",
       company: "Personal",
-      duration: "",
+      duration: "Jan 2019 - Forever",
       description:
-        "Enhanced visual assets through Adobe Photoshop and Lightroom for a polished, professional finish.",
+        "Since June 2019, I’ve been on an exciting journey of personal and professional growth, blending my passions for web development and photography in San Jose, CA. Over the years, I’ve tackled various projects, earned valuable certifications, and honed my skills across creative and technical disciplines.",
     },
   ]
 
-  const education = [
-    {
-      id: 1,
-      degree: "B.Sc. in Computer Science",
-      institution: "University of Technology",
-      year: "2016 - 2020",
-    },
-    {
-      id: 2,
-      degree: "Google UX Design Certificate",
-      institution: "Google",
-      year: "2021",
-    },
-  ]
+  //// FOR TESTING LAYOUT
 
   const outlineStyle = {
-    border: "1px dashed tomato",
+    // border: "1px dashed tomato",
     padding: "8px",
-    marginBottom: "16px",
+    // marginBottom: "16px",
   }
 
   return (
@@ -70,21 +58,33 @@ export default function CV() {
         <Section style={outlineStyle}>
           <Box paddingY={4}>
             <Text variant="lead" center>
-              Frontend Developer | UI/UX Designer
+              Frontend Engineering | Digital Marketing | Photography
             </Text>
             <Text variant="medium" center>
-              Experienced in building modern web applications and intuitive user
-              interfaces. Passionate about performance, design systems, tools,
+              Building modern web applications and intuitive user interfaces.
+              Passionate about performance, design systems, tools that scale,
               and accessibility.
             </Text>
           </Box>
+          {/* Creativity Through the Lens Section */}
+          <Section>
+            <Subhead>Creativity Through the Lens</Subhead>
+            <Text>
+              As a photographer, I’ve worked to elevate my craft by enhancing
+              visual assets with Adobe Photoshop and Lightroom. These tools
+              allow me to deliver polished, professional finishes to every
+              project I undertake, whether it’s a personal photoshoot or a
+              commissioned work.
+            </Text>
+          </Section>
+
           {/* <SuperHeading>Gilbert Haro</SuperHeading> */}
         </Section>
 
         {/* Experience Section */}
         <Section style={outlineStyle}>
           <Box padding={2}>
-            <Subhead>Experience</Subhead>
+            <Subhead>Work Experience</Subhead>
           </Box>
           <List>
             {experiences.map((exp) => (
@@ -109,30 +109,43 @@ export default function CV() {
         </Section>
         {/* Skills Section */}
         <Section style={outlineStyle}>
-          <Text variant="heading">Skills</Text>
+          <Subhead>Skills</Subhead>
           <Flex wrap gap="1">
             {[
               "HTML",
               "JavaScript",
               "React",
+              "React Router",
+              "State Management",
+              "Hooks",
+              "Interactivity",
               "Gatsby",
+              "Theme UI",
               "TypeScript",
               "GraphQL",
               "CSS",
+              "SCSS",
+              "Metadata",
+              "Intrinsic design",
               "Accessibility",
               "Styled Components",
               "MDX",
               "AEM",
+              "ACS Commons",
+              "Content Modeling",
+              "Data importer",
+              "SEO",
             ].map((skill, idx) => (
               <Box
                 key={idx}
                 padding={4}
-                background="primary"
+                background="text"
+                width="40px"
                 center
                 style={outlineStyle}
               >
-                <Text variant="caps" bold>
-                  {skill}
+                <Text variant="medium" bold>
+                  <span> {skill}</span>
                 </Text>
               </Box>
             ))}
@@ -188,16 +201,16 @@ export default function CV() {
                 title: "Personal Website",
                 description:
                   "A responsive web application using Gatsby, Contentful, GraphQL, and more to showcase my skills and projects on my portfolio site.",
-                github: "https://github.com/example/portfolio",
-                live: "https://example.com/portfolio",
+                github: "https://github.com/gah-code/gilbertoharosite",
+                live: "https://gilbertaharo.com",
               },
               {
                 id: 2,
                 title: "Photography Website",
                 description:
-                  "An online store with payment integration and dynamic product management.",
-                github: "https://github.com/example/ecommerce-store",
-                live: "https://example.com/ecommerce",
+                  "An online photography booking store with dynamic product management, and SCSS design system for branding.",
+                github: "https://haro-family-photography.com",
+                live: "https://github.com/gah-code/haro-photo-website",
               },
             ]}
           />

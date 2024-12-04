@@ -1,11 +1,11 @@
 import React from "react"
-import { Section, Heading, List, Box, Text, Flex, Link } from "./ui"
+import { Section, Heading, List, Box, Text, Flex, Link, Subhead } from "./ui"
 
 export function ProjectList({ projects = [] }) {
   return (
     <Section>
       <Box padding={2}>
-        <Heading>Projects</Heading>
+        <Subhead>Projects</Subhead>
       </Box>
       <List>
         {projects.map((project) => (
