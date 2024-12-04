@@ -209,8 +209,8 @@ export default function CV() {
                 title: "Photography Website",
                 description:
                   "An online photography booking store with dynamic product management, and SCSS design system for branding.",
-                github: "https://haro-family-photography.com",
-                live: "https://github.com/gah-code/haro-photo-website",
+                github: "https://github.com/gah-code/haro-photo-website",
+                live: "https://haro-family-photography.com",
               },
             ]}
           />
