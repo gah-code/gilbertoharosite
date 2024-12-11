@@ -6,10 +6,11 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://gatsbycontentfulhomepage.gatsbyjs.io/",
-    title: "Gatsby Contentful Homepage Starter",
-    author: `Gatsby`,
-    description: "A Gatsby Starter for building homepages with Contentful",
+    siteUrl: "https://gilbertaharo.com",
+    title: "Gilberto Alejandro Haro Website",
+    author: `Gilberto A Haro`,
+    description:
+      "Gilberto Alejandro Haro Website, Technologies and digital creator fueled by a passion for discovering optimizations using the latest frontend techniques.",
   },
   plugins: [
     {

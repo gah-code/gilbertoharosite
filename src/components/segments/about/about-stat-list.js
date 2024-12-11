@@ -1,6 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { Container, Section, FlexList, Box, Text } from "./ui"
+import { Container, Section, FlexList, Box, Text } from "../../ui"
 import * as styles from "./about-stat-list.css"
 
 function AboutStat(props) {

@@ -112,14 +112,14 @@ export default function Footer() {
         </Flex>
         <Space size={5} />
         <Flex variant="start" responsive>
-          {/* <FlexList variant="start" responsive>
+          <FlexList variant="start" responsive>
             {links &&
               links.map((link) => (
                 <li key={link.id}>
                   <NavLink to={link.href}>{link.text}</NavLink>
                 </li>
               ))}
-          </FlexList> */}
+          </FlexList>
           <Space />
           <FlexList>
             {meta &&

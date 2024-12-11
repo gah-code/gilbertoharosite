@@ -10,7 +10,7 @@ import {
   Box,
   Kicker,
   Space,
-} from "./ui"
+} from "../../ui"
 
 function AboutProfile(props) {
   return (

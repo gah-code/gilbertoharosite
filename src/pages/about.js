@@ -5,11 +5,11 @@ import * as sections from "../components/sections"
 import Fallback from "../components/fallback"
 import SEOHead from "../components/head"
 import { Container, Section, Box, Subhead, Text } from "../components/ui"
-import CVLayout from "../components/CVLayout"
 
 export default function About(props) {
   const { aboutPage } = props.data
 
+  console.log(props.data)
   return (
     <Layout>
       {aboutPage ? (
@@ -20,6 +20,7 @@ export default function About(props) {
         })
       ) : (
         <Section paddingY={4} padding={3}>
+          {/* <AboutHeroContent /> */}
           <Container width="narrow">
             <Box paddingY={3}>
               <Subhead as="h1">How it all started</Subhead>{" "}

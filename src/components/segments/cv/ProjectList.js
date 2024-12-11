@@ -1,5 +1,14 @@
 import React from "react"
-import { Section, Heading, List, Box, Text, Flex, Link, Subhead } from "./ui"
+import {
+  Section,
+  Heading,
+  List,
+  Box,
+  Text,
+  Flex,
+  Link,
+  Subhead,
+} from "../../ui"
 
 export function ProjectList({ projects = [] }) {
   return (

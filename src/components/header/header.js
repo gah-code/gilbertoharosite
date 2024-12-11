@@ -11,16 +11,16 @@ import {
   InteractiveIcon,
   Nudge,
   VisuallyHidden,
-} from "./ui"
+} from "../ui"
 import {
   mobileNavOverlay,
   mobileNavLink,
   desktopHeaderNavWrapper,
   mobileHeaderNavWrapper,
   mobileNavSVGColorWrapper,
-} from "./header.css"
-import NavItemGroup from "./nav-item-group"
-import BrandLogo from "./brand-logo"
+} from "../styles/header.css"
+import NavItemGroup from "../Nav/nav-item-group"
+import BrandLogo from "../brand-logo"
 
 export default function Header() {
   const data = useStaticQuery(graphql`
@@ -79,7 +79,7 @@ export default function Header() {
             <VisuallyHidden>Home</VisuallyHidden>
             <BrandLogo />
           </NavLink>
-          {/* <nav>
+          <nav>
             <FlexList gap={4}>
               {navItems &&
                 navItems.map((navItem) => (
@@ -95,11 +95,11 @@ export default function Header() {
                   </li>
                 ))}
             </FlexList>
-          </nav> */}
-          {/* <div>{cta && <Button to={cta.href}>{cta.text}</Button>}</div> */}
+          </nav>
+          <div>{cta && <Button to={cta.href}>{cta.text}</Button>}</div>
         </Flex>
       </Container>
-      {/* <Container className={mobileHeaderNavWrapper[isOpen ? "open" : "closed"]}>
+      <Container className={mobileHeaderNavWrapper[isOpen ? "open" : "closed"]}>
         <Space size={2} />
         <Flex variant="spaceBetween">
           <span
@@ -156,7 +156,7 @@ export default function Header() {
             </FlexList>
           </nav>
         </div>
-      )} */}
+      )}
     </header>
   )
 }
