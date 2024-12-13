@@ -82,3 +82,5 @@ CONTENTFUL_ACCESS_TOKEN='your_access_token'
 ```
 
 ## Conclusion
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f2ecbaf1-b540-48fd-82fd-b0d389e98a81/deploy-status)](https://app.netlify.com/sites/gilbertaharocode/deploys)

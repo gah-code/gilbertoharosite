@@ -39,6 +39,7 @@
     "sharp": "^0.32.6"
   },
   "devDependencies": {
+    "@netlify/plugin-lighthouse": "^6.0.1",
     "chalk": "4",
     "contentful-cli": "^1.15.3",
     "contentful-import": "^8.3.2",
