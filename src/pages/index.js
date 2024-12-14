@@ -18,12 +18,32 @@ export default function Homepage(props) {
     </Layout>
   )
 }
+
 export const Head = (props) => {
-  const { homepage } = props.data
-  return <SEOHead {...homepage} />
+  const { site, homepage } = props.data
+  const { siteMetadata } = site
+
+  return (
+    <SEOHead
+      title={homepage.title || siteMetadata.title}
+      description={homepage.description || siteMetadata.description}
+      image={homepage.image || null}
+      url={`${siteMetadata.siteUrl}/`} // You can adjust this for dynamic paths if needed
+      author={siteMetadata.author}
+    />
+  )
 }
+
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+        description
+        author
+      }
+    }
     homepage {
       id
       title
@@ -31,7 +51,9 @@ export const query = graphql`
       image {
         id
         url
+        alt
       }
+
       blocks: content {
         id
         blocktype

@@ -1,8 +1,6 @@
-# gilbert-contentful-website 2025
+# My 2025 Website Update: Contentful-Powered Gatsby Site
 
-# TO DO
-
-# Full Report and README
+![Lighthouse Score](./docs/images/light-house.png)
 
 ## Project Overview
 
@@ -17,7 +15,73 @@ This project is a Gatsby site that integrates Contentful as its content manageme
 
 - **Gatsby**: Static site generator for React-based web applications.
 - **Contentful**: Headless CMS for managing content.
+- **Styling:** Styled Components, CSS, and Theme UI
+- **Hosting/Deployment:** Netlify, Cloudflare
 - **Node.js**: For executing server-side scripts and managing the setup process.
+
+### Abstract Interfaces for GraphQL Schema Customization
+
+This project uses **abstract interfaces** in GraphQL to define a flexible and reusable schema for integrating Contentful data. Interfaces serve as shared contracts for related types, ensuring consistency and simplicity in querying CMS data.
+
+#### **Overview:**
+
+1. **What are Interfaces?**
+   Interfaces define common fields and structure that other types must implement, enabling reusable and flexible schema definitions.
+
+   Example:
+
+   ```graphql
+   interface HomepageBlock implements Node {
+     id: ID!
+     blocktype: String
+   }
+   ```
+
+2. **Implementation by Types:**
+   Concrete types like `ContentfulHomepageHero` or `ContentfulHomepageFeature` implement these interfaces to conform to their structure.
+
+   Example:
+
+   ```graphql
+   type ContentfulHomepageHero implements Node & HomepageBlock {
+     id: ID!
+     blocktype: String @blocktype
+     heading: String!
+     image: HomepageImage @link(from: "image___NODE")
+     text: String
+   }
+   ```
+
+3. **Simplified Queries:**
+   Interfaces enable querying shared fields across all implementations, reducing complexity.
+
+   Example Query:
+
+   ```graphql
+   {
+     allHomepageBlock {
+       nodes {
+         id
+         blocktype
+       }
+     }
+   }
+   ```
+
+#### **Benefits:**
+
+- **Consistency:** Ensures a unified structure across multiple types.
+- **Flexibility:** Enables queries at both abstract and specific levels.
+- **Reusability:** Shared definitions simplify schema management.
+- **Efficient CMS Integration:** Bridges Contentful’s data with GraphQL for easier querying and maintenance.
+
+#### **Use Case in This Project:**
+
+- **Homepage Blocks:** Define blocks (e.g., hero, features) using `HomepageBlock` and its concrete implementations.
+- **Rich Text Fields:** Use custom field extensions (e.g., `richText`) for processing Contentful's raw data into HTML.
+- **Dynamic Image Handling:** Utilize field extensions for managing Contentful assets with `gatsby-plugin-image`.
+
+This approach creates a scalable, maintainable schema for managing CMS content within the GraphQL API.
 
 ## Setup and Installation
 
@@ -81,6 +145,6 @@ CONTENTFUL_ACCESS_TOKEN='your_access_token'
 # CONTENTFUL_HOST='preview.contentful.com'
 ```
 
-## Conclusion
+## Deployment Status
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f2ecbaf1-b540-48fd-82fd-b0d389e98a81/deploy-status)](https://app.netlify.com/sites/gilbertaharocode/deploys)

@@ -19,7 +19,7 @@ import {
   mobileHeaderNavWrapper,
   mobileNavSVGColorWrapper,
 } from "../styles/header.css"
-import NavItemGroup from "../Nav/nav-item-group"
+import NavItemGroup from "../navigation/nav-item-group"
 import BrandLogo from "../brand-logo"
 
 export default function Header() {

@@ -24,10 +24,30 @@ export default function Page(props) {
 }
 export const Head = (props) => {
   const { page } = props.data
-  return <SEOHead {...page} />
+  const { site } = props.data
+  const siteMetadata = site.siteMetadata
+
+  const url = `${siteMetadata.siteUrl}/${page.slug}`
+
+  return (
+    <SEOHead
+      title={page.title || siteMetadata.title}
+      description={page.description || siteMetadata.description}
+      image={page.image || null}
+      url={url}
+    />
+  )
 }
+
 export const query = graphql`
   query PageContent($id: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+        description
+      }
+    }
     page(id: { eq: $id }) {
       id
       title
