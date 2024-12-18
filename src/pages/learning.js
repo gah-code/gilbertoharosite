@@ -1,12 +1,26 @@
 import React from "react"
 import UILibraryShowcase from "../components/UILibraryShowcase"
 import Layout from "../components/layout"
+import BlogIndex from "../templates/blog-index"
+import BlogPost from "../templates/blog-post"
+import AboutHero from "../components/segments/about/about-hero"
+import AboutLeadership from "../components/segments/about/about-leadership"
+import AboutLogoList from "../components/segments/about/about-logo-list"
+import AboutStatList from "../components/segments/about/about-stat-list"
+import SkillListGrid from "../components/segments/about/skill-list-grid"
+import ResumeStyledCertList from "../components/segments/about/resume-styled-cert-list"
 
 const learning = () => {
   return (
     <Layout>
-      <h1>test</h1>
-      {/* <UILibraryShowcase /> */}
+      {/* <BlogIndex /> */}
+      {/* <BlogPost /> */}
+      <AboutHero />
+      <AboutLeadership />
+      <AboutLogoList />
+      <AboutStatList />
+      <SkillListGrid />
+      <ResumeStyledCertList />
     </Layout>
   )
 }

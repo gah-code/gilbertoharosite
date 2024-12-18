@@ -15,7 +15,7 @@ This project is a Gatsby site that integrates Contentful as its content manageme
 
 - **Gatsby**: Static site generator for React-based web applications.
 - **Contentful**: Headless CMS for managing content.
-- **Styling:** Styled Components, CSS, and Theme UI
+- **Styling:** Styled Components, CSS, and Vanilla Extract
 - **Hosting/Deployment:** Netlify, Cloudflare
 - **Node.js**: For executing server-side scripts and managing the setup process.
 
