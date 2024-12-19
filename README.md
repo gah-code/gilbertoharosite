@@ -2,6 +2,8 @@
 
 ![Lighthouse Score](./docs/images/light-house.png)
 
+![Content Model](./docs/content-model.png)
+
 ## Project Overview
 
 This project is a Gatsby site that integrates Contentful as its content management system (CMS).
