@@ -108,6 +108,8 @@ export const flexVariants: Record<FlexVariants, string> = styleVariants({
   },
   center: {
     width: "100%",
+    display: "flex",
+    alignItems: "center",
     flexWrap: "wrap",
     justifyContent: "center",
   },

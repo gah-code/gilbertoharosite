@@ -9,19 +9,21 @@ import AboutLogoList from "../components/segments/about/about-logo-list"
 import AboutStatList from "../components/segments/about/about-stat-list"
 import SkillListGrid from "../components/segments/about/skill-list-grid"
 import ResumeStyledCertList from "../components/segments/about/resume-styled-cert-list"
+import Post from "../templates/post"
 
 const learning = () => {
   return (
-    <Layout>
-      {/* <BlogIndex /> */}
+    <>
+      <BlogIndex />
+      {/* <Post /> */}
       {/* <BlogPost /> */}
-      <AboutHero />
+      {/* <AboutHero />
       <AboutLeadership />
       <AboutLogoList />
       <AboutStatList />
       <SkillListGrid />
-      <ResumeStyledCertList />
-    </Layout>
+      <ResumeStyledCertList /> */}
+    </>
   )
 }
 

@@ -2,7 +2,7 @@
 
 ![Lighthouse Score](./docs/images/light-house.png)
 
-![Content Model](./docs/content-model.png)
+![Content Model](./docs/images/content-model.png)
 
 ## Project Overview
 

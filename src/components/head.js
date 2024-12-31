@@ -22,7 +22,18 @@ import * as React from "react"
 //   )
 // }
 
-export default function SEOHead({ title, description, image, url }) {
+export default function SEOHead({
+  title,
+  description,
+  image,
+  slug = "", // Default to an empty string
+  url,
+  siteMetadata,
+  siteUrl,
+}) {
+  const dynamicUrl = slug.startsWith("/")
+    ? `${siteUrl}${slug}`
+    : `${siteUrl}/${slug}`
   return (
     <>
       <meta charSet="utf-8" />
