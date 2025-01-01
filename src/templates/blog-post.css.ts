@@ -7,13 +7,12 @@ export const blogPost = style({
   lineHeight: theme.lineHeights.text,
   padding: theme.space[4],
 })
-
 // Images within Posts
 globalStyle(`${blogPost} img`, {
   maxWidth: "100%",
   height: "auto",
   borderRadius: "8px",
-  marginBottom: theme.space[4],
+  marginBottom: "1.5rem",
 })
 
 // Links within Posts
@@ -44,16 +43,6 @@ globalStyle(`${blogPost} h3`, {
   marginBottom: theme.space[3],
 })
 
-globalStyle(`${blogPost} h4`, {
-  fontSize: theme.fontSizes[3],
-  fontWeight: theme.fontWeights.bold,
-})
-
-globalStyle(`${blogPost} h5, ${blogPost} h6`, {
-  fontSize: theme.fontSizes[2],
-  fontWeight: theme.fontWeights.bold,
-})
-
 // Paragraphs and Lists
 globalStyle(`${blogPost} p, ${blogPost} ul, ${blogPost} ol`, {
   marginBottom: theme.space[4],
@@ -73,7 +62,7 @@ globalStyle(`${blogPost} ul, ${blogPost} ol`, {
 globalStyle(`${blogPost} pre`, {
   backgroundColor: theme.colors.muted,
   padding: theme.space[3],
-  // borderRadius: theme.radii.small,
+
   overflowX: "auto",
 })
 
@@ -85,7 +74,11 @@ globalStyle(`${blogPost} blockquote`, {
   marginBottom: theme.space[4],
 })
 
-// Container Styles for Elements
+globalStyle(`${blogPost} a`, {
+  color: "inherit",
+  fontWeight: theme.fontWeights.medium,
+})
+
 const containedElements = [
   "p",
   "h1",
@@ -106,4 +99,33 @@ globalStyle(containedElements, {
   maxWidth: theme.sizes.tight,
   marginLeft: "auto",
   marginRight: "auto",
+})
+
+globalStyle(`${blogPost} p`, {
+  lineHeight: theme.lineHeights.text,
+})
+
+globalStyle(`${blogPost} > p:first-of-type`, {
+  fontSize: theme.fontSizes[4],
+  fontWeight: theme.fontWeights.bold,
+})
+
+globalStyle(`${blogPost} h2`, {
+  fontSize: theme.fontSizes[5],
+  fontWeight: theme.fontWeights.bold,
+})
+
+globalStyle(`${blogPost} h3`, {
+  fontSize: theme.fontSizes[4],
+  fontWeight: theme.fontWeights.bold,
+})
+
+globalStyle(`${blogPost} h4`, {
+  fontSize: theme.fontSizes[3],
+  fontWeight: theme.fontWeights.bold,
+})
+
+globalStyle(`${blogPost} h5, ${blogPost} h6`, {
+  fontSize: theme.fontSizes[2],
+  fontWeight: theme.fontWeights.bold,
 })

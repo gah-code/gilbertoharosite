@@ -852,46 +852,236 @@ exports.createSchemaCustomization = async ({ actions }) => {
 //   })
 // }
 
+// const path = require("path")
+
+// // 1. Register Slices Globally
+// exports.onPreBootstrap = ({ actions }) => {
+//   const { createSlice } = actions
+
+//   // Create Header Slice
+//   createSlice({
+//     id: "header",
+//     component: require.resolve("./src/components/header/header.js"),
+//     allowEmpty: true, // Allow empty slices (e.g., for /404.html)
+//   })
+
+//   // Create Footer Slice
+//   createSlice({
+//     id: "footer",
+//     component: require.resolve("./src/components/footer.js"),
+//     allowEmpty: true, // Allow empty slices
+//   })
+// }
+
+// // 2. Create Pages Dynamically
+// exports.createPages = async ({ graphql, actions, reporter }) => {
+//   const { createPage } = actions
+//   const { createSlice } = actions
+
+//   createSlice({
+//     id: "header",
+//     component: require.resolve("./src/components/header/header.js"),
+//   })
+//   createSlice({
+//     id: "footer",
+//     component: require.resolve("./src/components/footer.js"),
+//   })
+
+//   // Paths for templates
+//   const postTemplate = path.resolve(`./src/templates/post-template.jsx`)
+//   const tagTemplate = path.resolve(`./src/templates/tag-template.jsx`)
+
+//   // Fetch MDX Posts
+//   const result = await graphql(`
+//     {
+//       allMdx {
+//         nodes {
+//           id
+//           frontmatter {
+//             slug
+//             title
+//             category
+//           }
+//           internal {
+//             contentFilePath
+//           }
+//         }
+//       }
+//     }
+//   `)
+
+//   // Handle GraphQL Errors
+//   if (result.errors) {
+//     reporter.panicOnBuild("Error loading MDX posts", result.errors)
+//     return
+//   }
+
+//   const posts = result.data.allMdx.nodes
+
+//   // 3. Create Individual Post Pages
+//   posts.forEach((node) => {
+//     createPage({
+//       path: node.frontmatter.slug,
+//       component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+//       context: { id: node.id },
+//     })
+//   })
+
+//   // 4. Create Paginated Category Pages
+//   const postsByCategory = {}
+
+//   // Group posts by category
+//   posts.forEach((post) => {
+//     const category = post.frontmatter.category
+//     if (!postsByCategory[category]) {
+//       postsByCategory[category] = []
+//     }
+//     postsByCategory[category].push(post)
+//   })
+
+//   // Create paginated category pages
+//   Object.keys(postsByCategory).forEach((category) => {
+//     const categoryPosts = postsByCategory[category]
+//     const postsPerPage = 5 // Posts per page
+//     const numPages = Math.ceil(categoryPosts.length / postsPerPage)
+
+//     Array.from({ length: numPages }).forEach((_, i) => {
+//       createPage({
+//         path:
+//           i === 0
+//             ? `/tags/${category.toLowerCase()}/` // First page
+//             : `/tags/${category.toLowerCase()}/${i + 1}/`, // Paginated pages
+//         component: tagTemplate,
+//         context: {
+//           category,
+//           limit: postsPerPage,
+//           skip: i * postsPerPage,
+//           currentPage: i + 1,
+//           numPages,
+//         },
+//       })
+//     })
+//   })
+// }
+
+// const path = require("path")
+
+// // 1. Create Pages and Register Slices
+// exports.createPages = async ({ graphql, actions, reporter }) => {
+//   const { createPage, createSlice } = actions
+
+//   // 1. Register Global Slices
+//   createSlice({
+//     id: "header",
+//     component: require.resolve("./src/components/header/header.js"),
+//     allowEmpty: true, // Allows rendering empty slices for pages like 404.html
+//   })
+
+//   createSlice({
+//     id: "footer",
+//     component: require.resolve("./src/components/footer.js"),
+//     allowEmpty: true,
+//   })
+
+//   // 2. Paths for templates
+//   const postTemplate = path.resolve(`./src/templates/post-template.jsx`)
+//   const tagTemplate = path.resolve(`./src/templates/tag-template.jsx`)
+
+//   // 3. Fetch MDX Posts
+//   const result = await graphql(`
+//     {
+//       allMdx {
+//         nodes {
+//           id
+//           frontmatter {
+//             slug
+//             title
+//             category
+//           }
+//           internal {
+//             contentFilePath
+//           }
+//         }
+//       }
+//     }
+//   `)
+
+//   // Handle GraphQL Errors
+//   if (result.errors) {
+//     reporter.panicOnBuild("Error loading MDX posts", result.errors)
+//     return
+//   }
+
+//   const posts = result.data.allMdx.nodes
+
+//   // 4. Create Individual Post Pages
+//   posts.forEach((node) => {
+//     createPage({
+//       path: node.frontmatter.slug,
+//       component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+//       context: { id: node.id },
+//     })
+//   })
+
+//   // 5. Create Paginated Category Pages
+//   const postsByCategory = {}
+
+//   // Group posts by category
+//   posts.forEach((post) => {
+//     const category = post.frontmatter.category
+//     if (!postsByCategory[category]) {
+//       postsByCategory[category] = []
+//     }
+//     postsByCategory[category].push(post)
+//   })
+
+//   Object.keys(postsByCategory).forEach((category) => {
+//     const categoryPosts = postsByCategory[category]
+//     const postsPerPage = 5
+//     const numPages = Math.ceil(categoryPosts.length / postsPerPage)
+
+//     Array.from({ length: numPages }).forEach((_, i) => {
+//       createPage({
+//         path:
+//           i === 0
+//             ? `/tags/${category.toLowerCase()}/` // First page
+//             : `/tags/${category.toLowerCase()}/${i + 1}/`, // Paginated pages
+//         component: tagTemplate,
+//         context: {
+//           category,
+//           limit: postsPerPage,
+//           skip: i * postsPerPage,
+//           currentPage: i + 1,
+//           numPages,
+//         },
+//       })
+//     })
+//   })
+// }
 const path = require("path")
 
-// 1. Register Slices Globally
-exports.onPreBootstrap = ({ actions }) => {
-  const { createSlice } = actions
-
-  // Create Header Slice
-  createSlice({
-    id: "header",
-    component: require.resolve("./src/components/header/header.js"),
-    allowEmpty: true, // Allow empty slices (e.g., for /404.html)
-  })
-
-  // Create Footer Slice
-  createSlice({
-    id: "footer",
-    component: require.resolve("./src/components/footer.js"),
-    allowEmpty: true, // Allow empty slices
-  })
-}
-
-// 2. Create Pages Dynamically
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-  const { createSlice } = actions
+  const { createPage, createSlice } = actions
 
+  // Register Header Slice
   createSlice({
     id: "header",
     component: require.resolve("./src/components/header/header.js"),
+    allowEmpty: true, // Allow empty slices for fallback pages (e.g., /404.html)
   })
+
+  // Register Footer Slice
   createSlice({
     id: "footer",
     component: require.resolve("./src/components/footer.js"),
+    allowEmpty: true,
   })
 
   // Paths for templates
   const postTemplate = path.resolve(`./src/templates/post-template.jsx`)
   const tagTemplate = path.resolve(`./src/templates/tag-template.jsx`)
 
-  // Fetch MDX Posts
+  // Fetch all MDX posts
   const result = await graphql(`
     {
       allMdx {
@@ -900,7 +1090,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           frontmatter {
             slug
             title
+            excerpt
             category
+            author
+            image {
+              childImageSharp {
+                gatsbyImageData(layout: CONSTRAINED, width: 768, height: 400)
+              }
+            }
+            imageAlt
           }
           internal {
             contentFilePath
@@ -910,7 +1108,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  // Handle GraphQL Errors
+  // Handle GraphQL errors
   if (result.errors) {
     reporter.panicOnBuild("Error loading MDX posts", result.errors)
     return
@@ -918,19 +1116,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.allMdx.nodes
 
-  // 3. Create Individual Post Pages
+  // Create individual post pages
   posts.forEach((node) => {
     createPage({
       path: node.frontmatter.slug,
       component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-      context: { id: node.id },
+      context: {
+        id: node.id,
+        slug: node.frontmatter.slug,
+        title: node.frontmatter.title,
+        excerpt: node.frontmatter.excerpt,
+        category: node.frontmatter.category,
+        author: node.frontmatter.author,
+        image: node.frontmatter.image,
+        imageAlt: node.frontmatter.imageAlt,
+      },
     })
   })
 
-  // 4. Create Paginated Category Pages
+  // Group posts by category for tags
   const postsByCategory = {}
-
-  // Group posts by category
   posts.forEach((post) => {
     const category = post.frontmatter.category
     if (!postsByCategory[category]) {
@@ -942,15 +1147,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Create paginated category pages
   Object.keys(postsByCategory).forEach((category) => {
     const categoryPosts = postsByCategory[category]
-    const postsPerPage = 5 // Posts per page
+    const postsPerPage = 5
     const numPages = Math.ceil(categoryPosts.length / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
         path:
           i === 0
-            ? `/tags/${category.toLowerCase()}/` // First page
-            : `/tags/${category.toLowerCase()}/${i + 1}/`, // Paginated pages
+            ? `/tags/${category.toLowerCase()}/`
+            : `/tags/${category.toLowerCase()}/${i + 1}/`,
         component: tagTemplate,
         context: {
           category,
