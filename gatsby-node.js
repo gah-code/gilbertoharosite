@@ -1109,30 +1109,38 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   // Handle GraphQL errors
-  if (result.errors) {
-    reporter.panicOnBuild("Error loading MDX posts", result.errors)
-    return
-  }
+  // if (result.errors) {
+  //   reporter.panicOnBuild("Error loading MDX posts", result.errors)
+
+  //   return
+  // }
 
   const posts = result.data.allMdx.nodes
 
   // Create individual post pages
-  posts.forEach((node) => {
-    createPage({
-      path: node.frontmatter.slug,
-      component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-      context: {
-        id: node.id,
-        slug: node.frontmatter.slug,
-        title: node.frontmatter.title,
-        excerpt: node.frontmatter.excerpt,
-        category: node.frontmatter.category,
-        author: node.frontmatter.author,
-        image: node.frontmatter.image,
-        imageAlt: node.frontmatter.imageAlt,
-      },
-    })
-  })
+  // posts.forEach((node) => {
+  //   console.log("Creating page for:", node.frontmatter.slug) // Debug
+
+  //   createPage({
+  //     path: node.frontmatter.slug,
+  //     component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+  //     context: {
+  //       id: node.id,
+  //       layout: "mdx",
+  //       slicesMap: {
+  //         header: true,
+  //         footer: true,
+  //       }, // Ensure slices are included
+  //       slug: node.frontmatter.slug,
+  //       title: node.frontmatter.title,
+  //       excerpt: node.frontmatter.excerpt,
+  //       category: node.frontmatter.category,
+  //       author: node.frontmatter.author,
+  //       image: node.frontmatter.image,
+  //       imageAlt: node.frontmatter.imageAlt,
+  //     },
+  //   })
+  // })
 
   // Group posts by category for tags
   const postsByCategory = {}

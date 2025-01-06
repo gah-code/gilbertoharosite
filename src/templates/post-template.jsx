@@ -200,69 +200,213 @@
 //   )
 // }
 
-import React from "react"
-import { graphql, Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Layout from "../components/layout"
-import { Container, Box, Heading, Space, Text } from "../components/ui"
-import "./blog-post.css"
+// import React from "react"
+// import { graphql, Link } from "gatsby"
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
+// import Layout from "../components/layout"
+// import { Container, Box, Heading, Space, Text } from "../components/ui"
+// import "./blog-post.css"
 
-export default function PostTemplate({ data: { mdx }, children }) {
-  const { frontmatter } = mdx
-  const image = getImage(frontmatter.image)
+// export default function PostTemplate({ data: { mdx }, children }) {
+//   const { frontmatter } = mdx
+//   const image = getImage(frontmatter.image)
 
-  return (
-    <Layout>
-      <Container width="narrow">
-        <Box paddingY={5}>
-          <article className="blogPost">
-            {image && (
-              <GatsbyImage
-                image={image}
-                alt={frontmatter.imageAlt || "Post image"}
-                style={{
-                  width: "100%",
-                  borderRadius: "8px",
-                  marginBottom: "1.5rem",
-                }}
-              />
-            )}
-            <Heading as="h1" center>
-              {frontmatter.title}
-            </Heading>
-            <Space size={3} />
-            <Text variant="subtle" center>
-              <strong>Category:</strong>{" "}
-              <Link to={`/tags/${frontmatter.category.toLowerCase()}/`}>
-                {frontmatter.category}
-              </Link>{" "}
-              | <strong>Author:</strong> {frontmatter.author}
-            </Text>
-            <Space size={4} />
-            <Box className="content">{children}</Box>
-          </article>
-        </Box>
-      </Container>
-    </Layout>
-  )
-}
+//   return (
+//     <Layout>
+//       <Container width="narrow">
+//         <Box paddingY={5}>
+//           <article className="blogPost">
+//             {image && (
+//               <GatsbyImage
+//                 image={image}
+//                 alt={frontmatter.imageAlt || "Post image"}
+//                 style={{
+//                   width: "100%",
+//                   borderRadius: "8px",
+//                   marginBottom: "1.5rem",
+//                 }}
+//               />
+//             )}
+//             <Heading as="h1" center>
+//               {frontmatter.title}
+//             </Heading>
+//             <Space size={3} />
+//             <Text variant="subtle" center>
+//               <strong>Category:</strong>{" "}
+//               <Link to={`/tags/${frontmatter.category.toLowerCase()}/`}>
+//                 {frontmatter.category}
+//               </Link>{" "}
+//               | <strong>Author:</strong> {frontmatter.author}
+//             </Text>
+//             <Space size={4} />
+//             <Box className="content">{children}</Box>
+//           </article>
+//         </Box>
+//       </Container>
+//     </Layout>
+//   )
+// }
 
-export const query = graphql`
-  query ($id: String!) {
-    mdx(id: { eq: $id }) {
-      frontmatter {
-        title
-        slug
-        excerpt
-        category
-        author
-        image {
-          childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, width: 768, height: 400)
-          }
-        }
-        imageAlt
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query ($id: String!) {
+//     mdx(id: { eq: $id }) {
+//       frontmatter {
+//         title
+//         slug
+//         excerpt
+//         category
+//         author
+//         image {
+//           childImageSharp {
+//             gatsbyImageData(layout: CONSTRAINED, width: 768, height: 400)
+//           }
+//         }
+//         imageAlt
+//       }
+//     }
+//   }
+// `
+
+// export default function PostTemplate({ data: { mdx }, children, pageContext }) {
+//   const { frontmatter } = mdx
+//   const image = getImage(frontmatter.image)
+
+//   // Use layout only for MDX pages
+//   const Content = (
+//     <Container width="narrow">
+//       <Box paddingY={5}>
+//         <article className="blogPost">
+//           {image && (
+//             <GatsbyImage
+//               image={image}
+//               alt={frontmatter.imageAlt || "Post image"}
+//               style={{
+//                 width: "100%",
+//                 borderRadius: "8px",
+//                 marginBottom: "1.5rem",
+//               }}
+//             />
+//           )}
+//           <Heading as="h1" center>
+//             {frontmatter.title}
+//           </Heading>
+//           <Space size={3} />
+//           <Text variant="subtle" center>
+//             <strong>Category:</strong>{" "}
+//             <Link to={`/tags/${frontmatter.category.toLowerCase()}/`}>
+//               {frontmatter.category}
+//             </Link>{" "}
+//             | <strong>Author:</strong> {frontmatter.author}
+//           </Text>
+//           <Space size={4} />
+//           <Box className="content">{children}</Box>
+//         </article>
+//       </Box>
+//     </Container>
+//   )
+
+//   // Conditionally wrap with Layout if "mdx" layout is specified
+//   return <Layout>{Content}</Layout>
+// }
+
+// export const query = graphql`
+//   query ($id: String!) {
+//     mdx(id: { eq: $id }) {
+//       frontmatter {
+//         title
+//         slug
+//         excerpt
+//         category
+//         author
+//         image {
+//           childImageSharp {
+//             gatsbyImageData(layout: CONSTRAINED, width: 768, height: 400)
+//           }
+//         }
+//         imageAlt
+//       }
+//     }
+//   }
+// `
+
+// export default function PostTemplate({ data: { mdx }, children, pageContext }) {
+//   //   const { frontmatter } = mdx
+//   //   const image = getImage(frontmatter.image)
+//   console.log("Rendering Post Template...") // Debug log for rendering
+
+//   // Log pageContext to check layout or other passed context
+//   console.log("Page Context:", pageContext)
+
+//   // Log GraphQL data to ensure it matches expectations
+//   console.log("MDX Data:", mdx)
+
+//   const { frontmatter } = mdx
+//   console.log("Frontmatter:", frontmatter) // Debug log for frontmatter
+
+//   const image = getImage(frontmatter.image)
+//   console.log("Image Processed:", image) // Debug log for image processing
+//   console.log("Frontmatter Image:", frontmatter.image) // Debug logs
+//   console.log("Processed Image:", image)
+
+//   // Content rendering block
+//   const Content = (
+//     <Container width="narrow">
+//       <Box paddingY={5}>
+//         <article className="blogPost">
+//           {image && (
+//             <GatsbyImage
+//               image={image}
+//               alt={frontmatter.imageAlt || "Post image"}
+//               style={{
+//                 width: "100%",
+//                 borderRadius: "8px",
+//                 marginBottom: "1.5rem",
+//               }}
+//             />
+//           )}
+//           <Heading as="h1" center>
+//             {frontmatter.title}
+//           </Heading>
+//           <Space size={3} />
+//           <Text variant="subtle" center>
+//             <strong>Category:</strong>{" "}
+//             <Link to={`/tags/${frontmatter.category.toLowerCase()}/`}>
+//               {frontmatter.category}
+//             </Link>{" "}
+//             | <strong>Author:</strong> {frontmatter.author}
+//           </Text>
+//           <Space size={4} />
+//           <Box className="content">{children}</Box>
+//         </article>
+//       </Box>
+//     </Container>
+//   )
+
+//   console.log("Content Rendered") // Debug log for content rendering
+
+//   // Return wrapped layout (always wrap with Layout for simplicity)
+//   return <Layout>{Content}</Layout>
+// }
+
+// // GraphQL query to fetch data
+// export const query = graphql`
+//   query ($id: String!) {
+//     mdx(id: { eq: $id }) {
+//       frontmatter {
+//         title
+//         slug
+//         excerpt
+//         category
+//         author
+//         image {
+//           childImageSharp {
+//             gatsbyImageData(layout: CONSTRAINED, width: 768, height: 400)
+//           }
+//         }
+//         imageAlt
+//       }
+//     }
+//   }
+// `
+
+// console.log("Post Template Loaded") // Debug log for template load

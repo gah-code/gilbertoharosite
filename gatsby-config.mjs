@@ -244,6 +244,8 @@
 //   ],
 // }
 
+import path from "path"
+
 import dotenv from "dotenv"
 import { dirname } from "path"
 import { fileURLToPath } from "url"
@@ -258,6 +260,11 @@ dotenv.config({
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default {
+  flags: {
+    DEV_SSR: false, // Disable SSR in development to avoid hydration mismatches
+    FAST_DEV: false, // Disable fast refresh to prevent caching issues
+  },
+
   siteMetadata: {
     siteUrl: process.env.SITE_URL || "https://gilbertaharo.com",
     title: process.env.SITE_TITLE || "Gilberto Alejandro Haro Website",
@@ -281,10 +288,14 @@ export default {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        extensions: [`.mdx`, `.md`],
         mdxOptions: {
           remarkPlugins: [],
           rehypePlugins: [rehypePrism],
         },
+        // defaultLayouts: {
+        //   default: path.resolve("./src/components/layout.js"),
+        // },
       },
     },
     {
@@ -292,14 +303,15 @@ export default {
       options: {
         name: `posts`,
         path: `${__dirname}/src/posts`,
+        // path: path.join(__dirname, "src/posts"), // Updated
       },
     },
-    {
-      resolve: `gatsby-plugin-page-creator`,
-      options: {
-        path: `${__dirname}/src/posts`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-page-creator`,
+    //   options: {
+    //     path: `${__dirname}/src/posts`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
