@@ -1,5 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
+import ResumeStyledCertList from "../components/segments/about/resume-styled-cert-list"
+import BlogIndex from "../templates/blog-index"
 import {
   Container,
   Section,
@@ -77,6 +79,9 @@ const experience = () => {
           {/* <SuperHeading>Gilbert Haro</SuperHeading> */}
         </Section>
       </Container>
+
+      <ResumeStyledCertList />
+      <BlogIndex />
 
       {/* <CVLayout /> */}
     </Layout>

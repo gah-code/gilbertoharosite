@@ -1,17 +1,17 @@
-import React from 'react';
-import { graphql, Link } from 'gatsby';
-import Layout from '../components/layout';
+import React from "react"
+import { graphql, Link } from "gatsby"
+import Layout from "../components/layout"
 
 const TagTemplate = ({ data, pageContext }) => {
-  const { category, currentPage, numPages } = pageContext;
-  const posts = data.allMdx.nodes;
+  const { category, currentPage, numPages } = pageContext
+  const posts = data.allMdx.nodes
 
   // Pagination Links
   const prevPage =
     currentPage === 2
       ? `/tags/${category.toLowerCase()}/`
-      : `/tags/${category.toLowerCase()}/${currentPage - 1}/`;
-  const nextPage = `/tags/${category.toLowerCase()}/${currentPage + 1}/`;
+      : `/tags/${category.toLowerCase()}/${currentPage - 1}/`
+  const nextPage = `/tags/${category.toLowerCase()}/${currentPage + 1}/`
 
   return (
     <Layout>
@@ -34,21 +34,21 @@ const TagTemplate = ({ data, pageContext }) => {
       </ul>
 
       {/* Pagination */}
-      <div style={{ marginTop: '2rem' }}>
+      <div style={{ marginTop: "2rem" }}>
         {currentPage > 1 && <Link to={prevPage}>&laquo; Previous Page</Link>}
         {currentPage < numPages && (
-          <Link to={nextPage} style={{ marginLeft: '1rem' }}>
+          <Link to={nextPage} style={{ marginLeft: "1rem" }}>
             Next Page &raquo;
           </Link>
         )}
       </div>
 
-      <Link to='/blog' style={{ display: 'block', marginTop: '2rem' }}>
+      <Link to="/blogs" style={{ display: "block", marginTop: "2rem" }}>
         Back to All Posts
       </Link>
     </Layout>
-  );
-};
+  )
+}
 
 // GraphQL query for paginated data
 export const query = graphql`
@@ -71,6 +71,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default TagTemplate;
+export default TagTemplate

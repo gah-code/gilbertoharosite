@@ -31,19 +31,19 @@ export default function BlogPostPage({ data }) {
             )}
             <Heading center>{frontmatter.title}</Heading>
             <Space size={3} />
-            <p>
-              <strong>Category:</strong>
+            <Box>
+              <strong>Category: </strong>
               <Link to={`/tags/${frontmatter.category.toLowerCase()}/`}>
                 {frontmatter.category}
               </Link>
-            </p>
+            </Box>
             <p>
               <strong>Author:</strong> {frontmatter.author} |{" "}
               <strong>Date:</strong> {frontmatter.date}
             </p>
             <p>{frontmatter.excerpt}</p>
             {/* Body Content */}
-            <section dangerouslySetInnerHTML={{ __html: body }} />
+            <Box dangerouslySetInnerHTML={{ __html: body }} />
 
             {/* <ComponentsWrapper>
               <section dangerouslySetInnerHTML={{ __html: body }} />

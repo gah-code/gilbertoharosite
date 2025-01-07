@@ -1,41 +1,74 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { graphql, Link } from "gatsby"
-import { Container, Box, FlexList } from "./ui"
-import "../templates/blog-post.css"
+import {
+  Container,
+  Box,
+  FlexList,
+  Space,
+  BlockLink,
+  Heading,
+  Subhead,
+  Kicker,
+  Text,
+} from "./ui"
 
 export default function PostCard({ post }) {
   const image = getImage(post.frontmatter.image)
 
   return (
-    <Container width="narrow">
-      <Box paddingY={3} key={post.id} padding={3} width={["full", "third"]}>
-        <ul>
-          <article className="blogPost">
-            {/* Display Image */}
-            {image && (
-              <GatsbyImage
-                image={image}
-                alt={post.frontmatter.imageAlt || "Post image"}
-                style={{ borderRadius: "8px", marginBottom: "1rem" }}
-              />
-            )}
-            {/* Title and Category */}
-            <h2>
-              <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
-            </h2>
-            <p>
-              <strong>Category:</strong>{" "}
-              <Link to={`/tags/${post.frontmatter.category.toLowerCase()}/`}>
-                {post.frontmatter.category}
-              </Link>
-            </p>
-            {/* Excerpt */}
-            <p>{post.frontmatter.excerpt}</p>
-          </article>
-        </ul>
-      </Box>
-    </Container>
+    <BlockLink
+      to={post.frontmatter.slug}
+      style={{
+        padding: "10px",
+        // border: "1px solid red", // Debugging border
+        width: "350px",
+      }}
+    >
+      {/* Display Image */}
+      {image && (
+        <>
+          <GatsbyImage
+            image={image}
+            alt={post.frontmatter.imageAlt || "Post image"}
+            style={{
+              borderRadius: "8px",
+
+              height: "200px",
+              objectFit: "cover",
+            }}
+          />
+          <Space size={3} />
+        </>
+      )}
+      {/* Title and Category */}
+      {/* <strong>Category:</strong> */}
+      {/* <Link to={`/tags/${post.frontmatter.category.toLowerCase()}/`}>
+              <Kicker>{post.frontmatter.category}</Kicker>
+            </Link> */}
+      <Subhead>
+        <Kicker>{post.frontmatter.category}</Kicker>
+        {post.frontmatter.title}
+        {/* <p>
+                <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
+              </p> */}
+      </Subhead>
+
+      {/* Excerpt */}
+      <Text
+        as="p"
+        style={{
+          overflow: "hidden",
+          whiteSpace: "normal",
+          wordWrap: "break-word",
+        }}
+      >
+        {post.frontmatter.excerpt}
+      </Text>
+      <Text variant="bold">
+        <div>By {post.frontmatter.author}</div>
+      </Text>
+    </BlockLink>
   )
 }
 
