@@ -1,29 +1,3 @@
-// // src/utils/remarkHeadingsPlugin.js (CommonJS format)
-
-// // const visit = require("unist-util-visit")
-// import { visit } from "unist-util-visit"
-
-// const { toString } = require("mdast-util-to-string")
-
-// function transformer(tree, file) {
-//   let headings = []
-
-//   visit(tree, "heading", (node) => {
-//     headings.push({
-//       value: toString(node),
-//       depth: node.depth,
-//     })
-//   })
-
-//   // Attach headings to file metadata
-//   if (!file.data.meta) {
-//     file.data.meta = {}
-//   }
-//   file.data.meta.headings = headings
-// }
-
-// module.exports = () => transformer
-
 import { visit } from "unist-util-visit"
 import { toString } from "mdast-util-to-string"
 

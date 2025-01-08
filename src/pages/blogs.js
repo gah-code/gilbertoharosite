@@ -1,24 +1,21 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+import React, { useEffect } from "react"
+import { graphql, Link, navigate } from "gatsby"
 import { FlexList, Box, Container, Heading } from "../components/ui"
 import Layout from "../components/layout"
-import PostCard from "../components/PostCard"
+import PostCard from "../components/post/PostCard"
+import SEOHead from "../components/head"
 
 export default function BlogPage({ data }) {
   const posts = data.allMdx.nodes
 
+  // Prevent navigation to blogs/blogs
+  // React.useEffect(() => {
+  //   if (location.pathname === "/blogs/blogs/") {
+  //     navigate("/blogs/")
+  //   }
+  // }, [location])
   return (
     <Layout>
-      {/* <h2>Filter by Category:</h2>
-      <ul>
-        {Array.from(
-          new Set(posts.map((post) => post.frontmatter.category))
-        ).map((category) => (
-          <li key={category}>
-            <Link to={`/tags/${category.toLowerCase()}/`}>{category}</Link>
-          </li>
-        ))}
-      </ul> */}
       <Container>
         <div style={{ margin: "50px 0 10px 0px" }}>
           <h2
@@ -56,7 +53,6 @@ export default function BlogPage({ data }) {
           </ul>
         </div>
         {/* Filter by Category */}
-
         <Box
           paddingY={4}
           style={
@@ -103,9 +99,42 @@ export default function BlogPage({ data }) {
   )
 }
 
+// // Query All Posts
+// export const query = graphql`
+//   query {
+//     allMdx(
+//       filter: { internal: { contentFilePath: { regex: "/src/posts/" } } }
+//       sort: { fields: [frontmatter___date], order: DESC }
+//     ) {
+//       nodes {
+//         ...PostFields
+//       }
+//     }
+//   }
+// `
+
+export const Head = (props) => {
+  const siteMetadata = props.data.site.siteMetadata
+
+  return (
+    <SEOHead
+      title={siteMetadata.title}
+      description={siteMetadata.description}
+      url={siteMetadata.siteUrl + "/blog"}
+    />
+  )
+}
+
 // Query All Posts
 export const query = graphql`
   query {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+        description
+      }
+    }
     allMdx(
       filter: { internal: { contentFilePath: { regex: "/src/posts/" } } }
       sort: { fields: [frontmatter___date], order: DESC }

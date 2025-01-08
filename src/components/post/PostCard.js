@@ -11,7 +11,7 @@ import {
   Subhead,
   Kicker,
   Text,
-} from "./ui"
+} from "../ui"
 
 export default function PostCard({ post }) {
   const image = getImage(post.frontmatter.image)
