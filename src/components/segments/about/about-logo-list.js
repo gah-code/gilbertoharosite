@@ -1,5 +1,12 @@
 import * as React from "react"
-import { Container, Heading, FlexList, LinkList, Section, Box } from "../../ui"
+import {
+  Container,
+  Heading,
+  FlexList,
+  LinkList,
+  Section,
+  Box,
+} from "../../ui/ui"
 import { LogoItem } from "../../logo-list"
 
 // Static Mock Data for Testing

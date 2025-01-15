@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import ResumeStyledCertList from "../components/segments/about/resume-styled-cert-list"
 import BlogIndex from "../templates/blog-index"
 import {
@@ -10,7 +10,7 @@ import {
   Heading,
   Text,
   Box,
-} from "../components/ui"
+} from "../components/ui/ui"
 
 const experience = () => {
   const experiences = [

@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 
 const TagTemplate = ({ data, pageContext }) => {
   const { category, currentPage, numPages } = pageContext

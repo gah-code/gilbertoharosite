@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import { Container, Box, Heading } from "../components/ui"
+import Layout from "../components/layout/layout"
+import { Container, Box, Heading } from "../components/ui/ui"
 import SEOHead from "../components/head"
 
 export default function Page(props) {

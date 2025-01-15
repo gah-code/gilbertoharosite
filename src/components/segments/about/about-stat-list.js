@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Container, Section, FlexList, Box, Text } from "../../ui"
+import { Container, Section, FlexList, Box, Text } from "../../ui/ui"
 import * as styles from "./about-stat-list.css"
 
 // Static Mock Data for Testing

@@ -10,7 +10,7 @@ import {
   Kicker,
   Text,
   ButtonList,
-} from "../../ui"
+} from "../../ui/ui"
 
 export default function Feature(props) {
   return (

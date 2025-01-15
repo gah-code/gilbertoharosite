@@ -620,14 +620,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Register Header Slice
   createSlice({
     id: "header",
-    component: require.resolve("./src/components/header/header.js"),
+    component: require.resolve("./src/components/layout/header/header.js"),
     allowEmpty: true, // Allow empty slices for fallback pages (e.g., /404.html)
   })
 
   // Register Footer Slice
   createSlice({
     id: "footer",
-    component: require.resolve("./src/components/footer.js"),
+    component: require.resolve("./src/components/layout/footer.js"),
     allowEmpty: true,
   })
 

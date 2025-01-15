@@ -9,7 +9,7 @@ import {
   Box,
   Kicker,
   Space,
-} from "../../ui"
+} from "../../ui/ui"
 
 // Static Mock Data for Testing
 const mockLeadershipData = {

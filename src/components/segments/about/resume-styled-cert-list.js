@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Container, Section, Box, Heading, Text, Link } from "../../ui"
+import { Container, Section, Box, Heading, Text, Link } from "../../ui/ui"
 import {
   // certListSection,
   certListContainer,

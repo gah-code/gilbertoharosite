@@ -11,8 +11,8 @@ import {
   Text,
   IconLink,
   VisuallyHidden,
-} from "./ui"
-import BrandLogo from "./brand-logo"
+} from "../ui/ui"
+import BrandLogo from "../ui/brand-logo"
 
 const socialMedia = {
   LINKEDIN: {

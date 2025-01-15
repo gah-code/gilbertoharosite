@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { graphql, Link, navigate } from "gatsby"
-import { FlexList, Box, Container, Heading } from "../components/ui"
-import Layout from "../components/layout"
+import { FlexList, Box, Container, Heading } from "../components/ui/ui"
+import Layout from "../components/layout/layout"
 import PostCard from "../components/post/PostCard"
 import SEOHead from "../components/head"
 

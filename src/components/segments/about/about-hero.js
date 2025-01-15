@@ -1,6 +1,6 @@
 import * as React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Container, Section, Text, SuperHeading, Heading } from "../../ui"
+import { Container, Section, Text, SuperHeading, Heading } from "../../ui/ui"
 import * as styles from "./about-hero.css"
 
 // Static Data for Testing

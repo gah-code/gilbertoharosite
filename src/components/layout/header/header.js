@@ -11,16 +11,16 @@ import {
   InteractiveIcon,
   Nudge,
   VisuallyHidden,
-} from "../ui"
+} from "../../ui/ui"
 import {
   mobileNavOverlay,
   mobileNavLink,
   desktopHeaderNavWrapper,
   mobileHeaderNavWrapper,
   mobileNavSVGColorWrapper,
-} from "../styles/header.css"
+} from "./header.css"
 import NavItemGroup from "../navigation/nav-item-group"
-import BrandLogo from "../brand-logo"
+import BrandLogo from "../../ui/brand-logo"
 
 export default function Header() {
   const data = useStaticQuery(graphql`

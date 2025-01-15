@@ -1,7 +1,7 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
-import { Space, BlockLink, Subhead, Kicker, Text } from "../ui"
+import { Space, BlockLink, Subhead, Kicker, Text } from "../ui/ui"
 
 export default function PostCard({ post }) {
   const image = getImage(post.frontmatter.image)

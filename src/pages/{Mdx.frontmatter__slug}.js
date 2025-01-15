@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import Prism from "prismjs"
 import "prismjs/components/prism-javascript"
-import { markdownContent, codeBlock } from "../components/prismStyles.css"
-import { Container, Box, Heading, Space } from "../components/ui"
+import { markdownContent, codeBlock } from "../components/prism/prismStyles.css"
+import { Container, Box, Heading, Space } from "../components/ui/ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 export default function BlogPostPage({ data }) {

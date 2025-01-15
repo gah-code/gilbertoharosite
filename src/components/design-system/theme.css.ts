@@ -101,5 +101,3 @@ export const theme = createGlobalTheme(":root", {
   radii,
   shadows,
 })
-
-

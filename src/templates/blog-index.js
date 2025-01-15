@@ -103,7 +103,7 @@ import {
   Subhead,
   Kicker,
   Text,
-} from "../components/ui"
+} from "../components/ui/ui"
 // import SEOHead from "../components/head"
 
 // PostCard Component

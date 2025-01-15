@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
-import PostCards from "../components/PostCards"
+import Layout from "../components/layout/layout"
+import PostCards from "../components/post/PostCards"
 export default function BlogsPage({ data }) {
   const posts = data.allMdx.nodes
 

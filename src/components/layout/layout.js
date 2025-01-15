@@ -1,5 +1,5 @@
 import * as React from "react"
-import "../styles.css"
+import "../design-system/styles.css"
 import { Slice } from "gatsby"
 
 // Debug logs

@@ -6,7 +6,7 @@ import "@fontsource/dm-mono/500.css"
 import "prismjs/themes/prism-tomorrow.css"
 
 import React from "react"
-import { ComponentsWrapper } from "./src/components/ComponentsWrapper"
+import { ComponentsWrapper } from "./src/components/prism/ComponentsWrapper"
 
 export const wrapRootElement = ({ element }) => (
   <ComponentsWrapper>{element}</ComponentsWrapper>
