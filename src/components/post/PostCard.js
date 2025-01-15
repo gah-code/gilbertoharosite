@@ -1,17 +1,7 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { graphql, Link } from "gatsby"
-import {
-  Container,
-  Box,
-  FlexList,
-  Space,
-  BlockLink,
-  Heading,
-  Subhead,
-  Kicker,
-  Text,
-} from "../ui"
+import { graphql } from "gatsby"
+import { Space, BlockLink, Subhead, Kicker, Text } from "../ui"
 
 export default function PostCard({ post }) {
   const image = getImage(post.frontmatter.image)
@@ -21,7 +11,6 @@ export default function PostCard({ post }) {
       to={post.frontmatter.slug}
       style={{
         padding: "10px",
-        // border: "1px solid red", // Debugging border
         width: "350px",
       }}
     >
@@ -42,16 +31,10 @@ export default function PostCard({ post }) {
         </>
       )}
       {/* Title and Category */}
-      {/* <strong>Category:</strong> */}
-      {/* <Link to={`/tags/${post.frontmatter.category.toLowerCase()}/`}>
-              <Kicker>{post.frontmatter.category}</Kicker>
-            </Link> */}
+
       <Subhead>
         <Kicker>{post.frontmatter.category}</Kicker>
         {post.frontmatter.title}
-        {/* <p>
-                <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
-              </p> */}
       </Subhead>
 
       {/* Excerpt */}

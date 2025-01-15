@@ -10,10 +10,7 @@ import {
   Heading,
   Text,
   Box,
-  List,
-  Flex,
 } from "../components/ui"
-// import CVLayout from "../components/CVLayout"
 
 const experience = () => {
   const experiences = [
@@ -64,10 +61,8 @@ const experience = () => {
             </Text>
           </Box>
           {/* Creativity Through the Lens Section */}
-
           <Section>
             <Subhead>Creativity Through the Lens</Subhead>
-
             <Text>
               As a photographer, I’ve worked to elevate my craft by enhancing
               visual assets with Adobe Photoshop and Lightroom. These tools
@@ -76,14 +71,11 @@ const experience = () => {
               commissioned work.
             </Text>
           </Section>
-          {/* <SuperHeading>Gilbert Haro</SuperHeading> */}
         </Section>
       </Container>
 
       <ResumeStyledCertList />
       <BlogIndex />
-
-      {/* <CVLayout /> */}
     </Layout>
   )
 }

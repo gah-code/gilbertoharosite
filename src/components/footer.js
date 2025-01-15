@@ -1,14 +1,6 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import {
-  Twitter,
-  Twitch,
-  Instagram,
-  Facebook,
-  Youtube,
-  GitHub,
-  Linkedin,
-} from "react-feather"
+import { Instagram, GitHub, Linkedin } from "react-feather"
 import {
   Container,
   Flex,

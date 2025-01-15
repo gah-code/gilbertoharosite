@@ -2,15 +2,29 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
+import Prism from "prismjs"
+import "prismjs/components/prism-javascript"
+import { markdownContent, codeBlock } from "../components/prismStyles.css"
 import { Container, Box, Heading, Space } from "../components/ui"
-import "../templates/blog-post.css"
-
-import components from "../components/mdx-components"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 export default function BlogPostPage({ data }) {
   const { frontmatter, body } = data.mdx
+
+  const highlightedBody = Prism.highlight(
+    body,
+    Prism.languages.javascript,
+    "javascript"
+  )
+
   const image = getImage(frontmatter.image)
   console.log("Image Data:", image)
+  console.log("Layout:", Layout)
+  console.log("Container:", Container)
+  console.log("Box:", Box)
+  console.log("Heading:", Heading)
+  console.log("Space:", Space)
+  console.log("MDXRenderer:", MDXRenderer)
 
   return (
     <Layout>
@@ -43,11 +57,11 @@ export default function BlogPostPage({ data }) {
             </p>
             <p>{frontmatter.excerpt}</p>
             {/* Body Content */}
-            <Box dangerouslySetInnerHTML={{ __html: body }} />
+            <pre className={codeBlock}>
+              <code dangerouslySetInnerHTML={{ __html: highlightedBody }} />
+              {/* <code dangerouslySetInnerHTML={{ __html: body }} /> */}
+            </pre>
 
-            {/* <ComponentsWrapper>
-              <section dangerouslySetInnerHTML={{ __html: body }} />
-            </ComponentsWrapper> */}
             <hr />
             <p>
               <Link to="/blogs">← Back to Blog</Link>

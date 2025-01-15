@@ -3,6 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import isAbsoluteURL from "is-absolute-url"
 import * as React from "react"
 import * as styles from "./ui.css"
+// import { MDXProvider } from "@mdx-js/react"
 
 export const cx = (...args) => args.filter(Boolean).join(" ")
 
@@ -246,3 +247,27 @@ export function VisuallyHidden(props) {
 export function BlockLink(props) {
   return <Link className={styles.blockLink} {...props} />
 }
+
+// export function CodeBlock({ children, ...props }) {
+//   return (
+//     <Box
+//       as="pre"
+//       cx={[styles.codeBlock]} // Apply custom styles for the code block
+//       {...props}
+//     >
+//       {children}
+//     </Box>
+//   )
+// }
+
+// export function InlineCode({ children, ...props }) {
+//   return (
+//     <Box
+//       as="code"
+//       cx={[styles.inlineCode]} // Apply custom styles for inline code
+//       {...props}
+//     >
+//       {children}
+//     </Box>
+//   )
+// }

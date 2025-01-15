@@ -662,13 +662,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  // Handle GraphQL errors
-  // if (result.errors) {
-  //   reporter.panicOnBuild("Error loading MDX posts", result.errors)
-
-  //   return
-  // }
-
   const posts = result.data.allMdx.nodes
 
   // Group posts by category for tags

@@ -5,7 +5,7 @@ import { media } from "../../ui.css"
 // Wrapper for the entire section
 // Wrapper for the entire section
 export const certListSection = style({
-  backgroundColor: theme.colors.backgroundSecondary,
+  backgroundColor: theme.colors.active,
   padding: theme.space[3],
   maxWidth: theme.sizes.narrow,
 })
@@ -76,19 +76,19 @@ export const certTitle = style({
   fontSize: theme.fontSizes[2],
   fontWeight: theme.fontWeights.semibold,
   marginBottom: theme.space[1],
-  color: theme.colors.textPrimary,
+  color: theme.colors.primary,
   lineHeight: theme.lineHeights.heading,
 })
 
 // Provider and date
 export const certProvider = style({
   fontSize: theme.fontSizes[2],
-  color: theme.colors.textSecondary,
+  color: theme.colors.text,
 })
 
 // Link to view the certificate
 export const certLink = style({
-  color: theme.colors.link,
+  color: theme.colors.muted,
   fontSize: theme.fontSizes[1],
   textDecoration: "underline",
   flexShrink: 0,

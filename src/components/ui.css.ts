@@ -630,3 +630,23 @@ export const visuallyHidden = style({
 export const debug = style({
   outline: "1px solid tomato",
 })
+
+export const codeBlock = style({
+  whiteSpace: "pre-wrap", // Wrap long lines
+  wordWrap: "break-word", // Break words to prevent overflow
+  overflowX: "auto", // Add horizontal scrolling for long lines
+  padding: "1rem",
+  backgroundColor: "#f5f5f5", // Match your theme's background color
+  borderRadius: "8px",
+  fontSize: "0.9rem",
+  fontFamily: "Courier, monospace",
+  margin: "1rem 0",
+})
+
+export const inlineCode = style({
+  backgroundColor: "#eaeaea", // Background for inline code
+  borderRadius: "4px",
+  padding: "0.2rem 0.4rem",
+  fontFamily: "Courier, monospace",
+  fontSize: "0.9rem",
+})
