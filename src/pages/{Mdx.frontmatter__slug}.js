@@ -7,6 +7,7 @@ import "prismjs/components/prism-javascript"
 import { markdownContent, codeBlock } from "../components/prism/prismStyles.css"
 import { Container, Box, Heading, Space } from "../components/ui/ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import SEOHead from "../components/head"
 
 export default function BlogPostPage({ data }) {
   const { frontmatter, body } = data.mdx
@@ -73,9 +74,34 @@ export default function BlogPostPage({ data }) {
   )
 }
 
+// export const Head = (props) => {
+//   const { page } = props.data
+//   const { site } = props.data
+//   const siteMetadata = site.siteMetadata
+
+//   const url = `${siteMetadata.siteUrl}/${page.slug}`
+//   console.log(props)
+
+//   return (
+//     <SEOHead
+//       title={page.title || siteMetadata.title}
+//       description={page.description || siteMetadata.description}
+//       image={page.image || null}
+//       url={url}
+//     />
+//   )
+// }
+
 // Query a single post
 export const query = graphql`
   query BlogPostQuery($id: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+        description
+      }
+    }
     mdx(id: { eq: $id }) {
       body
       frontmatter {

@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css"
-import { theme } from "../../../theme.css"
+import { theme } from "../../design-system/theme.css"
 import { media } from "../../ui/ui.css"
 
 export const statList = style({

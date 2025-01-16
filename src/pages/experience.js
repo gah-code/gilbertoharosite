@@ -2,6 +2,8 @@ import React from "react"
 import Layout from "../components/layout/layout"
 import ResumeStyledCertList from "../components/segments/about/resume-styled-cert-list"
 import BlogIndex from "../templates/blog-index"
+import AboutHero from "../components/segments/about/about-hero"
+import SkillListGrid from "../components/segments/about/skill-list-grid"
 import {
   Container,
   Section,
@@ -76,6 +78,8 @@ const experience = () => {
 
       <ResumeStyledCertList />
       <BlogIndex />
+      <AboutHero />
+      <SkillListGrid />
     </Layout>
   )
 }

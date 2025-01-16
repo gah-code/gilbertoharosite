@@ -5,7 +5,7 @@ import Layout from "../components/layout/layout"
 import PostCard from "../components/post/PostCard"
 import SEOHead from "../components/head"
 
-export default function BlogPage({ data }) {
+export default function BlogPage({ data, location }) {
   const posts = data.allMdx.nodes
 
   // Prevent navigation to blogs/blogs
@@ -120,7 +120,7 @@ export const Head = (props) => {
     <SEOHead
       title={siteMetadata.title}
       description={siteMetadata.description}
-      url={siteMetadata.siteUrl + "/blog"}
+      url={siteMetadata.siteUrl}
     />
   )
 }

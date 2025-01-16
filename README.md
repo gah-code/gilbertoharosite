@@ -15,6 +15,8 @@ My **Contentful Website** is a modern, fast, and scalable web application built 
 - [ ] **CodeBlock component created** and used in MDX.
 - [ ] **Prism styles** for syntax highlighting.
 - [ ] **Blog templates** to use MDXRenderer.
+- [ ] **Cross-space references** in Rich Text fields
+- [ ] **SEO** to update.
 
 ## **Key Features**
 

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Container, Section, FlexList, Box, Text, Heading } from "../../ui"
+import { Container, Section, FlexList, Box, Text, Heading } from "../../ui/ui"
 
 // Static Mock Data for Skills
 const skillList = [
@@ -43,7 +43,7 @@ function SkillCard({ name, description }) {
         border: "1px solid #eaeaea",
         borderRadius: "8px",
         textAlign: "center",
-        padding: "1.5rem",
+        padding: "1rem",
         boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
         backgroundColor: "#fff",
         height: "100%", // Ensures equal height

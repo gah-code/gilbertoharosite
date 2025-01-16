@@ -28,6 +28,7 @@ export const Head = (props) => {
   const siteMetadata = site.siteMetadata
 
   const url = `${siteMetadata.siteUrl}/${page.slug}`
+  console.log(props)
 
   return (
     <SEOHead
