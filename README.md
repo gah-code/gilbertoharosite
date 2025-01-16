@@ -1,29 +1,163 @@
-# My 2025 Website Update: Contentful-Powered Gatsby Site
+# My 2025 Website Update: Contentful-Powered Gatsby Site V
 
 ![Lighthouse Score](./docs/images/light-house.png)
 
 ![Content Model](./content-mod-draft.png)
 
-## Project Overview
+## **Project Overview**
 
-This project is a Gatsby site that integrates Contentful as its content management system (CMS).
+My **Contentful Website** is a modern, fast, and scalable web application built with GatsbyJS, Contentful, and MDX. It showcases cutting-edge web technologies, including PrismJS for syntax highlighting, Vanilla Extract for styling, and an optimized development workflow for building dynamic, content-rich websites.
 
-### Key Features
+### **IN PROGRESS** Summary Checklist
 
-- **Gatsby Integration with Contentful**: Gatsby is used as the frontend, while Contentful serves as the CMS. This combination provides an efficient static site generator that pulls content from Contentful.
+- [ ] **Plugins configured** in `gatsby-config.mjs`.
+- [ ] **Shortcodes registered IN TESTING** with `MDXProvider`.
+- [ ] **CodeBlock component created** and used in MDX.
+- [ ] **Prism styles** for syntax highlighting.
+- [ ] **Blog templates** to use MDXRenderer.
+
+## **Key Features**
+
+- **Gatsby Integration with Contentful**:
+  - This combination offers an efficient static site generator that retrieves content from Contentful. Content is managed through the Contentful CMS and is seamlessly integrated using GraphQL. It supports rich text, media, and reusable components for effective structured content management.
+- **Interactive Blog System**:
+  - Built with MDX for writing blogs using JSX and Markdown.
+  - Syntax highlighting for code snippets with customizable themes powered by PrismJS.
+
+- **Advanced Theming**:
+  - Uses **Vanilla Extract** for CSS-in-JS, enabling scoped styles and theme management.
+  - Fully customizable design system with global and component-specific styles.
+
+- **Optimized Performance**:
+  - Image optimization with Gatsby's **Sharp** and **Image** plugins.
+  - Static rendering for lightning-fast load times and SEO.
+
+- **Responsive and Accessible Design**:
+  - Fully responsive UI for all screen sizes.
+  - Follows accessibility (a11y) best practices for inclusive user experiences.
+
+- **Developer-Friendly Features**:
+  - Hot module replacement for fast development.
+  - Preconfigured plugins for MDX, GraphQL, and PrismJS.
+  - Includes a robust structure for reusable components and templates.
+
 - **Combining Content Types**: The script ensures that existing content types are not overwritten, merging new content types with the ones already in place.
 
-### Tech Stack
+## **Core Technologies**
 
-- **Gatsby**: Static site generator for React-based web applications.
-- **Contentful**: Headless CMS for managing content.
-- **Styling:** Styled Components, CSS, and Vanilla Extract
-- **Hosting/Deployment:** Netlify, Cloudflare
+- **Framework**: GatsbyJS (React-based static site generator)
+- **CMS**: Contentful (Headless CMS)
+- **Markdown and JSX**: MDX for flexible content creation
+- **Styling**: Vanilla Extract (CSS-in-JS)
+- **Syntax Highlighting**: PrismJS with customizable themes
+- **Image Optimization**: gatsby-plugin-image, gatsby-plugin-sharp
+- **Deployment**: Netlify for fast and secure hosting
 - **Node.js**: For executing server-side scripts and managing the setup process.
 
 ### Abstract Interfaces for GraphQL Schema Customization
 
 This project uses **abstract interfaces** in GraphQL to define a flexible and reusable schema for integrating Contentful data. Interfaces serve as shared contracts for related types, ensuring consistency and simplicity in querying CMS data.
+
+### Folder Structure In Progress
+
+.
+├── .env.production
+├── .env.development
+├── .gitignore
+├── .nvmrc
+├── LICENSE
+├── netlify.toml
+├── package.json
+├── package-lock.json
+├── README.md
+├── gatsby-browser.js
+├── gatsby-config.mjs
+├── gatsby-node.js
+├── docs/                 # (optional) Additional documentation
+├── public/               # Gatsby build output
+├── src
+│   ├── components
+│   │   ├── layout
+│   │   │   ├── header
+│   │   │   │   ├── header.js
+│   │   │   │   └── header.css.ts            # or .css.ts if using Vanilla Extract
+│   │   │   ├── navigation
+│   │   │   │   ├── nav-item-group-css.ts
+│   │   │   │   └── nav-item-group.js
+│   │   │   ├── footer.js
+│   │   │   ├── hero.js
+│   │   │   └── layout.js
+│   │   │
+│   │   ├── design-system
+│   │   │   ├── theme.css.ts
+│   │   │   ├── colors.css.ts
+│   │   │   └── (any other vanilla-extract files)
+│   │   │
+│   │   ├── prism
+│   │   │   ├── prismStyles.css.ts           # or .css
+│   │   │   ├── CodeBlock.js                 # Code highlighting w/ PrismJS
+│   │   │   └── index.js                     # Re-export if needed
+│   │   │
+│   │   ├── ui
+│   │   │   ├── ui.js
+│   │   │   ├── ui.css.ts
+│   │   │   ├── shortcodes.js
+│   │   │   ├── benefit-list.js
+│   │   │   ├── logo-list.js
+│   │   │   ├── stat-list.js
+│   │   │   ├── testimonial-list.js
+│   │   │   ├── cta.js
+│   │   │   └── (common UI components like Button, Card, etc.)
+│   │   │
+│   │   ├── posts
+│   │   │   ├── PostCard.js
+│   │   │   ├── PostList.js                 # or any other post-related UI
+│   │   │   └── (additional blog post components)
+│   │   │
+│   │   ├── segments
+│   │   │   ├── about
+│   │   │   ├── feature
+│   │   │   └── (other specialized segment folders)
+│   │   │
+│   │   ├── shortcodes.js                   # If you use MDX shortcodes
+│   │   └── ComponentsWrapper.js            # Example: global context
+│   │
+│   ├── hooks
+│   │   └── (custom React hooks if needed)
+│   │
+│   ├── pages
+│   │   ├── index.js
+│   │   ├── about.js
+│   │   ├── experience.js
+│   │   ├── 404.js
+│   │   ├── blogs.js
+│   │   ├── blogsPage.js
+│   │   ├── {Mdx.frontmatter__slug}.js
+│   │   └── {Page.slug}.js                  # Sourcing from Contentful
+│   │
+│   ├── posts                               # Local MDX each folder for a single post.
+│   │   ├── highlight-demo
+│   │   │   ├── index.mdx
+│   │   │   ├── img-1.jpg
+│   │   │   └── ...
+│   │   ├── seo-metadata-enhancements
+│   │   │   ├── index.mdx
+│   │   │   ├── seo-demo.jpg
+│   │   │   └── thinking.png
+│   │   └── (other local MDX posts)
+│   │
+│   ├── templates
+│   │   ├── blog-index.js - IN TESTING
+│   │   ├── blog-post.js - IN TESTING
+│   │   ├── post-template.jsx - IN TESTING
+│   │   ├── tag-template.jsx
+│   │   └── (other custom templates)
+│   │
+│   └── fragments
+│       └── fragments.js                    # e.g. GraphQL fragments
+├── .prettierignore
+├── .prettierrc.json
+└── content-mod-draft.png                   # or relocate to /static if needed
 
 #### **Overview:**
 
@@ -150,3 +284,5 @@ CONTENTFUL_ACCESS_TOKEN='your_access_token'
 ## Deployment Status
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f2ecbaf1-b540-48fd-82fd-b0d389e98a81/deploy-status)](https://app.netlify.com/sites/gilbertaharocode/deploys)
+
+## Deployment State IN PROGRESS
