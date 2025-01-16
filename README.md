@@ -60,6 +60,7 @@ This project uses **abstract interfaces** in GraphQL to define a flexible and re
 
 ### Folder Structure In Progress
 
+```markdown
 .
 ├── .env.production
 ├── .env.development
@@ -158,6 +159,7 @@ This project uses **abstract interfaces** in GraphQL to define a flexible and re
 ├── .prettierignore
 ├── .prettierrc.json
 └── content-mod-draft.png                   # or relocate to /static if needed
+```
 
 #### **Overview:**
 
