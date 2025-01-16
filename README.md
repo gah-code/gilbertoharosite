@@ -279,8 +279,8 @@ CONTENTFUL_ACCESS_TOKEN='your_access_token'
 # CONTENTFUL_HOST='preview.contentful.com'
 ```
 
-## Deployment Status
+## Dev Status
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f2ecbaf1-b540-48fd-82fd-b0d389e98a81/deploy-status)](https://app.netlify.com/sites/gilbertaharocode/deploys)
 
-## Deployment State IN PROGRESS
+## Dev State IN PROGRESS
