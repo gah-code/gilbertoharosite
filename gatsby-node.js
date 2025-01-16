@@ -688,7 +688,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             : `/tags/${category.toLowerCase()}/${i + 1}/`,
         component: tagTemplate,
         context: {
-          id: node.id,
           category,
           limit: postsPerPage,
           skip: i * postsPerPage,

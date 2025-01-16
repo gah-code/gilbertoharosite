@@ -64,12 +64,8 @@ This project uses **abstract interfaces** in GraphQL to define a flexible and re
 .
 ├── .env.production
 ├── .env.development
-├── .gitignore
-├── .nvmrc
-├── LICENSE
 ├── netlify.toml
 ├── package.json
-├── package-lock.json
 ├── README.md
 ├── gatsby-browser.js
 ├── gatsby-config.mjs
