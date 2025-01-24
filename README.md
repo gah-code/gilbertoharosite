@@ -1,4 +1,4 @@
-# My 2025 Website Update: Contentful-Powered Gatsby Site V
+# My 2025 Website Update: Contentful-Powered Gatsby Site V1.1 | In TESTING 01/24/25
 
 ![Lighthouse Score](./docs/images/light-house.png)
 
@@ -11,11 +11,12 @@ My **Contentful Website** is a modern, fast, and scalable web application built 
 ### **IN PROGRESS** Summary Checklist
 
 - [ ] **Plugins configured** in `gatsby-config.mjs`.
-- [ ] **Shortcodes registered IN TESTING** with `MDXProvider`.
-- [ ] **CodeBlock component created** and used in MDX.
-- [ ] **Prism styles** for syntax highlighting.
-- [ ] **Blog templates** to use MDXRenderer.
+- [ ] **Clean Up**
+- [ ] **Shortcodes IN TESTING** with `MDXProvider`.
+- [ ] **CodeBlocks IN TESTING** and used in MDX.
+- [ ] **Rich Text field** for syntax highlighting.
 - [ ] **Cross-space references** in Rich Text fields
+- [X] **Blog templates** Content Model implmentation.
 - [ ] **SEO** to update.
 
 ## **Key Features**
@@ -51,7 +52,6 @@ My **Contentful Website** is a modern, fast, and scalable web application built 
 - **CMS**: Contentful (Headless CMS)
 - **Markdown and JSX**: MDX for flexible content creation
 - **Styling**: Vanilla Extract (CSS-in-JS)
-- **Syntax Highlighting**: PrismJS with customizable themes
 - **Image Optimization**: gatsby-plugin-image, gatsby-plugin-sharp
 - **Deployment**: Netlify for fast and secure hosting
 - **Node.js**: For executing server-side scripts and managing the setup process.

@@ -44,13 +44,13 @@ export default function LogoList(props) {
             This is where I compile some of my favorite discoveries and
             concepts.
           </Text>
-          <Text variant="lead" bold>
+          {/* <Text variant="lead" bold>
             {props.text}
-          </Text>
+          </Text> */}
         </Box>
 
         <Space size={4} />
-        {/* <FlexList gap={4} variant="center">
+        <FlexList gap={4} variant="center">
           {props.logos.map(
             (logo) =>
               logo && (
@@ -59,7 +59,7 @@ export default function LogoList(props) {
                 </li>
               )
           )}
-        </FlexList> */}
+        </FlexList>
       </Container>
     </Section>
   )

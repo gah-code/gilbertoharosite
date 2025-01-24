@@ -169,7 +169,7 @@ export function ButtonList({ links = [], reversed = false, ...props }) {
     if (reversed) {
       return i === 0 ? "reversed" : "linkReversed"
     }
-    return i === 0 ? "primary" : "link"
+    return i === 0 ? "primary" : "reversed"
   }
   return (
     <FlexList marginY={4} {...props}>

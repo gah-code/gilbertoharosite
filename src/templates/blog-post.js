@@ -549,3 +549,95 @@
 // // `
 
 // // export default BlogPost
+
+// src/templates/blog-post.js
+import * as React from "react"
+import { graphql, Link } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Layout from "../components/layout/layout"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+
+import {
+  Container,
+  Heading,
+  Box,
+  Space,
+  Text,
+  Avatar,
+} from "../components/ui/ui"
+import * as styles from "./blog-post.css"
+
+export default function BlogPost(props) {
+  const post = props.data.contentfulBlogPost
+
+  return (
+    <Layout {...post} description={post.excerpt}>
+      <Container width="narrow">
+        <Box paddingY={5}>
+          <article className="blogPost">
+            {" "}
+            {post.image && (
+              <GatsbyImage
+                alt={post.image.alt}
+                image={getImage(post.image)}
+                style={{
+                  width: "100%",
+                  borderRadius: "8px",
+                  marginBottom: "1.5rem",
+                }}
+              />
+            )}
+            <Heading as="h1" center>
+              {post.title}
+            </Heading>
+            <Space size={3} />
+          </article>
+
+          <Space size={4} />
+          <Box>
+            <strong>Category: </strong>
+            <Link to={`/category/${post.category.toLowerCase()}/`}>
+              {post.category}
+            </Link>
+          </Box>
+          <p>
+            {/* <strong>Author:</strong> {frontmatter.author} |{" "} */}
+            <strong>Date:</strong> {post.date}
+          </p>
+
+          <div
+            className={styles.blogPost}
+            dangerouslySetInnerHTML={{
+              __html: post.html,
+            }}
+          />
+        </Box>
+      </Container>
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query ($id: String!) {
+    contentfulBlogPost(id: { eq: $id }) {
+      id
+      slug
+      title
+      html
+      category
+      date(formatString: "MMMM DD, YYYY")
+
+      image {
+        id
+        url
+        gatsbyImageData(
+          layout: CONSTRAINED
+          width: 768
+          height: 400
+          resizingBehavior: FILL
+        )
+        alt
+      }
+    }
+  }
+`

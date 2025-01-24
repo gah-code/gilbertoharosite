@@ -75,6 +75,22 @@ exports.createSchemaCustomization = async ({ actions }) => {
     },
   })
 
+  actions.createFieldExtension({
+    name: "contentfulExcerpt",
+    extend(options) {
+      return {
+        async resolve(source, args, context, info) {
+          const type = info.schema.getType(source.internal.type)
+          const resolver = type.getFields().contentfulExcerpt?.resolve
+          const result = await resolver(source, args, context, {
+            fieldName: "contentfulExcerpt",
+          })
+          return result.excerpt
+        },
+      }
+    },
+  })
+
   // abstract interfaces
   actions.createTypes(/* GraphQL */ `
     interface HomepageBlock implements Node {
@@ -408,16 +424,6 @@ exports.createSchemaCustomization = async ({ actions }) => {
       content: [HomepageFeature] @link(from: "content___NODE")
     }
 
-    type ContentfulHomepageCta implements Node & HomepageBlock & HomepageCta
-      @dontInfer {
-      blocktype: String @blocktype
-      kicker: String
-      heading: String
-      text: String
-      image: HomepageImage @link(from: "image___NODE")
-      links: [HomepageLink] @link(from: "links___NODE")
-    }
-
     type ContentfulHomepageLogo implements Node & HomepageLogo @dontInfer {
       id: ID!
       image: HomepageImage @link(from: "image___NODE")
@@ -463,13 +469,6 @@ exports.createSchemaCustomization = async ({ actions }) => {
       heading: String
       text: String
       content: [HomepageBenefit] @link(from: "content___NODE")
-    }
-
-    type ContentfulHomepageStat implements Node & HomepageStat @dontInfer {
-      id: ID!
-      value: String
-      label: String
-      heading: String
     }
 
     type ContentfulHomepageStatList implements Node & HomepageBlock & HomepageStatList
@@ -609,6 +608,33 @@ exports.createSchemaCustomization = async ({ actions }) => {
       image: HomepageImage @link(from: "image___NODE")
       html: String! @richText
     }
+
+    type contentfulBlogPostExcerptTextNode implements Node {
+      id: ID!
+      excerpt: String!
+      # determine if markdown is required for this field type
+    }
+
+    type ContentfulBlogPost implements Node {
+      id: ID!
+      slug: String!
+      title: String
+      description: String
+
+      # If you have a "date" field in Contentful
+      date: Date @dateformat
+      # If you have an "image" field in Contentful
+      image: ContentfulAsset @link(from: "image___NODE")
+      # For excerpt
+      excerpt: String! @contentfulExcerpt
+      contentfulExcerpt: contentfulBlogPostExcerptTextNode
+        @link(from: "excerpt___NODE")
+
+      # For rich text body content
+      # (the field name might differ—match it to your Contentful model)
+      html: String! @richText
+      category: String
+    }
   `)
 }
 
@@ -630,71 +656,145 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     component: require.resolve("./src/components/layout/footer.js"),
     allowEmpty: true,
   })
-
-  // Paths for templates
-  const postTemplate = path.resolve(`./src/templates/post-template.jsx`)
-  const tagTemplate = path.resolve(`./src/templates/tag-template.jsx`)
-
-  // Fetch all MDX posts
+  // Query for all blog posts
   const result = await graphql(`
     {
-      allMdx {
+      allContentfulBlogPost {
         nodes {
           id
-          frontmatter {
-            slug
-            title
-            excerpt
-            category
-            author
-            image {
-              childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 768, height: 400)
-              }
-            }
-            imageAlt
-          }
-          internal {
-            contentFilePath
-          }
+          slug
+          category
         }
       }
     }
   `)
 
-  const posts = result.data.allMdx.nodes
+  const posts = result.data.allContentfulBlogPost.nodes
 
-  // Group posts by category for tags
-  const postsByCategory = {}
-  posts.forEach((post) => {
-    const category = post.frontmatter.category
-    if (!postsByCategory[category]) {
-      postsByCategory[category] = []
-    }
-    postsByCategory[category].push(post)
+  // 1. Create the main blog index page
+  // Create a page that shows all the blog posts (the blog index)
+  createPage({
+    path: `/blogs`, // or "/news", etc.
+    component: require.resolve("./src/templates/blog-index.js"),
   })
 
-  // Create paginated category pages
-  Object.keys(postsByCategory).forEach((category) => {
-    const categoryPosts = postsByCategory[category]
-    const postsPerPage = 5
-    const numPages = Math.ceil(categoryPosts.length / postsPerPage)
+  // 2. Create individual pages for each post
 
-    Array.from({ length: numPages }).forEach((_, i) => {
-      createPage({
-        path:
-          i === 0
-            ? `/tags/${category.toLowerCase()}/`
-            : `/tags/${category.toLowerCase()}/${i + 1}/`,
-        component: tagTemplate,
-        context: {
-          category,
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          currentPage: i + 1,
-          numPages,
-        },
-      })
+  // Create individual pages for each post
+  result.data.allContentfulBlogPost.nodes.forEach((post) => {
+    createPage({
+      path: `/blogs/${post.slug}`,
+      component: require.resolve("./src/templates/blog-post.js"),
+      context: {
+        id: post.id,
+      },
     })
   })
+
+  // 3. Create a dedicated category page for each unique category
+
+  const categoryMap = new Map() // key: category string; value: array of posts
+  posts.forEach((post) => {
+    const cat = post.category || "uncategorized"
+    if (!categoryMap.has(cat)) {
+      categoryMap.set(cat, [])
+    }
+    categoryMap.get(cat).push(post)
+  })
+
+  // 5. For each category, create paginated pages
+  categoryMap.forEach((catPosts, category) => {
+    const postsPerPage = 5
+    const numPages = Math.ceil(catPosts.length / postsPerPage)
+
+    for (let currentPage = 1; currentPage <= numPages; currentPage++) {
+      const skip = (currentPage - 1) * postsPerPage
+      const limit = postsPerPage
+
+      // Construct the path, e.g.:
+
+      const pathBase = `/category/${category.toLowerCase()}`
+      const pathWithPage =
+        currentPage === 1 ? pathBase : `${pathBase}/${currentPage}`
+
+      createPage({
+        path: pathWithPage,
+        component: require.resolve("./src/templates/blog-category.js"),
+        context: {
+          category,
+          limit,
+          skip,
+          numPages,
+          currentPage,
+        },
+      })
+    }
+  })
 }
+
+// Paths for templates
+// const postTemplate = path.resolve(`./src/templates/post-template.jsx`)
+// const tagTemplate = path.resolve(`./src/templates/tag-template.jsx`)
+
+// // Fetch all MDX posts
+// const result = await graphql(`
+//   {
+//     allMdx {
+//       nodes {
+//         id
+//         frontmatter {
+//           slug
+//           title
+//           excerpt
+//           category
+//           author
+//           image {
+//             childImageSharp {
+//               gatsbyImageData(layout: CONSTRAINED, width: 768, height: 400)
+//             }
+//           }
+//           imageAlt
+//         }
+//         internal {
+//           contentFilePath
+//         }
+//       }
+//     }
+//   }
+// `)
+
+// const posts = result.data.allMdx.nodes
+
+// // Group posts by category for tags
+// const postsByCategory = {}
+// posts.forEach((post) => {
+//   const category = post.frontmatter.category
+//   if (!postsByCategory[category]) {
+//     postsByCategory[category] = []
+//   }
+//   postsByCategory[category].push(post)
+// })
+
+// // Create paginated category pages
+// Object.keys(postsByCategory).forEach((category) => {
+//   const categoryPosts = postsByCategory[category]
+//   const postsPerPage = 5
+//   const numPages = Math.ceil(categoryPosts.length / postsPerPage)
+
+//   Array.from({ length: numPages }).forEach((_, i) => {
+//     createPage({
+//       path:
+//         i === 0
+//           ? `/tags/${category.toLowerCase()}/`
+//           : `/tags/${category.toLowerCase()}/${i + 1}/`,
+//       component: tagTemplate,
+//       context: {
+//         category,
+//         limit: postsPerPage,
+//         skip: i * postsPerPage,
+//         currentPage: i + 1,
+//         numPages,
+//       },
+//     })
+//   })
+// })
