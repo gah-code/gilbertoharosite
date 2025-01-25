@@ -45,8 +45,8 @@ export const certItem = style({
 
 // Image for the certificate logo
 export const certImage = style({
-  width: "60px",
-  height: "60px",
+  width: "65px",
+  height: "65px",
   borderRadius: theme.radii.button,
   objectFit: "cover",
   flexShrink: 0,
@@ -88,7 +88,7 @@ export const certProvider = style({
 
 // Link to view the certificate
 export const certLink = style({
-  color: theme.colors.muted,
+  color: theme.colors.black,
   fontSize: theme.fontSizes[1],
   textDecoration: "underline",
   flexShrink: 0,

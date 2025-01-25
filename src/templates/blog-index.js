@@ -637,7 +637,6 @@ export const query = graphql`
         title
         category
         excerpt
-
         # If you have author references, add them here:
         # author {
         #   name
@@ -645,7 +644,12 @@ export const query = graphql`
         image {
           id
           alt
-          gatsbyImageData(width: 300, height: 200, layout: CONSTRAINED)
+          gatsbyImageData(
+            placeholder: TRACED_SVG
+            width: 300
+            height: 200
+            layout: CONSTRAINED
+          )
         }
       }
     }

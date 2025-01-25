@@ -18,6 +18,7 @@ My **Contentful Website** is a modern, fast, and scalable web application built 
 - [ ] **Cross-space references** in Rich Text fields
 - [X] **Blog templates** Content Model implmentation.
 - [ ] **SEO** to update.
+- [ ] **Incremental Static Generation**
 
 ## **Key Features**
 

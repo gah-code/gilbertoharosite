@@ -474,6 +474,7 @@ const button = style({
   paddingLeft: theme.space[3],
   paddingRight: theme.space[3],
   borderRadius: theme.radii.button,
+  transition: "background-color 0.3s, color 0.3s, transform 0.2s",
 })
 
 export type ButtonVariants = "primary" | "reversed" | "link" | "linkReversed"
@@ -486,9 +487,15 @@ export const buttons: Record<ButtonVariants, string> = styleVariants({
       backgroundColor: theme.colors.primary,
       ":hover": {
         backgroundColor: theme.colors.active,
+        transform: "scale(1.02)",
       },
       ":focus": {
+        outline: `2px solid ${theme.colors.primary}`,
+        outlineOffset: "2px",
         backgroundColor: theme.colors.active,
+      },
+      ":active": {
+        transform: "scale(0.98)",
       },
     },
   ],
@@ -500,10 +507,16 @@ export const buttons: Record<ButtonVariants, string> = styleVariants({
       ":hover": {
         color: theme.colors.background,
         backgroundColor: theme.colors.active,
+        transform: "scale(1.02)",
       },
       ":focus": {
+        outline: `2px solid ${theme.colors.primary}`,
+        outlineOffset: "2px",
         color: theme.colors.background,
         backgroundColor: theme.colors.active,
+      },
+      ":active": {
+        transform: "scale(0.98)",
       },
     },
   ],
@@ -516,7 +529,13 @@ export const buttons: Record<ButtonVariants, string> = styleVariants({
         backgroundColor: theme.colors.muted,
       },
       ":focus": {
+        outline: `2px solid ${theme.colors.muted}`,
+        outlineOffset: "2px",
         backgroundColor: theme.colors.muted,
+      },
+      ":active": {
+        backgroundColor: theme.colors.primary,
+        color: theme.colors.background,
       },
     },
   ],
@@ -530,8 +549,13 @@ export const buttons: Record<ButtonVariants, string> = styleVariants({
         backgroundColor: theme.colors.muted,
       },
       ":focus": {
+        outline: `2px solid ${theme.colors.muted}`,
+        outlineOffset: "2px",
         color: theme.colors.primary,
         backgroundColor: theme.colors.muted,
+      },
+      ":active": {
+        transform: "scale(0.98)",
       },
     },
   ],
