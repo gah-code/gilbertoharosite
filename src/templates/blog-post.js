@@ -347,9 +347,9 @@ export default function BlogPost(props) {
 
   return (
     <Layout {...post} description={post.excerpt}>
-      <Container width="narrow">
+      <Container width="tight">
         <Box paddingY={5}>
-          <article className="blogPost">
+          <article className={styles.blogPost}>
             {" "}
             {post.image && (
               <GatsbyImage
@@ -358,27 +358,23 @@ export default function BlogPost(props) {
                 style={{
                   width: "100%",
                   borderRadius: "8px",
-                  marginBottom: "1.5rem",
+                  marginBottom: "1rem",
                 }}
               />
             )}
-            <Heading as="h1" center>
-              {post.title}
-            </Heading>
-            <Space size={3} />
+            <Heading as="h1">{post.title}</Heading>
+            <Space size={1} />
+            <Box>
+              <strong>Category: </strong>
+              <Link to={`/category/${post.category.toLowerCase()}/`}>
+                {post.category}
+              </Link>
+              <p>
+                {/* <strong>Author:</strong> {frontmatter.author} |{" "} */}
+                <strong>Date:</strong> {post.date}
+              </p>
+            </Box>
           </article>
-
-          <Space size={4} />
-          <Box>
-            <strong>Category: </strong>
-            <Link to={`/category/${post.category.toLowerCase()}/`}>
-              {post.category}
-            </Link>
-          </Box>
-          <p>
-            {/* <strong>Author:</strong> {frontmatter.author} |{" "} */}
-            <strong>Date:</strong> {post.date}
-          </p>
 
           <div
             className={styles.blogPost}

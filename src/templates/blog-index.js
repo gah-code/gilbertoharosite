@@ -497,12 +497,21 @@ function PostCardSmall({ slug, image, title, category, excerpt }) {
           padding: "10px",
           border: "1px solid #eee",
           borderRadius: "8px",
+          width: "350px",
         }}
       >
         {image && (
           <>
-            <GatsbyImage alt={image.alt} image={getImage(image)} />
-            <Space size={3} />
+            <GatsbyImage
+              alt={image.alt}
+              image={getImage(image)}
+              style={{
+                borderRadius: "8px",
+                height: "200px",
+                objectFit: "cover",
+              }}
+            />
+            <Space size={4} />
           </>
         )}
         {/* <Subhead>

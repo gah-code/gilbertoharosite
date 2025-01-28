@@ -165,7 +165,10 @@ globalStyle(containedElements, {
 
 // Images
 globalStyle(`${blogPost} img`, {
-  maxWidth: "100%",
+  // maxWidth: "100%",
+  maxWidth: theme.sizes.tight,
+  marginLeft: "auto",
+  marginRight: "auto",
   height: "auto",
   borderRadius: "8px",
   marginBottom: theme.space[4],
