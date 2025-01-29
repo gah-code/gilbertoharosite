@@ -422,6 +422,7 @@ import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout/layout"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import SEOHead, { normalizeUrl } from "../components/head" // Import SEO component
 
 import {
   Container,
@@ -627,6 +628,18 @@ export default function BlogIndex(props) {
       </Container>
     </Layout>
   )
+}
+
+// SEO Component for Blog Index
+export const Head = ({ data }) => {
+  const { site } = data
+  const siteMetadata = site.siteMetadata
+
+  const title = `All My Blog Posts | ${siteMetadata.title}`
+  const description = `Discover the latest blog posts on various topics, including some featured articles and my web development insights. Stay updated with fresh content.`
+  const url = normalizeUrl(`${siteMetadata.siteUrl}/blogs`)
+
+  return <SEOHead title={title} description={description} url={url} />
 }
 
 // 3) GraphQL query

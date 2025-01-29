@@ -23,8 +23,7 @@ export default function Page(props) {
   )
 }
 export const Head = (props) => {
-  const { page } = props.data
-  const { site, contentfulPage } = props.data
+  const { page, site, contentfulPage } = props.data
   const siteMetadata = site.siteMetadata
 
   const title = contentfulPage?.seoTitle || page.title || siteMetadata.title
@@ -53,7 +52,7 @@ export const query = graphql`
         description
       }
     }
-    contentfulPage {
+    contentfulPage(id: { eq: $id }) {
       seoTitle
     }
     page(id: { eq: $id }) {

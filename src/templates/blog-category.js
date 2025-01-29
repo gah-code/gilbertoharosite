@@ -2,6 +2,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout/layout"
+import SEOHead, { normalizeUrl } from "../components/head"
 
 const BlogCategoryTemplate = ({ data, pageContext }) => {
   const { category, currentPage, numPages } = pageContext
@@ -63,9 +64,9 @@ export const query = graphql`
       skip: $skip
     ) {
       nodes {
-        id
-        slug
         title
+        slug
+        id
 
         date(formatString: "MMMM DD, YYYY")
         category

@@ -16,7 +16,7 @@ import {
   Logo,
   Icon,
   List,
-} from "./ui"
+} from "./ui/ui"
 
 export default function UILibraryShowcase() {
   return (
@@ -57,6 +57,8 @@ export default function UILibraryShowcase() {
         <FlexList gap="3">
           <Link href="https://example.com">External Link</Link>
           <Link to="/internal">Internal Link</Link>
+
+          <Link to="/internal">Internal Link</Link>
         </FlexList>
       </Section>
 
@@ -88,6 +90,7 @@ export default function UILibraryShowcase() {
           <li>Flex Item 1</li>
           <li>Flex Item 2</li>
           <li>Flex Item 3</li>
+          <li>Flex Item 4</li>
         </FlexList>
       </Section>
 

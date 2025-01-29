@@ -46,7 +46,10 @@ import React from "react"
 // }
 
 // Utility function to remove trailing slashes
-export const normalizeUrl = (url) => url?.replace(/\/$/, "")
+export const normalizeUrl = (url) => {
+  if (!url) return ""
+  return url.replace(/\/$/, "") // Remove trailing slash
+}
 
 export default function SEOHead({ title, description, image, url }) {
   const cleanedUrl = normalizeUrl(url)

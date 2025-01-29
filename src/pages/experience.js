@@ -13,6 +13,7 @@ import {
   Text,
   Box,
 } from "../components/ui/ui"
+import UILibraryShowcase from "../components/UILibraryShowcase"
 
 const experience = () => {
   const experiences = [
@@ -77,6 +78,7 @@ const experience = () => {
       </Container>
 
       <ResumeStyledCertList />
+      <UILibraryShowcase />
       {/* <BlogIndex /> */}
       <AboutHero />
       <SkillListGrid />

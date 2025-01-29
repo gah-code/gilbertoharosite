@@ -331,6 +331,7 @@ import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout/layout"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import SEOHead, { normalizeUrl } from "../components/head" // Import SEOHead
 
 import {
   Container,
@@ -388,12 +389,32 @@ export default function BlogPost(props) {
   )
 }
 
+// Add SEO metadata for blog post
+export const Head = ({ data }) => {
+  const { site } = data
+  const post = data.contentfulBlogPost
+  // const siteMetadata = site.siteMetadata
+
+  const title = post.seoTitle || post.title
+  const description = post.seoDescription?.seoDescription || post.excerpt
+  // const description = post.seoDescription || siteMetadata.description
+  // const image = post.image?.url || null
+  // const url = normalizeUrl(`${siteMetadata.siteUrl}/${post.slug}`)
+
+  return <SEOHead title={title} description={description} />
+}
+
 export const query = graphql`
   query ($id: String!) {
     contentfulBlogPost(id: { eq: $id }) {
       id
       slug
       title
+      seoTitle
+      seoDescription {
+        seoDescription
+      }
+
       html
       category
       date(formatString: "MMMM DD, YYYY")

@@ -124,7 +124,7 @@ function CertificateItem({ title, provider, date, image, link }) {
 // Resume Styled Certification List Component
 export default function ResumeStyledCertList() {
   return (
-    <Section style={{ backgroundColor: "#f9f9f9", padding: "2rem 0" }}>
+    <Section style={{ backgroundColor: "#ddf3e", padding: "2rem 0" }}>
       <Container>
         {/* Section Heading */}
         <Box center paddingY={4}>

@@ -1,6 +1,6 @@
 # My 2025 Website Update: Contentful-Powered Gatsby Site V1.1 | In TESTING 01/24/25
 
-![Lighthouse Score](./docs/images/light-house.png)
+![Lighthouse Score](./light-house.png)
 
 ![Content Model](./content-mod-draft.png)
 
@@ -61,7 +61,7 @@ My **Contentful Website** is a modern, fast, and scalable web application built 
 
 This project uses **abstract interfaces** in GraphQL to define a flexible and reusable schema for integrating Contentful data. Interfaces serve as shared contracts for related types, ensuring consistency and simplicity in querying CMS data.
 
-### Folder Structure In Progress
+### 🔧🛠 Folder Structure In Progress 🔧🛠
 
 ```markdown
 .
@@ -287,3 +287,11 @@ CONTENTFUL_ACCESS_TOKEN='your_access_token'
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f2ecbaf1-b540-48fd-82fd-b0d389e98a81/deploy-status)](https://app.netlify.com/sites/gilbertaharocode/deploys)
 
 ## Dev State IN PROGRESS
+
+TASKS
+
+✅ Uses a unique SEO title: "All Blog Posts | {Site Name}"
+✅ Adds a custom SEO description to improve indexing
+✅ Ensures URLs are properly normalized for better SEO
+✅ Uses the existing SEOHead component for consistency
+✅ No need for seoTitle on the blog index—it’s designed to be a landing page!

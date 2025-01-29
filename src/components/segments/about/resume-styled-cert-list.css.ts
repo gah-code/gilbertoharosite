@@ -75,7 +75,8 @@ export const certDetails = style({
 export const certTitle = style({
   fontSize: theme.fontSizes[2],
   fontWeight: theme.fontWeights.semibold,
-  marginBottom: theme.space[1],
+  marginBottom: theme.space[2],
+  marginTop: theme.space[2],
   color: theme.colors.primary,
   lineHeight: theme.lineHeights.heading,
 })
