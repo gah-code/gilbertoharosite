@@ -78,9 +78,9 @@ const experience = () => {
       </Container>
 
       <ResumeStyledCertList />
-      <UILibraryShowcase />
+      {/* <UILibraryShowcase /> */}
       {/* <BlogIndex /> */}
-      <AboutHero />
+      {/* <AboutHero /> */}
       <SkillListGrid />
     </Layout>
   )
