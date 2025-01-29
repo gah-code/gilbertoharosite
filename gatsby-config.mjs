@@ -2,7 +2,6 @@ import path from "path"
 import dotenv from "dotenv"
 import { dirname } from "path"
 import { fileURLToPath } from "url"
-import rehypePrism from "rehype-prism-plus"
 
 // Load environment variables
 dotenv.config({
@@ -24,7 +23,7 @@ export default {
     DEV_SSR: false,
     FAST_DEV: false,
   },
-
+  trailingSlash: "never", // Options: "always" | "never" | "ignore"
   siteMetadata: {
     siteUrl: process.env.SITE_URL || "https://gilbertaharo.com",
     title: process.env.SITE_TITLE || "Gilberto Alejandro Haro Website",

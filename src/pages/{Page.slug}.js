@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import { Container, Box, Heading } from "../components/ui/ui"
-import SEOHead from "../components/head"
+import SEOHead, { normalizeUrl } from "../components/head"
 
 export default function Page(props) {
   const { page } = props.data
@@ -24,15 +24,19 @@ export default function Page(props) {
 }
 export const Head = (props) => {
   const { page } = props.data
-  const { site } = props.data
+  const { site, contentfulPage } = props.data
   const siteMetadata = site.siteMetadata
 
-  const url = `${siteMetadata.siteUrl}/${page.slug}`
+  const title = contentfulPage?.seoTitle || page.title || siteMetadata.title
+
+  // const url = `${siteMetadata.siteUrl}/${page.slug}`
+  const url = normalizeUrl(`${siteMetadata.siteUrl}/${page.slug}`)
+
   console.log(props)
 
   return (
     <SEOHead
-      title={page.title || siteMetadata.title}
+      title={title}
       description={page.description || siteMetadata.description}
       image={page.image || null}
       url={url}
@@ -48,6 +52,9 @@ export const query = graphql`
         title
         description
       }
+    }
+    contentfulPage {
+      seoTitle
     }
     page(id: { eq: $id }) {
       id

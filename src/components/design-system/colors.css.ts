@@ -5,4 +5,5 @@ export const colors = {
   muted: "#314237",
   active: "#e3b567 ",
   black: "#000",
+  codeBackground: "#00332c",
 }

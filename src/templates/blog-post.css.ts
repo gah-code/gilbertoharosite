@@ -224,9 +224,15 @@ globalStyle(`${blogPost} ul, ${blogPost} ol`, {
 })
 
 // First Paragraph Special Style
+// globalStyle(`${blogPost} > p:first-of-type`, {
+//   fontSize: theme.fontSizes[3],
+//   fontWeight: theme.fontWeights.medium,
+// })
+
 globalStyle(`${blogPost} > p:first-of-type`, {
-  fontSize: theme.fontSizes[3],
-  fontWeight: theme.fontWeights.medium,
+  fontSize: theme.fontSizes[3], // Larger font size for emphasis
+  fontWeight: theme.fontWeights.bold, // Bold text for prominence
+  marginBottom: theme.space[3], // Space below the paragraph
 })
 
 // // Code Blocks
@@ -239,37 +245,51 @@ globalStyle(`${blogPost} > p:first-of-type`, {
 // })
 
 // Code Blocks
+// globalStyle(`${blogPost} pre`, {
+//   backgroundColor: theme.colors.background,
+//   padding: theme.space[2],
+//   borderRadius: "4px",
+//   overflowX: "auto",
+//   // marginBottom: theme.space[2],
+//   fontSize: theme.fontSizes[1],
+//   fontFamily: theme.fonts.mono,
+//   color: theme.colors.text,
+// })
+
+// Code Block Styling
 globalStyle(`${blogPost} pre`, {
-  backgroundColor: theme.colors.background,
-  padding: theme.space[2],
-  borderRadius: "4px",
-  overflowX: "auto",
-  // marginBottom: theme.space[2],
-  fontSize: theme.fontSizes[1],
-  fontFamily: theme.fonts.mono,
-  color: theme.colors.text,
+  backgroundColor: theme.colors.muted, // Muted background for contrast
+  padding: theme.space[3], // Add padding inside the code block
+  borderRadius: "8px", // Rounded corners for a modern look
+  maxWidth: "100%", // Prevent overflow
+  overflowX: "auto", // Horizontal scroll for long lines
+  marginBottom: theme.space[4], // Space below the block
+  fontSize: theme.fontSizes[2], // Slightly larger font for readability
+  fontFamily: theme.fonts.mono, // Use monospaced font
+  color: theme.colors.text, // Ensure text is legible
+  whiteSpace: "pre", // Prevent text wrapping
 })
 
-globalStyle(`${blogPost} code`, {
-  backgroundColor: theme.colors.text,
-  // padding: `0 ${theme.space[1]}`,
-  borderRadius: "4px",
-  fontSize: theme.fontSizes[1],
-  fontFamily: theme.fonts.text,
-  color: theme.colors.background,
-  whiteSpace: "pre-wrap",
-  wordBreak: "break-word",
-})
-
-// Inline Code
+// Inline Code Styling
 globalStyle(`${blogPost} p code`, {
   display: "inline-block",
 })
 
-// Block Quotes
+globalStyle(`${blogPost} code`, {
+  backgroundColor: theme.colors.codeBackground, // Background for emphasis
+  padding: `0 ${theme.space[1]}`, // Horizontal padding
+  borderRadius: "4px", // Subtle rounding
+  fontSize: theme.fontSizes[1], // Inline font size
+  fontFamily: theme.fonts.mono, // Use monospaced font
+  color: theme.colors.background, // Text color contrast
+  whiteSpace: "pre-wrap", // Prevent overflow
+  wordBreak: "break-word", // Break long words if needed
+})
+
+// Block Quotes Styling
 globalStyle(`${blogPost} blockquote`, {
-  borderLeft: `4px solid ${theme.colors.primary}`,
-  paddingLeft: theme.space[3],
-  fontStyle: "italic",
-  marginBottom: theme.space[4],
+  borderLeft: `4px solid ${theme.colors.primary}`, // Left border for emphasis
+  paddingLeft: theme.space[3], // Indentation
+  fontStyle: "italic", // Italicized text
+  marginBottom: theme.space[4], // Space below blockquotes
 })
