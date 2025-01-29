@@ -1,8 +1,8 @@
-# My 2025 Website Update: Contentful-Powered Gatsby Site V1.1 | In TESTING 01/24/25
+# My 2025 Website Update: Contentful-Powered Gatsby Site V1.2 | In TESTING 01/24/25
 
 ![Lighthouse Score](./light-house.png)
 
-![Content Model](./content-mod-draft.png)
+![Content Model](./content-mod-lastest.png)
 
 ## **Project Overview**
 
@@ -11,9 +11,7 @@ My **Contentful Website** is a modern, fast, and scalable web application built 
 ### **IN PROGRESS** Summary Checklist
 
 - [ ] **Plugins configured** in `gatsby-config.mjs`.
-- [ ] **Clean Up**
-- [ ] **Shortcodes IN TESTING** with `MDXProvider`.
-- [ ] **CodeBlocks IN TESTING** and used in MDX.
+- [X] **Clean Up**
 - [ ] **Rich Text field** for syntax highlighting.
 - [ ] **Cross-space references** in Rich Text fields
 - [X] **Blog templates** Content Model implmentation.
