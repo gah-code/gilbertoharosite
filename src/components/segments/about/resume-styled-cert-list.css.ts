@@ -25,8 +25,10 @@ export const certItem = style({
   gap: theme.space[3],
   // borderBottom: `1px solid ${theme.colors.border}`,
   borderBottom: "1px solid #e0e0e0",
+  flexDirection: "row",
+  // flexWrap: "wrap",
 
-  padding: theme.space[2],
+  padding: theme.space[3],
   transition: "background-color 0.3s ease, box-shadow 0.3s ease",
 
   ":hover": {
@@ -54,6 +56,8 @@ export const certImage = style({
 
   "@media": {
     [media.small]: {
+      width: "65px",
+      height: "65px",
       marginBottom: theme.space[2],
     },
   },
@@ -94,8 +98,15 @@ export const certTitle = style({
 export const certProvider = style({
   display: "flex",
   alignItems: "center", // Align items vertically centered
-  fontSize: theme.fontSizes[2],
+  fontSize: theme.fontSizes[1],
   gap: theme.space[1], // Add spacing between items
+  flexWrap: "wrap",
+
+  "@media": {
+    [media.small]: {
+      flexDirection: "row",
+    },
+  },
 })
 // Individual data type (e.g., provider, date, length)
 export const certDataType = style({

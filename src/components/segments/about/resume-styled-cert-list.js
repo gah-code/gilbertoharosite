@@ -264,7 +264,7 @@ export default function ResumeStyledCertList() {
                   ? theme.colors.primary
                   : theme.colors.muted,
                 color: theme.colors.white,
-                padding: "0.5rem 1rem",
+                padding: "0.5rem 0.8rem",
                 borderRadius: theme.radii.button,
                 cursor: "pointer",
                 border: "none",
@@ -279,7 +279,7 @@ export default function ResumeStyledCertList() {
                   ? theme.colors.primary
                   : theme.colors.muted,
                 color: theme.colors.white,
-                padding: "0.5rem 1rem",
+                padding: "0.5rem 0.8rem",
                 borderRadius: theme.radii.button,
                 cursor: "pointer",
                 border: "none",
