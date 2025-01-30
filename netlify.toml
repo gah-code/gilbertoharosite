@@ -1,11 +1,9 @@
 
 
-# ⚡ Enable Advanced Caching for Faster Builds
 [[plugins]]
   package = "@netlify/plugin-gatsby"
 
 
-# 🛠 Header Optimizations for Performance & Security
 [[headers]]
   for = "/*"
   [headers.values]

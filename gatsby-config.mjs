@@ -33,6 +33,7 @@ export default {
       "Gilberto Alejandro Haro Website, Technologies and digital creator fueled by a passion for discovering optimizations using the latest frontend techniques.",
   },
   plugins: [
+    "gatsby-plugin-netlify",
     {
       resolve: "gatsby-source-contentful",
       options: {
@@ -47,7 +48,6 @@ export default {
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     "gatsby-plugin-vanilla-extract",
-    `gatsby-plugin-netlify`,
     {
       resolve: "gatsby-plugin-manifest",
       options: {
