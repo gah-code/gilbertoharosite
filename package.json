@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.26.5",
+    "@netlify/plugin-gatsby": "^3.8.2",
     "babel-preset-gatsby": "^3.14.0",
     "chalk": "4",
     "contentful-cli": "^1.15.3",
