@@ -297,58 +297,6 @@ exports.createSchemaCustomization = async ({ actions }) => {
       footer: LayoutFooter
     }
 
-    interface AboutPage implements Node {
-      id: ID!
-      title: String
-      description: String
-      image: HomepageImage
-      content: [HomepageBlock]
-    }
-
-    interface AboutHero implements Node & HomepageBlock {
-      id: ID!
-      blocktype: String
-      heading: String
-      text: String
-      image: HomepageImage
-    }
-
-    interface AboutStat implements Node {
-      id: ID!
-      value: String
-      label: String
-    }
-
-    interface AboutStatList implements Node & HomepageBlock {
-      id: ID!
-      blocktype: String
-      content: [AboutStat]
-    }
-
-    interface AboutProfile implements Node {
-      id: ID!
-      image: HomepageImage
-      name: String
-      jobTitle: String
-    }
-
-    interface AboutLeadership implements Node & HomepageBlock {
-      id: ID!
-      blocktype: String
-      kicker: String
-      heading: String
-      subhead: String
-      content: [AboutProfile]
-    }
-
-    interface AboutLogoList implements Node & HomepageBlock {
-      id: ID!
-      blocktype: String
-      heading: String
-      links: [HomepageLink]
-      logos: [HomepageLogo]
-    }
-
     interface Page implements Node {
       id: ID!
       slug: String!
@@ -588,14 +536,14 @@ exports.createPages = async ({ graphql, actions }) => {
   // Register Header Slice
   createSlice({
     id: "header",
-    component: require.resolve("./src/components/layout/header/header.js"),
+    component: require.resolve("./src/components/layout/header/header.jsx"),
     allowEmpty: true, // Allow empty slices for fallback pages (e.g., /404.html)
   })
 
   // Register Footer Slice
   createSlice({
     id: "footer",
-    component: require.resolve("./src/components/layout/footer.js"),
+    component: require.resolve("./src/components/layout/footer.jsx"),
     allowEmpty: true,
   })
   // Query for all blog posts
