@@ -15,8 +15,6 @@ yarn.lock
 
 ### ⚡ Gatsby Build & Cache
 .cache/
-public/
-dist/
 
 ### 🔍 Debugging & Logs
 npm-debug.log*
