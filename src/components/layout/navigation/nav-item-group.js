@@ -8,6 +8,7 @@ import { media } from "../../ui/ui.css"
 export default function NavItemGroup({ name, navItems }) {
   const [isOpen, setIsOpen] = React.useState(false)
   const [popupVisible, setPopupVisible] = React.useState(false)
+  
   const isSmallScreen = () => {
     return !window.matchMedia(media.small).matches
   }

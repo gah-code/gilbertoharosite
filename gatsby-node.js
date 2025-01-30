@@ -63,7 +63,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
   actions.createFieldExtension({
     name: "richText",
-    extend(options) {
+    extend(options, args, context, info) {
       return {
         resolve(source) {
           const body = source.body
@@ -536,14 +536,14 @@ exports.createPages = async ({ graphql, actions }) => {
   // Register Header Slice
   createSlice({
     id: "header",
-    component: require.resolve("./src/components/layout/header/header.jsx"),
+    component: require.resolve("./src/components/layout/header/header.js"),
     allowEmpty: true, // Allow empty slices for fallback pages (e.g., /404.html)
   })
 
   // Register Footer Slice
   createSlice({
     id: "footer",
-    component: require.resolve("./src/components/layout/footer.jsx"),
+    component: require.resolve("./src/components/layout/footer.js"),
     allowEmpty: true,
   })
   // Query for all blog posts

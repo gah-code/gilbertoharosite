@@ -1,10 +1,10 @@
 import * as React from "react"
-import "../design-system/styles.css"
+import styles from "../design-system/styles.css"
 import { Slice } from "gatsby"
 
 const Layout = ({ children }) => {
-  console.log("Rendering Header Slice")
-  console.log("Rendering Footer Slice")
+  // console.log("Rendering Header Slice")
+  // console.log("Rendering Footer Slice")
 
   return (
     <>
