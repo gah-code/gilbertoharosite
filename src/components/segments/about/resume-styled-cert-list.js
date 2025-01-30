@@ -122,6 +122,27 @@ const certifications = [
     category: "JavaScript",
     length: "3",
   },
+  {
+    id: "cert-10",
+    title: "HTB Basic Toolset",
+    provider: "HTB Academy",
+    date: "04/01/2022",
+    image: "https://academy.hackthebox.com/storage/paths/9/logo.png",
+    link: "https://academy.hackthebox.com/achievement/203959/path/9",
+    category: "JavaScript",
+    length: "30.5",
+  },
+  {
+    id: "cert-11",
+    title: " The Complete JavaScript Course 2020: From Zero to Expert!",
+    provider: "Udemy",
+    date: "06/21/2020",
+    image:
+      "https://udemy-certificate.s3.amazonaws.com/image/UC-d7af91e5-c92f-4e7b-b215-8b6c074f735a.jpg",
+    link: "https://udemy-certificate.s3.amazonaws.com/image/UC-d7af91e5-c92f-4e7b-b215-8b6c074f735a.jpg",
+    category: "JavaScript",
+    length: "28.5",
+  },
 ]
 
 // Certificate Item Component
