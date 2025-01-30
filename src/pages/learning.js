@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import ResumeStyledCertList from "../components/segments/about/resume-styled-cert-list"
-import { Container, Section, Subhead, Text } from "../components/ui/ui"
+import { Container } from "../components/ui/ui"
 import SEOHead from "../components/head"
 
 const Learning = ({ data }) => {
@@ -19,16 +19,6 @@ const Learning = ({ data }) => {
     <Layout>
       <Container>
         <ResumeStyledCertList />
-        {/* <Section style={outlineStyle}>
-          <Subhead>Creativity Through the Lens and with code</Subhead>
-          <Text>
-            As a photographer, I’ve worked to elevate my craft by enhancing
-            visual assets with Adobe Photoshop and Lightroom. These tools allow
-            me to deliver polished, professional finishes to every // project I
-            undertake, whether it’s a personal photoshoot or a // commissioned
-            work.
-          </Text>
-        </Section> */}
       </Container>
     </Layout>
   )
