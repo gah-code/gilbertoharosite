@@ -121,7 +121,7 @@ export default function Header() {
                 </Button>
               )}
             </div>
-            <Nudge right={3}>
+            <Nudge right={2}>
               <InteractiveIcon
                 title="Toggle menu"
                 onClick={() => setOpen(!isOpen)}

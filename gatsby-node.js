@@ -565,7 +565,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create a page that shows all the blog posts (the blog index)
   createPage({
     path: `/blogs`, // or "/news", etc.
-    component: require.resolve("./src/templates/blog-index.jsx"),
+    component: require.resolve("./src/templates/blog-index.js"),
   })
 
   // 2. Create individual pages for each post
@@ -574,7 +574,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allContentfulBlogPost.nodes.forEach((post) => {
     createPage({
       path: `/blogs/${post.slug}`,
-      component: require.resolve("./src/templates/blog-post.jsx"),
+      component: require.resolve("./src/templates/blog-post.js"),
       context: {
         id: post.id,
       },
@@ -609,7 +609,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
       createPage({
         path: pathWithPage,
-        component: require.resolve("./src/templates/blog-category.jsx"),
+        component: require.resolve("./src/templates/blog-category.js"),
         context: {
           category,
           limit,
