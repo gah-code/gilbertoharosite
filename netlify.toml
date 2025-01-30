@@ -7,4 +7,4 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"  # Long-term caching
+    Cache-Control = "public, max-age=31536000, immutable"

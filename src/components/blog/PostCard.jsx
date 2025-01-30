@@ -2,14 +2,7 @@ import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { BlockLink, Space, Subhead, Kicker, Text } from "../ui/ui"
 
-export default function PostCard({
-  slug,
-  image,
-  title,
-  excerpt,
-  author,
-  category,
-}) {
+export default function PostCard({ slug, image, title, excerpt, category }) {
   return (
     <BlockLink
       to={`/blogs/${slug}`}

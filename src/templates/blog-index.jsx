@@ -25,11 +25,6 @@ export default function BlogIndex({ data }) {
         <article>
           {/* ------- Category Filter Section ------- */}
           <Box paddingY={4}>
-            {/* <h2
-            style={{ fontSize: "1.5rem", marginBottom: "30px", color: "#333" }}
-          >
-            Filter by Category:
-          </h2> */}
             <ul
               style={{
                 listStyle: "none",
@@ -82,11 +77,7 @@ export default function BlogIndex({ data }) {
                     // You can vary the width for featured vs. regular posts
                     width={isFeatured ? ["full", "half"] : ["full", "third"]}
                   >
-                    <Card
-                      to={`/blogs/${post.slug}`}
-                      // Slight styling tweak for featured items
-                      // style={isFeatured ? { backgroundColor: "#f9f9f9" } : {}}
-                    >
+                    <Card to={`/blogs/${post.slug}`}>
                       <Card.Image image={post.image} />
                       <Card.Title category={post.category} title={post.title} />
                       <Card.Excerpt excerpt={post.excerpt} />

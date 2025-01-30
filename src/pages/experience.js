@@ -1,17 +1,8 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import ResumeStyledCertList from "../components/segments/about/resume-styled-cert-list"
-// import BlogIndex from "../templates/blog-index"
 import SkillListGrid from "../components/segments/about/skill-list-grid"
-import {
-  Container,
-  Section,
-  SuperHeading,
-  Subhead,
-  Heading,
-  Text,
-  Box,
-} from "../components/ui/ui"
+import { Container, Section, Subhead, Text, Box } from "../components/ui/ui"
 import UILibraryShowcase from "../components/UILibraryShowcase"
 
 const experience = () => {

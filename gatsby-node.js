@@ -65,7 +65,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
     name: "richText",
     extend(options) {
       return {
-        resolve(source, args, context, info) {
+        resolve(source) {
           const body = source.body
           const doc = JSON.parse(body.raw)
           const html = documentToHtmlString(doc)
@@ -511,65 +511,6 @@ exports.createSchemaCustomization = async ({ actions }) => {
     }
   `)
 
-  // CMS specific types for About page
-  actions.createTypes(/* GraphQL */ `
-    type ContentfulAboutHero implements Node & AboutHero & HomepageBlock
-      @dontInfer {
-      id: ID!
-      blocktype: String @blocktype
-      heading: String
-      text: String
-      image: HomepageImage @link(from: "image___NODE")
-    }
-
-    type ContentfulAboutStat implements Node & AboutStat @dontInfer {
-      id: ID!
-      value: String
-      label: String
-    }
-
-    type ContentfulAboutStatList implements Node & AboutStatList & HomepageBlock
-      @dontInfer {
-      id: ID!
-      blocktype: String @blocktype
-      content: [AboutStat] @link(from: "content___NODE")
-    }
-
-    type ContentfulAboutProfile implements Node & AboutProfile @dontInfer {
-      id: ID!
-      image: HomepageImage @link(from: "image___NODE")
-      name: String
-      jobTitle: String
-    }
-
-    type ContentfulAboutLeadership implements Node & AboutLeadership & HomepageBlock
-      @dontInfer {
-      id: ID!
-      blocktype: String @blocktype
-      kicker: String
-      heading: String
-      subhead: String
-      content: [AboutProfile] @link(from: "content___NODE")
-    }
-
-    type ContentfulAboutLogoList implements Node & AboutLogoList & HomepageBlock
-      @dontInfer {
-      id: ID!
-      blocktype: String @blocktype
-      heading: String
-      links: [HomepageLink] @link(from: "links___NODE")
-      logos: [HomepageLogo] @link(from: "logos___NODE")
-    }
-
-    type ContentfulAboutPage implements Node & AboutPage @dontInfer {
-      id: ID!
-      title: String
-      description: String
-      image: HomepageImage @link(from: "image___NODE")
-      content: [HomepageBlock] @link(from: "content___NODE")
-    }
-  `)
-
   // Layout types
   actions.createTypes(/* GraphQL */ `
     type ContentfulLayoutHeader implements Node & LayoutHeader @dontInfer {
@@ -641,7 +582,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
 const path = require("path")
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createSlice } = actions
 
   // Register Header Slice
@@ -676,7 +617,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Create a page that shows all the blog posts (the blog index)
   createPage({
     path: `/blogs`, // or "/news", etc.
-    component: require.resolve("./src/templates/blog-index.js"),
+    component: require.resolve("./src/templates/blog-index.jsx"),
   })
 
   // 2. Create individual pages for each post
@@ -685,7 +626,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   result.data.allContentfulBlogPost.nodes.forEach((post) => {
     createPage({
       path: `/blogs/${post.slug}`,
-      component: require.resolve("./src/templates/blog-post.js"),
+      component: require.resolve("./src/templates/blog-post.jsx"),
       context: {
         id: post.id,
       },
@@ -720,7 +661,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       createPage({
         path: pathWithPage,
-        component: require.resolve("./src/templates/blog-category.js"),
+        component: require.resolve("./src/templates/blog-category.jsx"),
         context: {
           category,
           limit,
@@ -732,70 +673,3 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   })
 }
-
-// Paths for templates
-// const postTemplate = path.resolve(`./src/templates/post-template.jsx`)
-// const tagTemplate = path.resolve(`./src/templates/tag-template.jsx`)
-
-// // Fetch all MDX posts
-// const result = await graphql(`
-//   {
-//     allMdx {
-//       nodes {
-//         id
-//         frontmatter {
-//           slug
-//           title
-//           excerpt
-//           category
-//           author
-//           image {
-//             childImageSharp {
-//               gatsbyImageData(layout: CONSTRAINED, width: 768, height: 400)
-//             }
-//           }
-//           imageAlt
-//         }
-//         internal {
-//           contentFilePath
-//         }
-//       }
-//     }
-//   }
-// `)
-
-// const posts = result.data.allMdx.nodes
-
-// // Group posts by category for tags
-// const postsByCategory = {}
-// posts.forEach((post) => {
-//   const category = post.frontmatter.category
-//   if (!postsByCategory[category]) {
-//     postsByCategory[category] = []
-//   }
-//   postsByCategory[category].push(post)
-// })
-
-// // Create paginated category pages
-// Object.keys(postsByCategory).forEach((category) => {
-//   const categoryPosts = postsByCategory[category]
-//   const postsPerPage = 5
-//   const numPages = Math.ceil(categoryPosts.length / postsPerPage)
-
-//   Array.from({ length: numPages }).forEach((_, i) => {
-//     createPage({
-//       path:
-//         i === 0
-//           ? `/tags/${category.toLowerCase()}/`
-//           : `/tags/${category.toLowerCase()}/${i + 1}/`,
-//       component: tagTemplate,
-//       context: {
-//         category,
-//         limit: postsPerPage,
-//         skip: i * postsPerPage,
-//         currentPage: i + 1,
-//         numPages,
-//       },
-//     })
-//   })
-// })

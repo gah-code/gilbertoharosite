@@ -1,6 +1,6 @@
 # My 2025 Website Update: Contentful-Powered Gatsby Site V2.0
 >
-> **Last Updated**: January 29, 2025
+> **Last Updated**: January 30, 2025
 
 ![Lighthouse Score](./light-house.png)
 
@@ -251,17 +251,16 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 - [ ] **Audit Dependencies**
   - [ ] Remove unused dependencies in `package.json`.
-  - ✅ Enable ESLint Rules for Unused Imports & Modules
   - [X] Update outdated dependencies (`npm outdated`).
 - [ ] **Review Environment Variables**
   - [X] Ensure `.env.EXAMPLE` reflects all required environment variables.
-  - [ ] Add `.env` to `.gitignore` to prevent sensitive data leaks.
+  - [X] Add `.env` to `.gitignore` to prevent sensitive data leaks.
 - [ ] **Code Cleanup**
   - [ ] Remove unused components and files.
-  - [ ] Delete commented-out or dead code.
+  - [X] Delete commented-out or dead code.
 - [ ] **Organize Folder Structure**
-  - [ ] Consolidate redundant folders (e.g., `/post/` and `/templates/`).
-  - [ ] Consolidate Card with Compound pattern
+  - [X] Consolidate redundant folders (e.g., `/post/` and `/templates/`).
+  - [X] Consolidate Card with Compound pattern
 
 ---
 
@@ -307,7 +306,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 #### **Dynamic Content & Routing**
 
 - [ ] **Dynamic Blog Pages**
-  - [ ] Verify blog posts and category pages are generated correctly.
+  - [X] Verify blog posts and category pages are generated correctly.
   - [ ] Add 404 handling for invalid slugs.
 - [ ] **Pagination**
   - [ ] Add pagination for `/blog` and category pages.
@@ -319,8 +318,9 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 #### **Developer Experience**
 
 - [ ] **Linting & Formatting**
-  - [ ] Ensure `.prettierrc.json` and `.prettierignore` are properly configured.
-  - [ ] Add or configure `eslint` for consistent linting.
+  - [X] Ensure `.prettierrc.json` and `.prettierignore` are properly configured.
+    - [✅] Enable ESLint Rules for Unused Imports & Modules
+  - [X] Add or configure `eslint` for consistent linting base set up.
 - [ ] **TypeScript Migration**
   - [ ] Migrate components to TypeScript.
   - [ ] Add `gatsby-plugin-typescript`.

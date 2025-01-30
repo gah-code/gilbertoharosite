@@ -1,5 +1,5 @@
 import React from "react"
-import { Section, List, Box, Text, Subhead } from "../../ui"
+import { Section, List, Box, Text, Subhead } from "../../ui/ui"
 
 export function CertificateList({ certificates = [] }) {
   return (
