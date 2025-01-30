@@ -12,7 +12,9 @@
     "clean": "gatsby clean",
     "gatsby-provision": "gatsby-provision-contentful --contentful-data-path='./scripts/data.json' --space-id=$CONTENTFUL_SPACE_ID --management-token=$CONTENTFUL_MANAGEMENT_TOKEN",
     "setup": "node ./scripts/setup.js",
-    "export-content": "contentful space export --space-id=$SPACE_ID --management-token=$MANAGEMENT_TOKEN --export-dir=scripts --content-file=data.json"
+    "export-content": "contentful space export --space-id=$SPACE_ID --management-token=$MANAGEMENT_TOKEN --export-dir=scripts --content-file=data.json",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^15.11.1",
@@ -46,10 +48,19 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.26.5",
     "@netlify/plugin-lighthouse": "^6.0.1",
+    "babel-preset-gatsby": "^3.14.0",
     "chalk": "4",
     "contentful-cli": "^1.15.3",
     "contentful-import": "^8.3.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "gatsby-provision-contentful": "^0.0.5",
     "husky": "^7.0.4",
     "inquirer": "^8.2.0",

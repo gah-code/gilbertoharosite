@@ -251,15 +251,17 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 - [ ] **Audit Dependencies**
   - [ ] Remove unused dependencies in `package.json`.
-  - [ ] Update outdated dependencies (`npm outdated`).
+  - ✅ Enable ESLint Rules for Unused Imports & Modules
+  - [X] Update outdated dependencies (`npm outdated`).
 - [ ] **Review Environment Variables**
-  - [ ] Ensure `.env.EXAMPLE` reflects all required environment variables.
+  - [X] Ensure `.env.EXAMPLE` reflects all required environment variables.
   - [ ] Add `.env` to `.gitignore` to prevent sensitive data leaks.
 - [ ] **Code Cleanup**
   - [ ] Remove unused components and files.
   - [ ] Delete commented-out or dead code.
 - [ ] **Organize Folder Structure**
   - [ ] Consolidate redundant folders (e.g., `/post/` and `/templates/`).
+  - [ ] Consolidate Card with Compound pattern
 
 ---
 

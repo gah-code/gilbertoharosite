@@ -20,7 +20,6 @@ import {
   certProvider,
 } from "./resume-styled-cert-list.css"
 import { theme } from "../../design-system/theme.css"
-import { margin } from "../../ui/ui.css"
 
 // Static Mock Data for Certifications
 const certifications = [

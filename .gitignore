@@ -1,6 +1,7 @@
 .env*
 !.env.EXAMPLE
 node_modules
+public/~partytown/
 .cache
 public
 dist
