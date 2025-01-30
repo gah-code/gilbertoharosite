@@ -274,6 +274,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
       GITHUB
       DISCORD
       TWITCH
+      CODEPEN
     }
 
     interface SocialLink implements Node {

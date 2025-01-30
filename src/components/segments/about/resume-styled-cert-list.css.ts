@@ -26,7 +26,7 @@ export const certItem = style({
   // borderBottom: `1px solid ${theme.colors.border}`,
   borderBottom: "1px solid #e0e0e0",
 
-  padding: theme.space[3],
+  padding: theme.space[2],
   transition: "background-color 0.3s ease, box-shadow 0.3s ease",
 
   ":hover": {
@@ -60,13 +60,22 @@ export const certImage = style({
 })
 
 // Details section (title and provider/date)
+// Details section (title and provider/date)
 export const certDetails = style({
   flexGrow: 1,
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
   minWidth: "200px", // Prevent squeezing text too much
+  gap: theme.space[2], // Adds spacing between child elements
+
+  paddingLeft: theme.space[2], // Adds padding for separation from the image
+  color: theme.colors.text,
 
   "@media": {
     [media.small]: {
       minWidth: "100%", // Full width on small screens
+      paddingLeft: theme.space[1], // Adjust padding for smaller screens
     },
   },
 })
@@ -81,12 +90,20 @@ export const certTitle = style({
   lineHeight: theme.lineHeights.heading,
 })
 
-// Provider and date
+// Provider, date, and hours with background styles
 export const certProvider = style({
+  display: "flex",
+  alignItems: "center", // Align items vertically centered
   fontSize: theme.fontSizes[2],
-  color: theme.colors.text,
+  gap: theme.space[1], // Add spacing between items
 })
-
+// Individual data type (e.g., provider, date, length)
+export const certDataType = style({
+  backgroundColor: theme.colors.background,
+  padding: `${theme.space[1]} ${theme.space[2]}`, // Add padding for spacing
+  borderRadius: theme.radii.button, // Rounded corners
+  color: theme.colors.text, // Text color for readability
+})
 // Link to view the certificate
 export const certLink = style({
   color: theme.colors.black,

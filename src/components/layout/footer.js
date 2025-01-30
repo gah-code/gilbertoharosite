@@ -1,6 +1,6 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { Instagram, GitHub, Linkedin } from "react-feather"
+import { Instagram, GitHub, Linkedin, Codepen } from "react-feather"
 import {
   Container,
   Flex,
@@ -31,12 +31,26 @@ const socialMedia = {
     name: "GitHub",
     icon: <GitHub />,
   },
+  CODEPEN: {
+    url: "https://codepen.io",
+    name: "Codepen",
+    icon: <Codepen />,
+  },
 }
 
-const getSocialURL = ({ service, username }) => {
-  const domain = socialMedia[service]?.url
-  if (!domain) return false
-  return `${domain}/${username}`
+// const getSocialURL = ({ service, username }) => {
+//   const domain = socialMedia[service]?.url
+//   if (!domain) return false
+//   return `${domain}/${username}`
+// }
+
+const getSocialURL = (link) => {
+  if (!link || !link.service || !link.username) {
+    console.warn("Invalid social link:", link) // Debugging log
+    return false
+  }
+  const domain = socialMedia[link.service]?.url
+  return domain ? `${domain}/${link.username}` : false
 }
 
 const getSocialIcon = ({ service }) => {
@@ -75,7 +89,7 @@ export default function Footer() {
   `)
 
   const { links, meta, socialLinks, copyright } = data.layout.footer
-
+  console.log(data)
   return (
     <Box as="footer" paddingY={4}>
       <Container>
