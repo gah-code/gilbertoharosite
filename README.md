@@ -262,6 +262,12 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
   - [X] Consolidate redundant folders (e.g., `/post/` and `/templates/`).
   - [X] Consolidate Card with Compound pattern
 
+  ### ✅ **Component Refactoring**
+
+- ✅ **Refactor `BlogIndex` Component**
+  - ✅ Extract `BlogList` component.
+  - ✅ Extract `BlogItem` component.
+
 ---
 
 #### **Performance Optimizations**

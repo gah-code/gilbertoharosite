@@ -4,7 +4,7 @@ import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout/layout"
 import SEOHead, { normalizeUrl } from "../components/head" // Import SEOHead
-import { Container, Heading, Box, Space, Text } from "../components/ui/ui"
+import { Container, Heading, Box, Space } from "../components/ui/ui"
 import * as styles from "./blog-post.css"
 
 export default function BlogPost(props) {
