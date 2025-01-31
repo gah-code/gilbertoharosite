@@ -251,7 +251,7 @@ export default function ResumeStyledCertList() {
               justifyContent: "center",
             }}
           >
-            <Button
+            {/* <Button
               onClick={() => {
                 setSortByLength(false)
                 setSortOrder((prev) =>
@@ -289,7 +289,7 @@ export default function ResumeStyledCertList() {
               }}
             >
               Sort by Most Hours
-            </Button>
+            </Button> */}
           </Box>
         </Box>
 

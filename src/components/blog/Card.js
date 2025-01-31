@@ -9,7 +9,6 @@ function Card({ children, to, style = {} }) {
       to={to}
       style={{
         padding: "10px",
-        border: "1px solid #eee",
         borderRadius: "8px",
         width: "350px",
         ...style,
