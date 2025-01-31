@@ -1,0 +1,56 @@
+.skill-section {
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping */
+  scroll-snap-type: x mandatory; /* Enable smooth snap scrolling */
+  position: relative;
+}
+
+/* Hide Scrollbar */
+.skill-section::-webkit-scrollbar {
+  display: none;
+}
+.skill-section {
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Add fade effect on edges */
+.skill-section::before,
+.skill-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  pointer-events: none;
+}
+
+.skill-section::before {
+  left: 0;
+}
+
+.skill-section::after {
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.skill-container {
+  display: flex;
+  gap: 1rem; /* Space between icons */
+  padding: 0.5rem;
+}
+
+.skill-icon {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0; /* Prevent icons from shrinking */
+  scroll-snap-align: center; /* Ensure each icon snaps to the center */
+  transition: transform 0.2s ease-in-out;
+}
+
+.skill-icon:hover {
+  transform: scale(1.1); /* Subtle hover effect */
+}

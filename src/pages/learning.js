@@ -1,9 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
-import ResumeStyledCertList from "../components/segments/about/resume-styled-cert-list"
-import { Container } from "../components/ui/ui"
+import ResumeStyledCertList from "../components/ui/resume-styled-cert-list"
+import { Box, Container, Space } from "../components/ui/ui"
 import SEOHead from "../components/head"
+import SkillListGrid from "../components/ui/skill-list-grid"
 
 const Learning = ({ data }) => {
   const { site } = data
@@ -13,12 +14,15 @@ const Learning = ({ data }) => {
     border: "1px dashed tomato",
     padding: "8px",
     marginTop: "20px",
-    // margin: "70px 0 0 0",
   }
   return (
     <Layout>
       <Container>
         <ResumeStyledCertList />
+        <Space size={2} />
+        <Box>
+          <SkillListGrid />
+        </Box>
       </Container>
     </Layout>
   )

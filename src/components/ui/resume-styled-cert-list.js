@@ -1,13 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react"
-import {
-  Container,
-  Section,
-  Box,
-  Heading,
-  Text,
-  Link,
-  Button,
-} from "../../ui/ui"
+import { Container, Section, Box, Heading, Text, Link } from "./ui"
 import {
   certListContainer,
   certItem,
@@ -16,7 +8,7 @@ import {
   certLink,
   certProvider,
 } from "./resume-styled-cert-list.css.ts"
-import { theme } from "../../design-system/theme.css.ts"
+import { theme } from "../design-system/theme.css.ts"
 
 // Static Mock Data for Certifications
 // Static Mock Data for Certifications

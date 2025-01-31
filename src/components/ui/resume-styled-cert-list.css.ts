@@ -1,6 +1,6 @@
 import { style, styleVariants } from "@vanilla-extract/css"
-import { theme } from "../../design-system/theme.css"
-import { media } from "../../ui/ui.css"
+import { theme } from "../design-system/theme.css"
+import { media } from "./ui.css"
 
 // Wrapper for the entire section
 // Wrapper for the entire section

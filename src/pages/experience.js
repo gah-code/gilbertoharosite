@@ -1,9 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
-import ResumeStyledCertList from "../components/segments/about/resume-styled-cert-list"
-import SkillListGrid from "../components/segments/about/skill-list-grid"
+
 import { Container, Section, Subhead, Text, Box } from "../components/ui/ui"
-import UILibraryShowcase from "../components/UILibraryShowcase"
 
 const experience = () => {
   const experiences = [
@@ -66,12 +64,6 @@ const experience = () => {
           </Section>
         </Section>
       </Container>
-
-      <ResumeStyledCertList />
-      {/* <UILibraryShowcase /> */}
-      {/* <BlogIndex /> */}
-      {/* <AboutHero /> */}
-      <SkillListGrid />
     </Layout>
   )
 }
