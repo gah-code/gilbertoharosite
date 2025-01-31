@@ -34,3 +34,6 @@ docs/*
 
 ### 🛠 Ignore Partytown (Third-Party Script Optimization)
 public/~partytown/
+public/
+.cache/
+
