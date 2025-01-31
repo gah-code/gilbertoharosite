@@ -21,18 +21,21 @@ function Card({ children, to, style = {} }) {
 
 function CardImage({ image }) {
   if (!image) return null
+  const img = getImage(image)
+
   return (
     <>
       <GatsbyImage
-        alt={image.alt}
-        image={getImage(image)}
+        alt={image?.alt || "Blog post image"}
+        image={img}
         style={{
           borderRadius: "8px",
           height: "200px",
           objectFit: "cover",
+          width: "100%",
         }}
       />
-      <Space size={4} />
+      <Space size={3} />
     </>
   )
 }
