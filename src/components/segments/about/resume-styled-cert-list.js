@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import {
   Container,
   Section,
@@ -9,18 +9,16 @@ import {
   Button,
 } from "../../ui/ui"
 import {
-  // certListSection,
   certListContainer,
   certItem,
   certImage,
-  // certDetails,
   certTitle,
-  // certProvider,
   certLink,
   certProvider,
-} from "./resume-styled-cert-list.css"
-import { theme } from "../../design-system/theme.css"
+} from "./resume-styled-cert-list.css.ts"
+import { theme } from "../../design-system/theme.css.ts"
 
+// Static Mock Data for Certifications
 // Static Mock Data for Certifications
 const certifications = [
   {
@@ -149,27 +147,12 @@ function CertificateItem({ title, provider, date, image, link, length }) {
   return (
     <Box className={certItem}>
       <img src={image} alt={title} className={certImage} />
-
-      <Box
-        style={{
-          padding: "0.5rem",
-        }}
-      >
-        <Text
-          className={certTitle}
-          style={{
-            color: "#333",
-          }}
-        >
+      <Box style={{ padding: "0.5rem" }}>
+        <Text className={certTitle} style={{ color: "#333" }}>
           {title}
         </Text>
-
         <Text className={certProvider}>
-          <span
-            style={{
-              backgroundColor: theme.colors.background,
-            }}
-          >
+          <span style={{ backgroundColor: theme.colors.background }}>
             {provider}
           </span>
           &middot;
@@ -178,7 +161,6 @@ function CertificateItem({ title, provider, date, image, link, length }) {
           <span>{length} hours</span>
         </Text>
       </Box>
-
       <Link
         href={link}
         target="_blank"
@@ -193,15 +175,15 @@ function CertificateItem({ title, provider, date, image, link, length }) {
 
 // Resume Styled Certification List Component
 export default function ResumeStyledCertList() {
-  const [sortOrder, setSortOrder] = useState("latest") // State for sorting order
-  const [sortByLength, setSortByLength] = useState(false) // State for sorting by length
-
-  const [currentDate, setCurrentDate] = useState("") // State for dynamic date
+  const [sortOrder, setSortOrder] = useState("latest")
+  const [sortByLength, setSortByLength] = useState(false)
+  const [currentDate, setCurrentDate] = useState("")
 
   // Calculate total hours
-  const totalHours = certifications.reduce(
-    (sum, cert) => sum + parseFloat(cert.length),
-    0
+  const totalHours = useMemo(
+    () =>
+      certifications.reduce((sum, cert) => sum + parseFloat(cert.length), 0),
+    []
   )
 
   // Update the current date once a day in California (PST/PDT)
@@ -213,36 +195,32 @@ export default function ResumeStyledCertList() {
         month: "long",
         day: "numeric",
       }
-      const newDate = new Intl.DateTimeFormat("en-US", options).format(
-        new Date()
+      setCurrentDate(
+        new Intl.DateTimeFormat("en-US", options).format(new Date())
       )
-      setCurrentDate(newDate)
     }
 
-    updateDate() // Update immediately on mount
+    updateDate()
+    const interval = setInterval(updateDate, 24 * 60 * 60 * 1000)
 
-    // Set an interval to update once per day
-    const interval = setInterval(updateDate, 24 * 60 * 60 * 1000) // 24 hours
-
-    return () => clearInterval(interval) // Cleanup on unmount
+    return () => clearInterval(interval)
   }, [])
 
-  // Sort certifications
-  const sortedCertifications = [...certifications].sort((a, b) => {
-    if (sortByLength) {
-      // Sort by length
-      return b.length - a.length // Largest to smallest
-    } else {
-      // Sort by date
-      const dateA = new Date(a.date)
-      const dateB = new Date(b.date)
-      return sortOrder === "latest" ? dateB - dateA : dateA - dateB
-    }
-  })
+  // Sort certifications using useMemo to optimize performance
+  const sortedCertifications = useMemo(() => {
+    return [...certifications].sort((a, b) => {
+      if (sortByLength) {
+        return parseFloat(b.length) - parseFloat(a.length)
+      }
+      return sortOrder === "latest"
+        ? new Date(b.date) - new Date(a.date)
+        : new Date(a.date) - new Date(b.date)
+    })
+  }, [sortOrder, sortByLength])
+
   return (
     <Section style={{ backgroundColor: "#ddf3e", padding: "2rem 0" }}>
       <Container>
-        {/* Section Heading */}
         <Box center paddingY={4}>
           <Heading as="h2" style={{ marginBottom: "1rem" }}>
             My Certifications
@@ -252,15 +230,16 @@ export default function ResumeStyledCertList() {
           </Text>
           <Text
             style={{
-              fontWeight: "bold", // Make it stand out
-              color: theme.colors.text, // Use primary theme color
-              textAlign: "center", // Center it for better UX
-              padding: "0.2rem 0", // Add some spacing
-              letterSpacing: "0.5px", // Slight spacing for readability
+              fontWeight: "bold",
+              color: theme.colors.text,
+              textAlign: "center",
+              padding: "0.2rem 0",
+              letterSpacing: "0.5px",
             }}
           >
             With {totalHours} + hours ⏳ spent as of {currentDate} and growing
           </Text>
+
           {/* Sorting Buttons */}
           <Box
             center
@@ -274,10 +253,10 @@ export default function ResumeStyledCertList() {
           >
             <Button
               onClick={() => {
-                setSortByLength(false) // Disable length sorting
+                setSortByLength(false)
                 setSortOrder((prev) =>
                   prev === "latest" ? "oldest" : "latest"
-                ) // Toggle date sorting order
+                )
               }}
               style={{
                 backgroundColor: !sortByLength
@@ -292,8 +271,12 @@ export default function ResumeStyledCertList() {
             >
               Sort by {sortOrder === "latest" ? "Oldest" : "Latest"}
             </Button>
+
             <Button
-              onClick={() => setSortByLength(true)} // Enable length sorting
+              onClick={() => {
+                setSortByLength(true)
+                setSortOrder("latest") // Reset to latest when switching to length sort
+              }}
               style={{
                 backgroundColor: sortByLength
                   ? theme.colors.primary
@@ -320,7 +303,7 @@ export default function ResumeStyledCertList() {
               date={cert.date}
               image={cert.image}
               link={cert.link}
-              length={cert.length} // Passing length prop
+              length={cert.length}
             />
           ))}
         </div>
