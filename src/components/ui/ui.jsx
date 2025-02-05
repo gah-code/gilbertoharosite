@@ -246,27 +246,3 @@ export function VisuallyHidden(props) {
 export function BlockLink(props) {
   return <Link className={styles.blockLink} {...props} />
 }
-
-// export function CodeBlock({ children, ...props }) {
-//   return (
-//     <Box
-//       as="pre"
-//       cx={[styles.codeBlock]} // Apply custom styles for the code block
-//       {...props}
-//     >
-//       {children}
-//     </Box>
-//   )
-// }
-
-// export function InlineCode({ children, ...props }) {
-//   return (
-//     <Box
-//       as="code"
-//       cx={[styles.inlineCode]} // Apply custom styles for inline code
-//       {...props}
-//     >
-//       {children}
-//     </Box>
-//   )
-// }

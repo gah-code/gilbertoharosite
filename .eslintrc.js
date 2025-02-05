@@ -31,6 +31,7 @@ module.exports = {
       "warn",
       { vars: "all", args: "after-used", ignoreRestSiblings: false },
     ],
+    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
     "import/no-unused-modules": ["warn", { unusedExports: true }],
     "react/prop-types": "off",
     "jsx-a11y/no-onchange": "off",

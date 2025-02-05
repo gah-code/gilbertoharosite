@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react"
-import { Container, Section, Box, Heading, Text, Link } from "../ui.js"
+import { Container, Section, Box, Heading, Text, Link } from "../ui"
 import {
   certListContainer,
   certItem,
