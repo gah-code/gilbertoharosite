@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
-import ResumeStyledCertList from "../components/ui/certComponent/resume-styled-cert-list"
+import ResumeStyledCertList from "../components/ui/certifications/resume-styled-cert-list"
 import { Box, Container, Space } from "../components/ui/ui"
 import SEOHead from "../components/head"
 import SkillListGrid from "../components/ui/skills/skill-list-grid"

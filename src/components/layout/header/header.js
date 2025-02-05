@@ -20,7 +20,7 @@ import {
   mobileNavSVGColorWrapper,
 } from "./header.css.ts"
 import NavItemGroup from "../navigation/nav-item-group"
-import BrandLogo from "../../ui/brand-logo.js"
+import BrandLogo from "../../ui/brand-logo"
 
 export default function Header() {
   const data = useStaticQuery(graphql`

@@ -1,11 +1,8 @@
 import * as React from "react"
-import styles from "../design-system/styles.css"
+import styles from "../design-system/styles.css.ts"
 import { Slice } from "gatsby"
 
 const Layout = ({ children }) => {
-  // console.log("Rendering Header Slice")
-  // console.log("Rendering Footer Slice")
-
   return (
     <>
       <Slice alias="header" />
