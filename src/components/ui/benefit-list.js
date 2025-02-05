@@ -10,7 +10,6 @@ import {
   Text,
   Space,
 } from "./ui"
-import SkillListGrid from "./skill-list-grid"
 
 function Benefit(props) {
   return (

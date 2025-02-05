@@ -1,5 +1,5 @@
 import * as React from "react"
-import { caret } from "./caret.css"
+import { caret } from "./caret.css.ts"
 
 export default function CaretDown({ direction = "down", size = 9 }) {
   const width = size

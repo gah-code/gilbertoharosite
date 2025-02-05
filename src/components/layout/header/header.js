@@ -18,9 +18,9 @@ import {
   desktopHeaderNavWrapper,
   mobileHeaderNavWrapper,
   mobileNavSVGColorWrapper,
-} from "./header.css"
+} from "./header.css.ts"
 import NavItemGroup from "../navigation/nav-item-group"
-import BrandLogo from "../../ui/brand-logo"
+import BrandLogo from "../../ui/brand-logo.js"
 
 export default function Header() {
   const data = useStaticQuery(graphql`
