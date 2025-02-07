@@ -11,8 +11,9 @@ export const certListSection = style({
 
 // Container for the certificate list
 export const certListContainer = style({
-  maxWidth: "640px",
   margin: "0 auto",
+  width: "100%",
+  maxWidth: "1000px",
 })
 
 export const buttonStyle = style({
@@ -79,9 +80,9 @@ export const certDetails = style({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  minWidth: "200px", // Prevent squeezing text too much
+  // minWidth: "200px", // Prevent squeezing text too much
   gap: theme.space[2], // Adds spacing between child elements
-
+  minWidth: "0",
   paddingLeft: theme.space[2], // Adds padding for separation from the image
   color: theme.colors.text,
 
