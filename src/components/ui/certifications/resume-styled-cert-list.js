@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Container, Section, Box, Heading, Text, Button } from "../ui"
-import { CertificateItem } from "./resume-styled-item"
+import { CertificateItem } from "./resume-styled-item.js"
 import {
   certListContainer,
   buttonStyle,
@@ -77,7 +77,7 @@ export default function ResumeStyledCertList() {
               justifyContent: "center",
             }}
           >
-            <Button
+            {/* <Button
               className={buttonStyle}
               aria-label="Sort by latest or oldest"
               onClick={() =>
@@ -96,7 +96,7 @@ export default function ResumeStyledCertList() {
               onClick={() => setSortOptions({ field: "length", order: "DESC" })}
             >
               Sort by Most Hours
-            </Button>
+            </Button> */}
           </Box>
 
           {/* Sorting Description */}

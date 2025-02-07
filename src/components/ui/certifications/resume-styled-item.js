@@ -1,6 +1,6 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Box, Text, Link } from "../ui.jsx"
+import { Box, Text, Link } from "../ui"
 import {
   certItem,
   certImage,

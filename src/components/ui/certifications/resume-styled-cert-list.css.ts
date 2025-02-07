@@ -11,7 +11,7 @@ export const certListSection = style({
 
 // Container for the certificate list
 export const certListContainer = style({
-  maxWidth: "620px",
+  maxWidth: "640px",
   margin: "0 auto",
 })
 
