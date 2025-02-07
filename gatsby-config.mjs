@@ -43,6 +43,14 @@ export default {
         host: process.env.CONTENTFUL_HOST || "cdn.contentful.com",
       },
     },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data/`,
+        name: `data`,
+      },
+    },
 
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",

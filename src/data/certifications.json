@@ -1,0 +1,111 @@
+[
+  {
+    "id": "cert-1",
+    "title": "Advanced CSS and Sass: Flexbox, Grid, Animations and More!",
+    "provider": "Udemy",
+    "image": "https://udemy-certificate.s3.amazonaws.com/image/UC-00719bf7-a85a-41f4-8dac-bc4171f02d45.jpg?v=1588540810000",
+    "link": "https://udemy-certificate.s3.amazonaws.com/image/UC-00719bf7-a85a-41f4-8dac-bc4171f02d45.jpg?v=1588540810000",
+    "category": "CSS",
+    "date": "05/03/2020",
+    "length": "28"
+  },
+  {
+    "id": "cert-2",
+    "title": "Node.js, Express, MongoDB & More: The Complete Bootcamp",
+    "provider": "Udemy",
+    "date": "08/31/2021",
+    "image": "https://udemy-certificate.s3.amazonaws.com/image/UC-fa5fc484-c165-4a57-b297-97c68641bc22.jpg?v=1630464326000",
+    "link": "https://udemy-certificate.s3.amazonaws.com/image/UC-fa5fc484-c165-4a57-b297-97c68641bc22.jpg?v=1630464326000",
+    "category": "React",
+    "length": "42"
+  },
+  {
+    "id": "cert-3",
+    "title": "UX & Web Design Master Course: Strategy, Design, Development",
+    "provider": "Udemy",
+    "date": "03/08/2023",
+    "image": "https://udemy-certificate.s3.amazonaws.com/image/UC-9cfb54a0-a751-453b-8a8a-adfbea0b0bbc.jpg?v=1678259583000",
+    "link": "https://udemy-certificate.s3.amazonaws.com/image/UC-9cfb54a0-a751-453b-8a8a-adfbea0b0bbc.jpg?v=1678259583000",
+    "category": "Design",
+    "length": "23.5"
+  },
+  {
+    "id": "cert-4",
+    "title": "FCC Responsive Web Design",
+    "provider": "FCC",
+    "date": "03/28/2021",
+    "image": "https://cdn.freecodecamp.org/platform/english/images/quincy-larson-signature.svg",
+    "link": "https://www.freecodecamp.org/certification/fcc2b08bbda-a474-4a4b-b256-f021a5e98aea/responsive-web-design",
+    "length": "300"
+  },
+  {
+    "id": "cert-5",
+    "title": "M103:Basic Cluster Administration",
+    "provider": "Udemy",
+    "date": "05/18/2021",
+    "image": "https://university.mongodb.com/_next/image?url=https%3A%2F%2Fmitx-old-documents.s3.amazonaws.com%2Fcourse_completion%2Fcertificate%2F366adce3-8537-47be-bf85-8ca264335512.png&w=750&q=75",
+    "link": "https://university.mongodb.com/_next/image?url=https%3A%2F%2Fmitx-old-documents.s3.amazonaws.com%2Fcourse_completion%2Fcertificate%2F366adce3-8537-47be-bf85-8ca264335512.png&w=750&q=75",
+    "category": "JavaScript",
+    "length": "10"
+  },
+  {
+    "id": "cert-6",
+    "title": "Gatsby.js Tutorial and Projects Course'",
+    "provider": "Udemy",
+    "date": "09/28/2024",
+    "image": "https://udemy-certificate.s3.amazonaws.com/image/UC-dbd3cf43-55ea-4fd4-8cab-7e743274f851.jpg?v=1724913206000",
+    "link": "https://udemy-certificate.s3.amazonaws.com/image/UC-dbd3cf43-55ea-4fd4-8cab-7e743274f851.jpg?v=1724913206000",
+    "category": "JavaScript",
+    "length": "22"
+  },
+  {
+    "id": "cert-7",
+    "title": "Crash Course: Build a Full-Stack Web App in a Weekend!",
+    "provider": "Udemy",
+    "date": "03/17/2023",
+    "image": "https://udemy-certificate.s3.amazonaws.com/image/UC-b48020d1-9218-4835-8489-e97877a5ed1b.jpg?v=1679109691000",
+    "link": "https://udemy-certificate.s3.amazonaws.com/image/UC-b48020d1-9218-4835-8489-e97877a5ed1b.jpg?v=1679109691000",
+    "category": "JavaScript",
+    "length": "12.5"
+  },
+  {
+    "id": "cert-8",
+    "title": "Build Responsive Real-World Websites with HTML and CSS",
+    "provider": "Udemy",
+    "date": "11/13/2024",
+    "image": "https://udemy-certificate.s3.amazonaws.com/image/UC-0428c6cd-3f88-4b3b-a231-44853f7299da.jpg",
+    "link": "https://udemy-certificate.s3.amazonaws.com/image/UC-0428c6cd-3f88-4b3b-a231-44853f7299da.jpg",
+    "category": "JavaScript",
+    "length": "37.5"
+  },
+  {
+    "id": "cert-9",
+    "title": " React Styled Components Course (V5) ",
+    "provider": "Udemy",
+    "date": "02/28/2023",
+    "image": "https://udemy-certificate.s3.amazonaws.com/image/UC-3133df20-cb75-427d-8a8c-7c80edf473f5.jpg",
+    "link": "https://udemy-certificate.s3.amazonaws.com/image/UC-3133df20-cb75-427d-8a8c-7c80edf473f5.jpg",
+    "category": "JavaScript",
+    "length": "3"
+  },
+  {
+    "id": "cert-10",
+    "title": "HTB Basic Toolset",
+    "provider": "HTB Academy",
+    "date": "04/01/2022",
+    "image": "https://academy.hackthebox.com/storage/paths/9/logo.png",
+    "link": "https://academy.hackthebox.com/achievement/203959/path/9",
+    "category": "JavaScript",
+    "length": "30.5"
+  },
+  {
+    "id": "cert-11",
+    "title": " The Complete JavaScript Course 2020: From Zero to Expert!",
+    "provider": "Udemy",
+    "date": "06/21/2020",
+    "image": "https://udemy-certificate.s3.amazonaws.com/image/UC-d7af91e5-c92f-4e7b-b215-8b6c074f735a.jpg",
+    "link": "https://udemy-certificate.s3.amazonaws.com/image/UC-d7af91e5-c92f-4e7b-b215-8b6c074f735a.jpg",
+    "category": "JavaScript",
+    "length": "28.5"
+  }
+]

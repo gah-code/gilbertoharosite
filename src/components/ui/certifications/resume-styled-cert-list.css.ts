@@ -3,17 +3,29 @@ import { theme } from "../../design-system/theme.css"
 import { media } from "../ui.css"
 
 // Wrapper for the entire section
-// Wrapper for the entire section
 export const certListSection = style({
   backgroundColor: theme.colors.active,
-  padding: theme.space[3],
+  padding: theme.space[2],
   maxWidth: theme.sizes.narrow,
 })
 
 // Container for the certificate list
 export const certListContainer = style({
-  maxWidth: "640px",
+  maxWidth: "650px",
   margin: "0 auto",
+})
+
+export const buttonStyle = style({
+  backgroundColor: theme.colors.primary,
+  color: theme.colors.background,
+  padding: theme.space[2],
+  borderRadius: theme.radii.button,
+  cursor: "pointer",
+  border: "none",
+  transition: "background-color 0.3s ease",
+  ":hover": {
+    backgroundColor: theme.colors.primary,
+  },
 })
 
 // Certificate item container
@@ -23,11 +35,8 @@ export const certItem = style({
   alignItems: "center",
   justifyContent: "space-between",
   gap: theme.space[3],
-  // borderBottom: `1px solid ${theme.colors.border}`,
-  borderBottom: "1px solid #e0e0e0",
+  borderBottom: "2px solid #e0e0e0",
   flexDirection: "row",
-  // flexWrap: "wrap",
-
   padding: theme.space[3],
   transition: "background-color 0.3s ease, box-shadow 0.3s ease",
 
@@ -40,7 +49,7 @@ export const certItem = style({
   "@media": {
     [media.small]: {
       flexDirection: "row",
-      gap: theme.space[1],
+      gap: theme.space[4],
     },
   },
 })
@@ -131,4 +140,12 @@ export const certLink = style({
       marginTop: theme.space[2],
     },
   },
+})
+
+export const sortingDescriptionStyle = style({
+  marginTop: theme.space[3],
+  fontSize: theme.fontSizes[2],
+  color: theme.colors.text,
+  fontStyle: "italic",
+  textAlign: "center",
 })
