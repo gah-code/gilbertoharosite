@@ -1,6 +1,6 @@
 # My 2025 Website Update: Contentful-Powered Gatsby Site V2.0
 >
-> **Last Updated**: January 30, 2025
+> **Last Updated**: Feb 13, 2025
 
 ![Lighthouse Score](./light-house.png)
 
