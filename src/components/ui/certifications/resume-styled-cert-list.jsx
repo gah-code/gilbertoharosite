@@ -82,7 +82,7 @@ const certifications = [
     id: "cert-7",
     title: "Crash Course: Build a Full-Stack Web App in a Weekend!",
     provider: "Udemy",
-    date: "03/17/2013",
+    date: "03/17/2023",
     image:
       "https://udemy-certificate.s3.amazonaws.com/image/UC-b48020d1-9218-4835-8489-e97877a5ed1b.jpg?v=1679109691000",
     link: "https://udemy-certificate.s3.amazonaws.com/image/UC-b48020d1-9218-4835-8489-e97877a5ed1b.jpg?v=1679109691000",
@@ -135,35 +135,30 @@ const certifications = [
 ]
 
 // Certificate Item Component
-function CertificateItem({ title, provider, date, image, link, length }) {
-  return (
-    <Box className={certItem}>
-      <img src={image} alt={title} className={certImage} />
-      <Box style={{ padding: "0.5rem" }}>
-        <Text className={certTitle} style={{ color: "#333" }}>
-          {title}
-        </Text>
-        <Text className={certProvider}>
-          <span style={{ backgroundColor: theme.colors.background }}>
-            {provider}
-          </span>
-          &middot;
-          <span>{date}</span>
-          &middot;
-          <span>{length} hours</span>
-        </Text>
-      </Box>
-      <Link
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={certLink}
-      >
-        View
-      </Link>
+const CertificateItem = ({ title, provider, date, image, link, length }) => (
+  <Box className={certItem}>
+    <img src={image} alt={title} className={certImage} />
+    <Box style={{ padding: "0.5rem" }}>
+      <Text className={certTitle}>{title}</Text>
+      <Text className={certProvider}>
+        <span style={{ backgroundColor: theme.colors.background }}>
+          {provider}
+        </span>{" "}
+        &middot;
+        <span>{date}</span> &middot;
+        <span>{length} hours</span>
+      </Text>
     </Box>
-  )
-}
+    <Link
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={certLink}
+    >
+      View
+    </Link>
+  </Box>
+)
 
 // Resume Styled Certification List Component
 export default function ResumeStyledCertList() {
@@ -181,34 +176,37 @@ export default function ResumeStyledCertList() {
   // Update the current date once a day in California (PST/PDT)
   useEffect(() => {
     const updateDate = () => {
-      const options = {
-        timeZone: "America/Los_Angeles",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }
       setCurrentDate(
-        new Intl.DateTimeFormat("en-US", options).format(new Date())
+        new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/Los_Angeles",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }).format(new Date())
       )
     }
-
     updateDate()
     const interval = setInterval(updateDate, 24 * 60 * 60 * 1000)
-
     return () => clearInterval(interval)
   }, [])
 
-  // Sort certifications using useMemo to optimize performance
+  // Memoized sorted certifications
   const sortedCertifications = useMemo(() => {
-    return [...certifications].sort((a, b) => {
-      if (sortByLength) {
-        return parseFloat(b.length) - parseFloat(a.length)
-      }
+    const sorted = [...certifications].sort((a, b) => {
+      if (sortByLength) return parseFloat(b.length) - parseFloat(a.length)
       return sortOrder === "latest"
         ? new Date(b.date) - new Date(a.date)
         : new Date(a.date) - new Date(b.date)
     })
+    return sorted
   }, [sortOrder, sortByLength])
+
+  // Sorting Description
+  const sortingDescription = sortByLength
+    ? "Sorted by most hours spent"
+    : `Sorted by ${
+        sortOrder === "latest" ? "latest" : "oldest"
+      } completion date`
 
   return (
     <Section style={{ backgroundColor: "#ddf3e", padding: "2rem 0" }}>
@@ -226,10 +224,19 @@ export default function ResumeStyledCertList() {
               color: theme.colors.text,
               textAlign: "center",
               padding: "0.2rem 0",
-              letterSpacing: "0.5px",
             }}
           >
-            With {totalHours} + hours ⏳ spent as of {currentDate} and growing
+            {totalHours}+ hours ⏳ spent as of {currentDate} and growing
+          </Text>
+          <Text
+            style={{
+              fontSize: "0.9rem",
+              color: "#888",
+              textAlign: "center",
+              marginTop: "0.5rem",
+            }}
+          >
+            📝 {sortingDescription}
           </Text>
 
           {/* Sorting Buttons */}
@@ -237,7 +244,6 @@ export default function ResumeStyledCertList() {
             center
             style={{
               display: "flex",
-              flexDirection: "row",
               gap: "1rem",
               margin: "2rem 0",
               justifyContent: "center",
@@ -267,7 +273,7 @@ export default function ResumeStyledCertList() {
             <Button
               onClick={() => {
                 setSortByLength(true)
-                setSortOrder("latest") // Reset to latest when switching to length sort
+                setSortOrder("latest")
               }}
               style={{
                 backgroundColor: sortByLength
@@ -303,6 +309,176 @@ export default function ResumeStyledCertList() {
     </Section>
   )
 }
+
+// // Certificate Item Component
+// function CertificateItem({ title, provider, date, image, link, length }) {
+//   return (
+//     <Box className={certItem}>
+//       <img src={image} alt={title} className={certImage} />
+//       <Box style={{ padding: "0.5rem" }}>
+//         <Text className={certTitle} style={{ color: "#333" }}>
+//           {title}
+//         </Text>
+//         <Text className={certProvider}>
+//           <span style={{ backgroundColor: theme.colors.background }}>
+//             {provider}
+//           </span>
+//           &middot;
+//           <span>{date}</span>
+//           &middot;
+//           <span>{length} hours</span>
+//         </Text>
+//       </Box>
+//       <Link
+//         href={link}
+//         target="_blank"
+//         rel="noopener noreferrer"
+//         className={certLink}
+//       >
+//         View
+//       </Link>
+//     </Box>
+//   )
+// }
+
+// // Resume Styled Certification List Component
+// export default function ResumeStyledCertList() {
+//   const [sortOrder, setSortOrder] = useState("latest")
+//   const [sortByLength, setSortByLength] = useState(false)
+//   const [currentDate, setCurrentDate] = useState("")
+
+//   // Calculate total hours
+//   const totalHours = useMemo(
+//     () =>
+//       certifications.reduce((sum, cert) => sum + parseFloat(cert.length), 0),
+//     []
+//   )
+
+//   // Update the current date once a day in California (PST/PDT)
+//   useEffect(() => {
+//     const updateDate = () => {
+//       const options = {
+//         timeZone: "America/Los_Angeles",
+//         year: "numeric",
+//         month: "long",
+//         day: "numeric",
+//       }
+//       setCurrentDate(
+//         new Intl.DateTimeFormat("en-US", options).format(new Date())
+//       )
+//     }
+
+//     updateDate()
+//     const interval = setInterval(updateDate, 24 * 60 * 60 * 1000)
+
+//     return () => clearInterval(interval)
+//   }, [])
+
+//   // Sort certifications using useMemo to optimize performance
+//   const sortedCertifications = useMemo(() => {
+//     return [...certifications].sort((a, b) => {
+//       if (sortByLength) {
+//         return parseFloat(b.length) - parseFloat(a.length)
+//       }
+//       return sortOrder === "latest"
+//         ? new Date(b.date) - new Date(a.date)
+//         : new Date(a.date) - new Date(b.date)
+//     })
+//   }, [sortOrder, sortByLength])
+
+//   return (
+//     <Section style={{ backgroundColor: "#ddf3e", padding: "2rem 0" }}>
+//       <Container>
+//         <Box center paddingY={4}>
+//           <Heading as="h2" style={{ marginBottom: "1rem" }}>
+//             My Certifications
+//           </Heading>
+//           <Text style={{ fontSize: "1rem", color: "#666" }}>
+//             A list of all my certifications, more updates coming soon
+//           </Text>
+//           <Text
+//             style={{
+//               fontWeight: "bold",
+//               color: theme.colors.text,
+//               textAlign: "center",
+//               padding: "0.2rem 0",
+//               letterSpacing: "0.5px",
+//             }}
+//           >
+//             With {totalHours} + hours ⏳ spent as of {currentDate} and growing
+//           </Text>
+
+//           {/* Sorting Buttons */}
+//           <Box
+//             center
+//             style={{
+//               display: "flex",
+//               flexDirection: "row",
+//               gap: "1rem",
+//               margin: "2rem 0",
+//               justifyContent: "center",
+//             }}
+//           >
+//             <Button
+//               onClick={() => {
+//                 setSortByLength(false)
+//                 setSortOrder((prev) =>
+//                   prev === "latest" ? "oldest" : "latest"
+//                 )
+//               }}
+//               style={{
+//                 backgroundColor: !sortByLength
+//                   ? theme.colors.primary
+//                   : theme.colors.muted,
+//                 color: theme.colors.white,
+//                 padding: "0.5rem 0.8rem",
+//                 borderRadius: theme.radii.button,
+//                 cursor: "pointer",
+//                 border: "none",
+//               }}
+//             >
+//               Sort by {sortOrder === "latest" ? "Oldest" : "Latest"}
+//             </Button>
+
+//             <Button
+//               onClick={() => {
+//                 setSortByLength(true)
+//                 setSortOrder("latest") // Reset to latest when switching to length sort
+//               }}
+//               style={{
+//                 backgroundColor: sortByLength
+//                   ? theme.colors.primary
+//                   : theme.colors.muted,
+//                 color: theme.colors.white,
+//                 padding: "0.5rem 0.8rem",
+//                 borderRadius: theme.radii.button,
+//                 cursor: "pointer",
+//                 border: "none",
+//               }}
+//             >
+//               Sort by Most Hours
+//             </Button>
+//           </Box>
+//         </Box>
+
+//         {/* Certifications List */}
+// <div className={certListContainer}>
+//   {sortedCertifications.map((cert) => (
+//     <CertificateItem
+//       key={cert.id}
+//       title={cert.title}
+//       provider={cert.provider}
+//       date={cert.date}
+//       image={cert.image}
+//       link={cert.link}
+//       length={cert.length}
+//     />
+//   ))}
+// </div>
+//       </Container>
+//     </Section>
+//   )
+// }
 
 // ///////
 // import React, { useState, useMemo } from "react"
@@ -411,21 +587,21 @@ export default function ResumeStyledCertList() {
 //         </Box>
 
 //         {/* Certifications List */}
-//         <div className={certListContainer}>
-//           {sortedCertifications.map(
-//             ({ id, title, provider, date, length, image, link }) => (
-//               <CertificateItem
-//                 key={id}
-//                 title={title}
-//                 provider={provider}
-//                 date={date}
-//                 length={length}
-//                 image={image}
-//                 link={link}
-//               />
-//             )
-//           )}
-//         </div>
+// <div className={certListContainer}>
+//   {sortedCertifications.map(
+//     ({ id, title, provider, date, length, image, link }) => (
+//       <CertificateItem
+//         key={id}
+//         title={title}
+//         provider={provider}
+//         date={date}
+//         length={length}
+//         image={image}
+//         link={link}
+//       />
+//     )
+//   )}
+// </div>
 //       </Container>
 //     </Section>
 //   )
