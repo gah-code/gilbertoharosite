@@ -134,6 +134,21 @@ const certifications = [
   },
 ]
 
+// 📌 Total Hours Calculation (Only Once)
+const totalHours = certifications.reduce(
+  (sum, cert) => sum + parseFloat(cert.length),
+  0
+)
+
+// 📌 Get Current Date (Only Once Per Day)
+const getCurrentDate = () =>
+  new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(new Date())
+
 // Certificate Item Component
 const CertificateItem = React.memo(
   ({ title, provider, date, image, link, length }) => (
@@ -166,33 +181,9 @@ const CertificateItem = React.memo(
 export default function ResumeStyledCertList() {
   const [sortOrder, setSortOrder] = useState("latest")
   const [sortByLength, setSortByLength] = useState(false)
-  const [currentDate, setCurrentDate] = useState("")
+  const [currentDate, setCurrentDate] = useState(getCurrentDate)
 
-  // Total Hours Calculation
-  const totalHours = useMemo(
-    () =>
-      certifications.reduce((sum, cert) => sum + parseFloat(cert.length), 0),
-    []
-  )
-
-  // Update Date (Once Per Day)
-  useEffect(() => {
-    const updateDate = () => {
-      setCurrentDate(
-        new Intl.DateTimeFormat("en-US", {
-          timeZone: "America/Los_Angeles",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        }).format(new Date())
-      )
-    }
-    updateDate()
-    const interval = setInterval(updateDate, 24 * 60 * 60 * 1000)
-    return () => clearInterval(interval)
-  }, [])
-
-  // Optimized Sorting
+  // Memoized Sorted Certifications
   const sortedCertifications = useMemo(() => {
     return [...certifications].sort((a, b) => {
       if (sortByLength) return parseFloat(b.length) - parseFloat(a.length)
@@ -202,7 +193,7 @@ export default function ResumeStyledCertList() {
     })
   }, [sortOrder, sortByLength])
 
-  // Memoized Click Handlers to Prevent Re-Renders
+  // Memoized Handlers to Prevent Re-renders
   const toggleSortOrder = useCallback(() => {
     setSortByLength(false)
     setSortOrder((prev) => (prev === "latest" ? "oldest" : "latest"))
@@ -269,12 +260,17 @@ export default function ResumeStyledCertList() {
                   ? theme.colors.primary
                   : theme.colors.muted,
                 color: theme.colors.white,
-                padding: "0.5rem 0.8rem",
+                padding: "0.5rem 0.9rem",
                 borderRadius: theme.radii.button,
                 cursor: "pointer",
                 border: "none",
-                minWidth: "150px",
+                minWidth: "160px",
+                transition: "all 0.2s ease-in-out",
+                textAlign: "center",
               }}
+              aria-label={`Sort by ${
+                sortOrder === "latest" ? "Oldest" : "Latest"
+              } certificates`}
             >
               Sort by {sortOrder === "latest" ? "Oldest" : "Latest"}
             </Button>
@@ -286,11 +282,12 @@ export default function ResumeStyledCertList() {
                   ? theme.colors.primary
                   : theme.colors.muted,
                 color: theme.colors.white,
-                padding: "0.5rem 0.8rem",
+                padding: "0.5rem 0.9rem",
                 borderRadius: theme.radii.button,
                 cursor: "pointer",
                 border: "none",
                 minWidth: "150px",
+                transition: "all 0.2s ease-in-out",
               }}
             >
               Sort by Most Hours

@@ -321,7 +321,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 ---
 
-#### **Developer Experience**
+#### **Developer Experience V2.1**
 
 - [ ] **Linting & Formatting**
   - [X] Ensure `.prettierrc.json` and `.prettierignore` are properly configured.
@@ -348,7 +348,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 ---
 
-#### **Future Enhancements**
+#### **Future Enhancements V2.2**
 
 - [ ] **Contentful Webhooks**
   - [ ] Trigger Gatsby builds on content changes.
