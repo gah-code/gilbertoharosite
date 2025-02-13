@@ -1,6 +1,6 @@
 // import React, { useState, useEffect, useMemo } from "react"
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
-// import { Container, Section, Box, Heading, Text, Link } from "../ui"
+// import { Container, Section, Box, Heading, Text, Link, Button } from "../ui"
 // import {
 //   certListContainer,
 //   certItem,
@@ -243,7 +243,7 @@
 //               justifyContent: "center",
 //             }}
 //           >
-//             {/* <Button
+//             <Button
 //               onClick={() => {
 //                 setSortByLength(false)
 //                 setSortOrder((prev) =>
@@ -281,7 +281,7 @@
 //               }}
 //             >
 //               Sort by Most Hours
-//             </Button> */}
+//             </Button>
 //           </Box>
 //         </Box>
 
@@ -304,24 +304,154 @@
 //   )
 // }
 
-import React, { useState, useMemo } from "react"
+// ///////
+// import React, { useState, useMemo } from "react"
+// import { graphql, useStaticQuery } from "gatsby"
+// import { Container, Section, Box, Heading, Text, Button } from "../ui"
+// import { CertificateItem } from "./resume-styled-item"
+// import {
+//   certListContainer,
+//   buttonStyle,
+//   sortingDescriptionStyle,
+// } from "./resume-styled-cert-list.css.ts"
+
+// export default function ResumeStyledCertList() {
+//   // Combine state into a single object for better performance
+//   const [sortOptions, setSortOptions] = useState({
+//     field: "date",
+//     order: "DESC",
+//   })
+
+//   // Static Query (doesn't allow variables, so sorting is fixed)
+//   const data = useStaticQuery(graphql`
+//     query {
+//       allCertificationsJson(sort: { fields: date, order: DESC }) {
+//         nodes {
+//           id
+//           title
+//           provider
+//           date
+//           length
+//           image
+//           link
+//         }
+//       }
+//     }
+//   `)
+
+//   // Memoized sorting to prevent unnecessary recalculations
+//   const sortedCertifications = useMemo(
+//     () =>
+//       [...data.allCertificationsJson.nodes].sort((a, b) => {
+//         if (sortOptions.field === "length") {
+//           return sortOptions.order === "DESC"
+//             ? parseFloat(b.length) - parseFloat(a.length)
+//             : parseFloat(a.length) - parseFloat(b.length)
+//         }
+//         return sortOptions.order === "DESC"
+//           ? new Date(b.date) - new Date(a.date)
+//           : new Date(a.date) - new Date(b.date)
+//       }),
+//     [sortOptions, data.allCertificationsJson.nodes]
+//   )
+
+//   // 📝 Dynamic Sorting Description
+//   const sortingDescription = useMemo(() => {
+//     if (sortOptions.field === "length") {
+//       return "Sorting by courses with the most hours completed ⏳"
+//     }
+//     return sortOptions.order === "DESC"
+//       ? "My latest courses I've completed 📅"
+//       : "My oldest certifications first ⏪"
+//   }, [sortOptions])
+
+//   return (
+//     <Section style={{ backgroundColor: "#ddf3e", padding: "2rem 0" }}>
+//       <Container>
+//         <Box center paddingY={4}>
+//           <Heading as="h2" style={{ marginBottom: "1rem" }}>
+//             My Certifications
+//           </Heading>
+//           <Text>A list of all my certifications, more updates coming soon</Text>
+
+//           {/* Sorting Buttons */}
+//           <Box
+//             center
+//             style={{
+//               display: "flex",
+//               gap: "1rem",
+//               margin: "2rem 0",
+//               justifyContent: "center",
+//             }}
+//           >
+//             <Button
+//               className={buttonStyle}
+//               aria-label="Sort by latest or oldest"
+//               onClick={() =>
+//                 setSortOptions((prev) => ({
+//                   field: "date",
+//                   order: prev.order === "DESC" ? "ASC" : "DESC",
+//                 }))
+//               }
+//             >
+//               Sort by {sortOptions.order === "DESC" ? "Oldest" : "Latest"}{" "}
+//             </Button>
+
+//             <Button
+//               className={buttonStyle}
+//               aria-label="Sort by most hours"
+//               onClick={() => setSortOptions({ field: "length", order: "DESC" })}
+//             >
+//               Sort by Most Hours
+//             </Button>
+//           </Box>
+
+//           {/* Sorting Description */}
+//           <Text className={sortingDescriptionStyle}>{sortingDescription}</Text>
+//         </Box>
+
+//         {/* Certifications List */}
+//         <div className={certListContainer}>
+//           {sortedCertifications.map(
+//             ({ id, title, provider, date, length, image, link }) => (
+//               <CertificateItem
+//                 key={id}
+//                 title={title}
+//                 provider={provider}
+//                 date={date}
+//                 length={length}
+//                 image={image}
+//                 link={link}
+//               />
+//             )
+//           )}
+//         </div>
+//       </Container>
+//     </Section>
+//   )
+// }
+
+import React, { useState, useEffect, useMemo } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { Container, Section, Box, Heading, Text, Button } from "../ui"
-import { CertificateItem } from "./resume-styled-item"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { Container, Section, Box, Heading, Text, Link, Button } from "../ui"
 import {
   certListContainer,
-  buttonStyle,
-  sortingDescriptionStyle,
+  certItem,
+  certImage,
+  certTitle,
+  certLink,
+  certProvider,
 } from "./resume-styled-cert-list.css.ts"
+import { theme } from "../../design-system/theme.css.ts"
+import { CertificateItem } from "./resume-styled-item.js"
 
 export default function ResumeStyledCertList() {
-  // Combine state into a single object for better performance
-  const [sortOptions, setSortOptions] = useState({
-    field: "date",
-    order: "DESC",
-  })
+  const [sortOrder, setSortOrder] = useState("latest")
+  const [sortByLength, setSortByLength] = useState(false)
+  const [currentDate, setCurrentDate] = useState("")
 
-  // Static Query (doesn't allow variables, so sorting is fixed)
+  // Fetch Data from GraphQL
   const data = useStaticQuery(graphql`
     query {
       allCertificationsJson(sort: { fields: date, order: DESC }) {
@@ -331,38 +461,56 @@ export default function ResumeStyledCertList() {
           provider
           date
           length
-          image
           link
+          image
         }
       }
     }
   `)
 
-  // Memoized sorting to prevent unnecessary recalculations
-  const sortedCertifications = useMemo(
+  // Extract certifications from GraphQL
+  const certifications = data.allCertificationsJson.nodes
+
+  console.log("📥 Fetched Data:", certifications) // Debugging output
+
+  // Calculate total hours
+  const totalHours = useMemo(
     () =>
-      [...data.allCertificationsJson.nodes].sort((a, b) => {
-        if (sortOptions.field === "length") {
-          return sortOptions.order === "DESC"
-            ? parseFloat(b.length) - parseFloat(a.length)
-            : parseFloat(a.length) - parseFloat(b.length)
-        }
-        return sortOptions.order === "DESC"
-          ? new Date(b.date) - new Date(a.date)
-          : new Date(a.date) - new Date(b.date)
-      }),
-    [sortOptions, data.allCertificationsJson.nodes]
+      certifications.reduce((sum, cert) => sum + parseFloat(cert.length), 0),
+    [certifications]
   )
 
-  // 📝 Dynamic Sorting Description
-  const sortingDescription = useMemo(() => {
-    if (sortOptions.field === "length") {
-      return "Sorting by courses with the most hours completed ⏳"
+  // Update the current date once a day in California (PST/PDT)
+  useEffect(() => {
+    const updateDate = () => {
+      const options = {
+        timeZone: "America/Los_Angeles",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }
+      setCurrentDate(
+        new Intl.DateTimeFormat("en-US", options).format(new Date())
+      )
     }
-    return sortOptions.order === "DESC"
-      ? "My latest courses I've completed 📅"
-      : "My oldest certifications first ⏪"
-  }, [sortOptions])
+
+    updateDate()
+    const interval = setInterval(updateDate, 24 * 60 * 60 * 1000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  // Sort certifications using useMemo to optimize performance
+  const sortedCertifications = useMemo(() => {
+    return [...certifications].sort((a, b) => {
+      if (sortByLength) {
+        return parseFloat(b.length) - parseFloat(a.length)
+      }
+      return sortOrder === "latest"
+        ? new Date(b.date) - new Date(a.date)
+        : new Date(a.date) - new Date(b.date)
+    })
+  }, [sortOrder, sortByLength, certifications])
 
   return (
     <Section style={{ backgroundColor: "#ddf3e", padding: "2rem 0" }}>
@@ -371,59 +519,87 @@ export default function ResumeStyledCertList() {
           <Heading as="h2" style={{ marginBottom: "1rem" }}>
             My Certifications
           </Heading>
-          <Text>A list of all my certifications, more updates coming soon</Text>
+          <Text style={{ fontSize: "1rem", color: "#666" }}>
+            A list of all my certifications, more updates coming soon
+          </Text>
+          <Text
+            style={{
+              fontWeight: "bold",
+              color: theme.colors.text,
+              textAlign: "center",
+              padding: "0.2rem 0",
+              letterSpacing: "0.5px",
+            }}
+          >
+            With {totalHours} + hours ⏳ spent as of {currentDate} and growing
+          </Text>
 
           {/* Sorting Buttons */}
           <Box
             center
             style={{
               display: "flex",
+              flexDirection: "row",
               gap: "1rem",
               margin: "2rem 0",
               justifyContent: "center",
             }}
           >
             <Button
-              className={buttonStyle}
-              aria-label="Sort by latest or oldest"
-              onClick={() =>
-                setSortOptions((prev) => ({
-                  field: "date",
-                  order: prev.order === "DESC" ? "ASC" : "DESC",
-                }))
-              }
+              onClick={() => {
+                setSortByLength(false)
+                setSortOrder((prev) =>
+                  prev === "latest" ? "oldest" : "latest"
+                )
+              }}
+              style={{
+                backgroundColor: !sortByLength
+                  ? theme.colors.primary
+                  : theme.colors.muted,
+                color: theme.colors.white,
+                padding: "0.5rem 0.8rem",
+                borderRadius: theme.radii.button,
+                cursor: "pointer",
+                border: "none",
+              }}
             >
-              Sort by {sortOptions.order === "DESC" ? "Oldest" : "Latest"}{" "}
+              Sort by {sortOrder === "latest" ? "Oldest" : "Latest"}
             </Button>
 
             <Button
-              className={buttonStyle}
-              aria-label="Sort by most hours"
-              onClick={() => setSortOptions({ field: "length", order: "DESC" })}
+              onClick={() => {
+                setSortByLength(true)
+                setSortOrder("latest") // Reset to latest when switching to length sort
+              }}
+              style={{
+                backgroundColor: sortByLength
+                  ? theme.colors.primary
+                  : theme.colors.muted,
+                color: theme.colors.white,
+                padding: "0.5rem 0.8rem",
+                borderRadius: theme.radii.button,
+                cursor: "pointer",
+                border: "none",
+              }}
             >
               Sort by Most Hours
             </Button>
           </Box>
-
-          {/* Sorting Description */}
-          <Text className={sortingDescriptionStyle}>{sortingDescription}</Text>
         </Box>
 
         {/* Certifications List */}
         <div className={certListContainer}>
-          {sortedCertifications.map(
-            ({ id, title, provider, date, length, image, link }) => (
-              <CertificateItem
-                key={id}
-                title={title}
-                provider={provider}
-                date={date}
-                length={length}
-                image={image}
-                link={link}
-              />
-            )
-          )}
+          {sortedCertifications.map((cert) => (
+            <CertificateItem
+              key={cert.id}
+              title={cert.title}
+              provider={cert.provider}
+              date={cert.date}
+              image={cert.image}
+              link={cert.link}
+              length={cert.length}
+            />
+          ))}
         </div>
       </Container>
     </Section>
