@@ -231,7 +231,7 @@ export default function ResumeStyledCertList() {
           >
             {totalHours}+ hours ⏳ spent as of {currentDate} and growing
           </Text>
-          <Text
+          {/* <Text
             style={{
               fontSize: "0.9rem",
               color: "#888",
@@ -240,7 +240,7 @@ export default function ResumeStyledCertList() {
             }}
           >
             📝 {sortingDescription}
-          </Text>
+          </Text> */}
 
           {/* Sorting Buttons */}
           <Box
@@ -254,7 +254,7 @@ export default function ResumeStyledCertList() {
               justifyContent: "center",
             }}
           >
-            <Button
+            {/* <Button
               onClick={toggleSortOrder}
               style={{
                 backgroundColor: !sortByLength
@@ -272,7 +272,7 @@ export default function ResumeStyledCertList() {
               }}
             >
               {sortOrder === "latest" ? "Oldest" : "Latest"}
-            </Button>
+            </Button> */}
 
             {/* <Button
               onClick={toggleSortByLength}
