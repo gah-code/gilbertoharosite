@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react"
+import React, { useState, useEffect, useMemo, useCallback } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Container, Section, Box, Heading, Text, Link, Button } from "../ui"
 import {
@@ -135,29 +135,31 @@ const certifications = [
 ]
 
 // Certificate Item Component
-const CertificateItem = ({ title, provider, date, image, link, length }) => (
-  <Box className={certItem}>
-    <img src={image} alt={title} className={certImage} />
-    <Box style={{ padding: "0.5rem" }}>
-      <Text className={certTitle}>{title}</Text>
-      <Text className={certProvider}>
-        <span style={{ backgroundColor: theme.colors.background }}>
-          {provider}
-        </span>{" "}
-        &middot;
-        <span>{date}</span> &middot;
-        <span>{length} hours</span>
-      </Text>
+const CertificateItem = React.memo(
+  ({ title, provider, date, image, link, length }) => (
+    <Box className={certItem}>
+      <img src={image} alt={title} className={certImage} loading="lazy" />
+      <Box style={{ padding: "0.5rem" }}>
+        <Text className={certTitle}>{title}</Text>
+        <Text className={certProvider}>
+          <span style={{ backgroundColor: theme.colors.background }}>
+            {provider}
+          </span>{" "}
+          &middot;
+          <span>{date}</span> &middot;
+          <span>{length} hours</span>
+        </Text>
+      </Box>
+      <Link
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={certLink}
+      >
+        View
+      </Link>
     </Box>
-    <Link
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={certLink}
-    >
-      View
-    </Link>
-  </Box>
+  )
 )
 
 // Resume Styled Certification List Component
@@ -166,14 +168,14 @@ export default function ResumeStyledCertList() {
   const [sortByLength, setSortByLength] = useState(false)
   const [currentDate, setCurrentDate] = useState("")
 
-  // Calculate total hours
+  // Total Hours Calculation
   const totalHours = useMemo(
     () =>
       certifications.reduce((sum, cert) => sum + parseFloat(cert.length), 0),
     []
   )
 
-  // Update the current date once a day in California (PST/PDT)
+  // Update Date (Once Per Day)
   useEffect(() => {
     const updateDate = () => {
       setCurrentDate(
@@ -190,16 +192,26 @@ export default function ResumeStyledCertList() {
     return () => clearInterval(interval)
   }, [])
 
-  // Memoized sorted certifications
+  // Optimized Sorting
   const sortedCertifications = useMemo(() => {
-    const sorted = [...certifications].sort((a, b) => {
+    return [...certifications].sort((a, b) => {
       if (sortByLength) return parseFloat(b.length) - parseFloat(a.length)
       return sortOrder === "latest"
         ? new Date(b.date) - new Date(a.date)
         : new Date(a.date) - new Date(b.date)
     })
-    return sorted
   }, [sortOrder, sortByLength])
+
+  // Memoized Click Handlers to Prevent Re-Renders
+  const toggleSortOrder = useCallback(() => {
+    setSortByLength(false)
+    setSortOrder((prev) => (prev === "latest" ? "oldest" : "latest"))
+  }, [])
+
+  const toggleSortByLength = useCallback(() => {
+    setSortByLength(true)
+    setSortOrder("latest")
+  }, [])
 
   // Sorting Description
   const sortingDescription = sortByLength
@@ -244,18 +256,14 @@ export default function ResumeStyledCertList() {
             center
             style={{
               display: "flex",
+              flexWrap: "wrap",
               gap: "1rem",
               margin: "2rem 0",
               justifyContent: "center",
             }}
           >
             <Button
-              onClick={() => {
-                setSortByLength(false)
-                setSortOrder((prev) =>
-                  prev === "latest" ? "oldest" : "latest"
-                )
-              }}
+              onClick={toggleSortOrder}
               style={{
                 backgroundColor: !sortByLength
                   ? theme.colors.primary
@@ -265,16 +273,14 @@ export default function ResumeStyledCertList() {
                 borderRadius: theme.radii.button,
                 cursor: "pointer",
                 border: "none",
+                minWidth: "150px",
               }}
             >
               Sort by {sortOrder === "latest" ? "Oldest" : "Latest"}
             </Button>
 
             <Button
-              onClick={() => {
-                setSortByLength(true)
-                setSortOrder("latest")
-              }}
+              onClick={toggleSortByLength}
               style={{
                 backgroundColor: sortByLength
                   ? theme.colors.primary
@@ -284,6 +290,7 @@ export default function ResumeStyledCertList() {
                 borderRadius: theme.radii.button,
                 cursor: "pointer",
                 border: "none",
+                minWidth: "150px",
               }}
             >
               Sort by Most Hours
