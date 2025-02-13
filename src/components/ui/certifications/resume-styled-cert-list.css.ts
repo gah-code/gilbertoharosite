@@ -13,7 +13,7 @@ export const certListSection = style({
 export const certListContainer = style({
   margin: "0 auto",
   width: "100%",
-  maxWidth: "1000px",
+  maxWidth: "620px",
 })
 
 export const buttonStyle = style({
