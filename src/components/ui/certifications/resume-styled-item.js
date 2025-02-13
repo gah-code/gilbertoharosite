@@ -20,7 +20,7 @@ export function CertificateItem({
   return (
     <Box className={certItem}>
       {/* Optimized Image Handling */}
-      {image.childImageSharp ? (
+      {/* {image.childImageSharp ? (
         <GatsbyImage
           image={getImage(image)}
           alt={`Certificate: ${title}`}
@@ -33,8 +33,8 @@ export function CertificateItem({
           className={certImage}
           loading="lazy"
         />
-      )}
-
+      )} */}
+      <img src={image} alt={`Certificate: ${title}`} className={certImage} />
       <Box>
         <Text className={certTitle}>{title}</Text>
         <Text className={certProvider}>
@@ -43,7 +43,6 @@ export function CertificateItem({
           <span>{length} hours</span>
         </Text>
       </Box>
-
       <Link
         href={link}
         target="_blank"
