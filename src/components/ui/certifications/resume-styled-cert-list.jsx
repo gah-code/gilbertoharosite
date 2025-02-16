@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Container, Section, Box, Heading, Text, Link, Button } from "../ui"
 import {
   certListContainer,
   certItem,
-  certImage,
   certTitle,
   certLink,
   certProvider,
@@ -14,7 +12,6 @@ import { theme } from "../../design-system/theme.css.ts"
 // Static Mock Data for Certifications
 const certifications = [
   {
-    id: "cert-1",
     title: "Advanced CSS and Sass: Flexbox, Grid, Animations and More!",
     provider: "Udemy",
     image:
@@ -25,7 +22,6 @@ const certifications = [
     length: "28",
   },
   {
-    id: "cert-2",
     title: "Node.js, Express, MongoDB & More: The Complete Bootcamp",
     provider: "Udemy",
     date: "08/31/2021",
@@ -36,7 +32,6 @@ const certifications = [
     length: "42",
   },
   {
-    id: "cert-3",
     title: "UX & Web Design Master Course: Strategy, Design, Development",
     provider: "Udemy",
     date: "03/08/2023",
@@ -47,7 +42,6 @@ const certifications = [
     length: "23.5",
   },
   {
-    id: "cert-4",
     title: "FCC Responsive Web Design",
     provider: "FCC",
     date: "03/28/2021",
@@ -57,7 +51,6 @@ const certifications = [
     length: "300",
   },
   {
-    id: "cert-5",
     title: "M103:Basic Cluster Administration",
     provider: "Udemy",
     date: "05/18/2021",
@@ -68,7 +61,6 @@ const certifications = [
     length: "10",
   },
   {
-    id: "cert-6",
     title: "Gatsby.js Tutorial and Projects Course'",
     provider: "Udemy",
     date: "09/28/2024",
@@ -79,7 +71,6 @@ const certifications = [
     length: "22",
   },
   {
-    id: "cert-7",
     title: "Crash Course: Build a Full-Stack Web App in a Weekend!",
     provider: "Udemy",
     date: "03/17/2023",
@@ -90,7 +81,6 @@ const certifications = [
     length: "12.5",
   },
   {
-    id: "cert-8",
     title: "Build Responsive Real-World Websites with HTML and CSS",
     provider: "Udemy",
     date: "11/13/2024",
@@ -101,7 +91,6 @@ const certifications = [
     length: "37.5",
   },
   {
-    id: "cert-9",
     title: " React Styled Components Course (V5) ",
     provider: "Udemy",
     date: "02/28/2023",
@@ -112,7 +101,6 @@ const certifications = [
     length: "3",
   },
   {
-    id: "cert-10",
     title: "HTB Basic Toolset",
     provider: "HTB Academy",
     date: "04/01/2022",
@@ -122,7 +110,6 @@ const certifications = [
     length: "30.5",
   },
   {
-    id: "cert-11",
     title: " The Complete JavaScript Course 2020: From Zero to Expert!",
     provider: "Udemy",
     date: "06/21/2020",
@@ -151,10 +138,9 @@ const getCurrentDate = () =>
 
 // Certificate Item Component
 const CertificateItem = React.memo(
-  ({ title, provider, date, image, link, length }) => (
+  ({ title, provider, date, link, length }) => (
     <Box className={certItem}>
-      <img src={image} alt={title} className={certImage} loading="lazy" />
-      <Box style={{ padding: "0.5rem" }}>
+      <Box>
         <Text className={certTitle}>{title}</Text>
         <Text className={certProvider}>
           <span style={{ backgroundColor: theme.colors.background }}>
@@ -184,14 +170,16 @@ export default function ResumeStyledCertList() {
   const [currentDate, setCurrentDate] = useState(getCurrentDate)
 
   // Memoized Sorted Certifications
-  const sortedCertifications = useMemo(() => {
-    return [...certifications].sort((a, b) => {
-      if (sortByLength) return parseFloat(b.length) - parseFloat(a.length)
-      return sortOrder === "latest"
-        ? new Date(b.date) - new Date(a.date)
-        : new Date(a.date) - new Date(b.date)
-    })
-  }, [sortOrder, sortByLength])
+  const sortedCertifications = useMemo(
+    () =>
+      [...certifications].sort((a, b) => {
+        if (sortByLength) return parseFloat(b.length) - parseFloat(a.length)
+        return sortOrder === "latest"
+          ? new Date(b.date) - new Date(a.date)
+          : new Date(a.date) - new Date(b.date)
+      }),
+    [sortOrder, sortByLength]
+  )
 
   // Memoized Handlers to Prevent Re-renders
   const toggleSortOrder = useCallback(() => {
@@ -354,7 +342,6 @@ export default function ResumeStyledCertList() {
               title={cert.title}
               provider={cert.provider}
               date={cert.date}
-              image={cert.image}
               link={cert.link}
               length={cert.length}
             />
@@ -364,176 +351,6 @@ export default function ResumeStyledCertList() {
     </Section>
   )
 }
-
-// // Certificate Item Component
-// function CertificateItem({ title, provider, date, image, link, length }) {
-//   return (
-//     <Box className={certItem}>
-//       <img src={image} alt={title} className={certImage} />
-//       <Box style={{ padding: "0.5rem" }}>
-//         <Text className={certTitle} style={{ color: "#333" }}>
-//           {title}
-//         </Text>
-//         <Text className={certProvider}>
-//           <span style={{ backgroundColor: theme.colors.background }}>
-//             {provider}
-//           </span>
-//           &middot;
-//           <span>{date}</span>
-//           &middot;
-//           <span>{length} hours</span>
-//         </Text>
-//       </Box>
-//       <Link
-//         href={link}
-//         target="_blank"
-//         rel="noopener noreferrer"
-//         className={certLink}
-//       >
-//         View
-//       </Link>
-//     </Box>
-//   )
-// }
-
-// // Resume Styled Certification List Component
-// export default function ResumeStyledCertList() {
-//   const [sortOrder, setSortOrder] = useState("latest")
-//   const [sortByLength, setSortByLength] = useState(false)
-//   const [currentDate, setCurrentDate] = useState("")
-
-//   // Calculate total hours
-//   const totalHours = useMemo(
-//     () =>
-//       certifications.reduce((sum, cert) => sum + parseFloat(cert.length), 0),
-//     []
-//   )
-
-//   // Update the current date once a day in California (PST/PDT)
-//   useEffect(() => {
-//     const updateDate = () => {
-//       const options = {
-//         timeZone: "America/Los_Angeles",
-//         year: "numeric",
-//         month: "long",
-//         day: "numeric",
-//       }
-//       setCurrentDate(
-//         new Intl.DateTimeFormat("en-US", options).format(new Date())
-//       )
-//     }
-
-//     updateDate()
-//     const interval = setInterval(updateDate, 24 * 60 * 60 * 1000)
-
-//     return () => clearInterval(interval)
-//   }, [])
-
-//   // Sort certifications using useMemo to optimize performance
-//   const sortedCertifications = useMemo(() => {
-//     return [...certifications].sort((a, b) => {
-//       if (sortByLength) {
-//         return parseFloat(b.length) - parseFloat(a.length)
-//       }
-//       return sortOrder === "latest"
-//         ? new Date(b.date) - new Date(a.date)
-//         : new Date(a.date) - new Date(b.date)
-//     })
-//   }, [sortOrder, sortByLength])
-
-//   return (
-//     <Section style={{ backgroundColor: "#ddf3e", padding: "2rem 0" }}>
-//       <Container>
-//         <Box center paddingY={4}>
-//           <Heading as="h2" style={{ marginBottom: "1rem" }}>
-//             My Certifications
-//           </Heading>
-//           <Text style={{ fontSize: "1rem", color: "#666" }}>
-//             A list of all my certifications, more updates coming soon
-//           </Text>
-//           <Text
-//             style={{
-//               fontWeight: "bold",
-//               color: theme.colors.text,
-//               textAlign: "center",
-//               padding: "0.2rem 0",
-//               letterSpacing: "0.5px",
-//             }}
-//           >
-//             With {totalHours} + hours ⏳ spent as of {currentDate} and growing
-//           </Text>
-
-//           {/* Sorting Buttons */}
-//           <Box
-//             center
-//             style={{
-//               display: "flex",
-//               flexDirection: "row",
-//               gap: "1rem",
-//               margin: "2rem 0",
-//               justifyContent: "center",
-//             }}
-//           >
-//             <Button
-//               onClick={() => {
-//                 setSortByLength(false)
-//                 setSortOrder((prev) =>
-//                   prev === "latest" ? "oldest" : "latest"
-//                 )
-//               }}
-//               style={{
-//                 backgroundColor: !sortByLength
-//                   ? theme.colors.primary
-//                   : theme.colors.muted,
-//                 color: theme.colors.white,
-//                 padding: "0.5rem 0.8rem",
-//                 borderRadius: theme.radii.button,
-//                 cursor: "pointer",
-//                 border: "none",
-//               }}
-//             >
-//               Sort by {sortOrder === "latest" ? "Oldest" : "Latest"}
-//             </Button>
-
-//             <Button
-//               onClick={() => {
-//                 setSortByLength(true)
-//                 setSortOrder("latest") // Reset to latest when switching to length sort
-//               }}
-//               style={{
-//                 backgroundColor: sortByLength
-//                   ? theme.colors.primary
-//                   : theme.colors.muted,
-//                 color: theme.colors.white,
-//                 padding: "0.5rem 0.8rem",
-//                 borderRadius: theme.radii.button,
-//                 cursor: "pointer",
-//                 border: "none",
-//               }}
-//             >
-//               Sort by Most Hours
-//             </Button>
-//           </Box>
-//         </Box>
-
-//         {/* Certifications List */}
-// <div className={certListContainer}>
-//   {sortedCertifications.map((cert) => (
-//     <CertificateItem
-//       key={cert.id}
-//       title={cert.title}
-//       provider={cert.provider}
-//       date={cert.date}
-//       image={cert.image}
-//       link={cert.link}
-//       length={cert.length}
-//     />
-//   ))}
-// </div>
-//       </Container>
-//     </Section>
-//   )
-// }
 
 // ///////
 // import React, { useState, useMemo } from "react"

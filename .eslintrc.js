@@ -14,6 +14,11 @@ module.exports = {
     "airbnb",
     "prettier",
   ],
+  "react/destructuring-assignment": [
+    "warn",
+    "always",
+    { ignoreSinglePropUse: true },
+  ],
   plugins: ["react", "jsx-a11y", "import"],
   env: {
     browser: true,
@@ -32,7 +37,7 @@ module.exports = {
       { vars: "all", args: "after-used", ignoreRestSiblings: false },
     ],
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
-    "import/no-unused-modules": ["warn", { unusedExports: true }],
+    "import/no-unused-modules": "off", // ⬅️ Disable the rule completely
     "react/prop-types": "off",
     "jsx-a11y/no-onchange": "off",
   },

@@ -5,7 +5,7 @@ import { media } from "../ui.css"
 // Wrapper for the entire section
 export const certListSection = style({
   backgroundColor: theme.colors.active,
-  padding: theme.space[2],
+  padding: theme.space[1],
   maxWidth: theme.sizes.narrow,
 })
 
@@ -57,8 +57,8 @@ export const certItem = style({
 
 // Image for the certificate logo
 export const certImage = style({
-  width: "65px",
-  height: "65px",
+  width: "55px",
+  height: "55px",
   borderRadius: theme.radii.button,
   objectFit: "cover",
   flexShrink: 0,
@@ -68,7 +68,7 @@ export const certImage = style({
     [media.small]: {
       width: "65px",
       height: "65px",
-      marginBottom: theme.space[2],
+      marginBottom: theme.space[1],
     },
   },
 })
@@ -128,18 +128,12 @@ export const certDataType = style({
 // Link to view the certificate
 export const certLink = style({
   color: theme.colors.black,
-  fontSize: theme.fontSizes[1],
+  fontSize: theme.fontSizes[2],
   textDecoration: "underline",
   flexShrink: 0,
 
   ":hover": {
     color: theme.colors.primary,
-  },
-
-  "@media": {
-    [media.small]: {
-      marginTop: theme.space[2],
-    },
   },
 })
 

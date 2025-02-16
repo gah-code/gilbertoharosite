@@ -42,7 +42,7 @@ const skillList = [
   "Netlify",
 ]
 
-const SkillListGrid = () => {
+function SkillListGrid() {
   return (
     <section className="skill-section">
       <div className="skill-container">

@@ -1,6 +1,6 @@
-# My 2025 Website Update: Contentful-Powered Gatsby Site V2.0
+# My 2025 Website Update: Contentful-Powered Gatsby Site 1.3.0
 >
-> **Last Updated**: Feb 13, 2025
+> **Last Updated**: Feb 15, 2025
 
 ![Lighthouse Score](./light-house.png)
 
@@ -247,20 +247,23 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 ---
 
-#### **General Cleanup**
+#### **General Cleanup 1.4.0**
 
 - [ ] **Audit Dependencies**
   - [ ] Remove unused dependencies in `package.json`.
   - [X] Update outdated dependencies (`npm outdated`).
-- [ ] **Review Environment Variables**
+- [X] **Review Environment Variables**
   - [X] Ensure `.env.EXAMPLE` reflects all required environment variables.
   - [X] Add `.env` to `.gitignore` to prevent sensitive data leaks.
 - [ ] **Code Cleanup**
-  - [ ] Remove unused components and files.
+  - [X] Remove unused components and files.
   - [X] Delete commented-out or dead code.
-- [ ] **Organize Folder Structure**
+- [X] **Organize Folder Structure**
   - [X] Consolidate redundant folders (e.g., `/post/` and `/templates/`).
   - [X] Consolidate Card with Compound pattern
+  - [X] **ESLint configuration**
+  - [X] Allow single-use props without requiring destructuring,enforce it for multiple uses
+  - [X] no-unused-modules update
 
   ### ✅ **Component Refactoring**
 
@@ -270,7 +273,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 ---
 
-#### **Performance Optimizations**
+#### **Performance Optimizations 1.5.0**
 
 - [ ] **Image Optimization**
   - [ ] Ensure all images use `gatsby-plugin-image`.
@@ -286,7 +289,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 ---
 
-#### **SEO & Accessibility Improvements**
+#### **SEO & Accessibility Improvements 1.5.0**
 
 - [ ] **SEO Metadata**
   - [ ] Add `<SEOHead>` for all pages.
@@ -313,7 +316,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 - [ ] **Dynamic Blog Pages**
   - [X] Verify blog posts and category pages are generated correctly.
-  - [ ] Add 404 handling for invalid slugs.
+  - [X] Add 404 handling for invalid slugs.
 - [ ] **Pagination**
   - [ ] Add pagination for `/blog` and category pages.
 - [ ] **Search Functionality**
@@ -321,7 +324,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 ---
 
-#### **Developer Experience V2.1**
+#### **Developer Experience 1.6.0**
 
 - [ ] **Linting & Formatting**
   - [X] Ensure `.prettierrc.json` and `.prettierignore` are properly configured.
@@ -348,7 +351,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 ---
 
-#### **Future Enhancements V2.2**
+#### **Future Enhancements 2.0.0**
 
 - [ ] **Contentful Webhooks**
   - [ ] Trigger Gatsby builds on content changes.

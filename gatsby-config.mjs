@@ -59,7 +59,7 @@ export default {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: process.env.MANIFEST_NAME || "Gatsby Starter Contentful Homepage",
+        name: process.env.MANIFEST_NAME || "Gatsby Contentful Homepage",
         short_name: process.env.MANIFEST_SHORT_NAME || "Gatsby",
         start_url: "/",
         background_color: process.env.BG_COLOR || "#ffe491",
