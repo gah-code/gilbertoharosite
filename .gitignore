@@ -23,6 +23,8 @@ gatsby-debug.log
 ### 🎨 ESLint, Prettier, and Babel
 .eslintcache
 .babelrc
+.prettier_cache/
+.eslintcache/
 
 ### 🧪 Test & Coverage Reports
 coverage/
@@ -36,5 +38,8 @@ docs/*
 public/~partytown/
 public/
 .cache/
-
 src/testing
+file-draft.md
+
+# Ignore lock files (optional based on your package manager)
+package-lock.json
