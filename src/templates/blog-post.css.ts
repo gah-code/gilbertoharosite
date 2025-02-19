@@ -103,27 +103,6 @@ globalStyle(`${blogPost} > p:first-of-type`, {
   marginBottom: theme.space[3], // Space below the paragraph
 })
 
-// // Code Blocks
-// globalStyle(`${blogPost} pre`, {
-//   backgroundColor: theme.colors.muted,
-//   padding: theme.space[3],
-//   borderRadius: "4px",
-//   overflowX: "auto",
-//   marginBottom: theme.space[4],
-// })
-
-// Code Blocks
-// globalStyle(`${blogPost} pre`, {
-//   backgroundColor: theme.colors.background,
-//   padding: theme.space[2],
-//   borderRadius: "4px",
-//   overflowX: "auto",
-//   // marginBottom: theme.space[2],
-//   fontSize: theme.fontSizes[1],
-//   fontFamily: theme.fonts.mono,
-//   color: theme.colors.text,
-// })
-
 // Code Block Styling
 globalStyle(`${blogPost} pre`, {
   backgroundColor: theme.colors.muted, // Muted background for contrast

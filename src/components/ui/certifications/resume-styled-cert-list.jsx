@@ -219,19 +219,8 @@ export default function ResumeStyledCertList() {
           >
             {totalHours}+ hours ⏳ spent as of {currentDate} and growing
           </Text>
-          {/* <Text
-            style={{
-              fontSize: "0.9rem",
-              color: "#888",
-              textAlign: "center",
-              marginTop: "0.5rem",
-            }}
-          >
-            📝 {sortingDescription}
-          </Text> */}
 
-          {/* Sorting Buttons */}
-          <Box
+          {/* <Box
             center
             className="buttonWrapper" // Add a custom class if you like
             style={{
@@ -241,97 +230,7 @@ export default function ResumeStyledCertList() {
               margin: "2rem 0",
               justifyContent: "center",
             }}
-          >
-            {/* <Button
-              onClick={toggleSortOrder}
-              style={{
-                backgroundColor: !sortByLength
-                  ? theme.colors.primary
-                  : theme.colors.muted,
-                color: theme.colors.white,
-                whiteSpace: "nowrap", // 2) Keep label on one line
-                border: "none",
-                textAlign: "center",
-                transition: "all 0.2s ease-in-out",
-                borderRadius: theme.radii.button,
-                padding: "0.5rem 0.9rem",
-                cursor: "pointer",
-                textAlign: "center",
-              }}
-            >
-              {sortOrder === "latest" ? "Oldest" : "Latest"}
-            </Button> */}
-
-            {/* <Button
-              onClick={toggleSortByLength}
-              style={{
-                backgroundColor: sortByLength
-                  ? theme.colors.primary
-                  : theme.colors.muted,
-                color: theme.colors.white,
-                minWidth: "170px", // Ensure same size
-                whiteSpace: "nowrap",
-                border: "none",
-                textAlign: "center",
-                transition: "all 0.2s ease-in-out",
-                borderRadius: theme.radii.button,
-                padding: "0.5rem 0.9rem",
-                cursor: "pointer",
-              }}
-            >
-              Sort by Most Hours
-            </Button> */}
-          </Box>
-          {/* <Box
-            center
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "1rem",
-              margin: "2rem 0",
-              justifyContent: "center",
-            }}
-          >
-            <Button
-              onClick={toggleSortOrder}
-              style={{
-                backgroundColor: !sortByLength
-                  ? theme.colors.primary
-                  : theme.colors.muted,
-                color: theme.colors.white,
-                padding: "0.5rem 0.9rem",
-                borderRadius: theme.radii.button,
-                cursor: "pointer",
-                border: "none",
-                minWidth: "150px",
-                transition: "all 0.2s ease-in-out",
-                textAlign: "center",
-              }}
-              aria-label={`Sort by ${
-                sortOrder === "latest" ? "Oldest" : "Latest"
-              } certificates`}
-            >
-              Sort by {sortOrder === "latest" ? "Oldest" : "Latest"}
-            </Button>
-
-            <Button
-              onClick={toggleSortByLength}
-              style={{
-                backgroundColor: sortByLength
-                  ? theme.colors.primary
-                  : theme.colors.muted,
-                color: theme.colors.white,
-                padding: "0.5rem 0.9rem",
-                borderRadius: theme.radii.button,
-                cursor: "pointer",
-                border: "none",
-                minWidth: "150px",
-                transition: "all 0.2s ease-in-out",
-              }}
-            >
-              Sort by Most Hours
-            </Button>
-          </Box> */}
+          ></Box> */}
         </Box>
 
         {/* Certifications List */}

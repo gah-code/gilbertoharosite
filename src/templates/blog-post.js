@@ -1,4 +1,3 @@
-// src/templates/blog-post.js
 import * as React from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"

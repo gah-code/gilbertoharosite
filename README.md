@@ -249,13 +249,13 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 #### **General Cleanup 1.4.0**
 
-- [ ] **Audit Dependencies**
-  - [ ] Remove unused dependencies in `package.json`.
+- [X] **Audit Dependencies**
+  - [X] Remove unused dependencies in `package.json`.
   - [X] Update outdated dependencies (`npm outdated`).
 - [X] **Review Environment Variables**
   - [X] Ensure `.env.EXAMPLE` reflects all required environment variables.
   - [X] Add `.env` to `.gitignore` to prevent sensitive data leaks.
-- [ ] **Code Cleanup**
+- [X] **Code Cleanup**
   - [X] Remove unused components and files.
   - [X] Delete commented-out or dead code.
 - [X] **Organize Folder Structure**
@@ -264,12 +264,6 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
   - [X] **ESLint configuration**
   - [X] Allow single-use props without requiring destructuring,enforce it for multiple uses
   - [X] no-unused-modules update
-
-  ### ✅ **Component Refactoring**
-
-- ✅ **Refactor `BlogIndex` Component**
-  - ✅ Extract `BlogList` component.
-  - ✅ Extract `BlogItem` component.
 
 ---
 
@@ -286,6 +280,8 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
   - [ ] Use `gatsby-plugin-webpack-bundle-analyser-v2` to identify large bundles.
 - [ ] **Contentful Query Optimizations**
   - [ ] Fetch only necessary fields in GraphQL queries.
+- [ ] **Component Refactoring**
+  - [X] Refactor `BlogIndex` Component
 
 ---
 
@@ -309,6 +305,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
   - [ ] Ensure tokens are consistently used across components.
 - [ ] **Global Stylesheet**
   - [ ] Add a `base.css.ts` for global resets and typography.
+- [] **Code Cleanup**
 
 ---
 
@@ -328,7 +325,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 - [ ] **Linting & Formatting**
   - [X] Ensure `.prettierrc.json` and `.prettierignore` are properly configured.
-    - [✅] Enable ESLint Rules for Unused Imports & Modules
+    - [X] Enable ESLint Rules for Unused Imports & Modules
   - [X] Add or configure `eslint` for consistent linting base set up.
 - [ ] **TypeScript Migration**
   - [ ] Migrate components to TypeScript.
@@ -348,6 +345,10 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
   - [ ] Set up GitHub Actions or Netlify hooks for automated deployments.
 - [ ] **Error Tracking**
   - [ ] Integrate Sentry for error reporting and monitoring.
+
+---
+
+#### **General Cleanup 1.9.0**
 
 ---
 
