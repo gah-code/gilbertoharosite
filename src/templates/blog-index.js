@@ -103,8 +103,8 @@ export const Head = ({ data }) => {
   const { site } = data
   const siteMetadata = site.siteMetadata
 
-  const title = `All My Blog Posts | ${siteMetadata.title}`
-  const description = `Discover the my blog posts on various topics, including web development and design articles. Stay updated with fresh content.`
+  const title = `All My Blogs | ${siteMetadata.title}`
+  const description = `Discover insightful blog posts on web development, design, and modern frontend technologies. Stay ahead in the ever-evolving digital landscape with fresh, expert-driven content.`
   const url = normalizeUrl(`${siteMetadata.siteUrl}/blogs`)
 
   return <SEOHead title={title} description={description} url={url} />

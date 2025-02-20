@@ -37,7 +37,7 @@ export const Head = ({ data }) => {
   return (
     <SEOHead
       title="Learning Center | My Web Devlopment Tech Journey"
-      description="Explore my learning journey, certifications, and skills in web development, design, tech and more."
+      description="Explore a curated collection of resources, tutorials, and insights on frontend development, design systems, and modern web technologies. Keep learning, building, and growing 🚀."
       image={null} // Replace with an actual image if available
       url={`${siteMetadata.siteUrl}/learning`}
       author={siteMetadata.author}

@@ -271,7 +271,7 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
 
 - [ ] **Image Optimization**
   - [ ] Ensure all images use `gatsby-plugin-image`.
-  - [ ] Replace large static images with Contentful-hosted versions.
+  - [X] Replace large static images with Contentful-hosted versions.
 - [ ] **Lazy Loading**
   - [ ] Add lazy loading for non-critical components.
 - [ ] **Build Performance**
@@ -362,5 +362,63 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
   - [ ] Add dark mode support to Vanilla Extract tokens.
 - [ ] **Analytics**
   - [ ] Add Google Analytics, Plausible, or PostHog for user behavior tracking.
+
+---
+
+---
+
+#### **Style & UI Improvements 2.0.0**
+
+- [ ] **Consistency & Theming**
+  - [ ] Maintain consistent styling for headings, buttons, and links across all pages.
+  - [ ] Develop a style guide or pattern library to standardize UI elements.
+  - [ ] Check spacing and alignment to keep layouts uniform.
+
+- [ ] **Color Scheme Updates**
+  - [ ] Conduct a color palette audit to identify areas lacking visual contrast.
+  - [ ] Choose a primary and secondary color that align with branding and improve readability.
+  - [ ] Use accent colors to highlight important CTAs and hover states.
+
+- [ ] **Typography & Readability**
+  - [ ] Select or refine a font pairing (e.g., header and body fonts) for consistent branding.
+  - [ ] Standardize font sizes/weights for headings, subheadings, and body text to create a clear hierarchy.
+  - [ ] Test line and paragraph spacing to ensure comfortable readability.
+
+- [ ] **Button & CTA Design**
+  - [ ] Redesign buttons with sufficient padding, distinct hover states, and clear labeling (e.g., "Learn More").
+  - [ ] Implement color, contrast, and whitespace to make buttons stand out.
+  - [ ] Ensure buttons are large enough for mobile tap targets (at least ~44×44px).
+
+- [ ] **Responsive Layout Adjustments**
+  - [ ] Review breakpoints to ensure smooth adaptation to mobile, tablet, and desktop.
+  - [ ] Check for overlapping or truncated text on smaller screens.
+  - [ ] Adjust font sizes and images for mobile to maintain accessibility.
+
+- [ ] **Navigation Streamlining**
+  - [ ] Simplify main menu items by grouping pages or sections logically.
+  - [ ] Use descriptive labels for navigation links to clearly communicate destinations.
+  - [ ] Consider a sticky or fixed navigation bar for easier access on long pages.
+
+- [ ] **Visual Hierarchy & Content Organization**
+  - [ ] Add consistent headings and subheadings to guide users through content.
+  - [ ] Leverage whitespace to separate sections and reduce clutter.
+  - [ ] Use consistent styling (backgrounds, dividers) to distinguish content blocks.
+
+- [ ] **Incorporate User Feedback**
+  - [ ] Monitor analytics and heatmaps to identify areas with high bounce/exit rates.
+
+- [ ] **Enhance Interactive Elements**
+  - [ ] Add subtle animations or hover effects to highlight clickable elements.
+  - [ ] Ensure forms have clear labeling, user-friendly error messages, and field highlights.
+  - [ ] Provide immediate visual feedback (color change, loading state) on clicks/submissions.
+
+- [ ] **Accessibility (A11y)**
+  - [ ] Ensure adequate color contrast for text and background (meets WCAG guidelines).
+  - [ ] Provide descriptive alt text for images and clear button/link text for screen readers.
+  - [ ] Verify keyboard accessibility for interactive elements (buttons, forms, modals).
+
+- [ ] **Testing & Finalization**
+  - [ ] Gather final feedback and make remaining adjustments.
+  - [ ] Monitor analytics post-launch to measure performance and user engagement.
 
 ---
