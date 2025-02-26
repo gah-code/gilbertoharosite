@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react"
-import { Container, Section, Box, Heading, Text, Link, Button } from "../ui"
+import React, { useState, useMemo } from "react"
+import { Section, Box, Heading, Text, Link } from "../ui"
 import {
   certListContainer,
   certItem,
@@ -189,40 +189,36 @@ export default function ResumeStyledCertList() {
       } completion date`
 
   return (
-    <Section style={{ backgroundColor: "#ddf3e", padding: "1rem 0" }}>
-      <Container>
-        <Box left paddingY={3}>
-          <Heading as="h2" style={{ marginBottom: "1rem" }}>
-            Certifications
-          </Heading>
-          <Text style={{ fontSize: "1rem", color: theme.colors.primary }}>
-            List of completed certifications as of {currentDate} and going
-          </Text>
-          <Text
-            style={{
-              fontWeight: "bold",
-              color: theme.colors.text,
-              textAlign: "left",
-            }}
-          >
-            {totalHours}+ hours spent
-          </Text>
-        </Box>
+    <Section>
+      <Box left>
+        <Heading as="h2">Certifications</Heading>
+        <Text style={{ fontSize: "1rem", color: theme.colors.primary }}>
+          List of completed certifications as of {currentDate} and going
+        </Text>
+        <Text
+          style={{
+            fontWeight: "bold",
+            color: theme.colors.text,
+            textAlign: "left",
+          }}
+        >
+          {totalHours}+ hours spent
+        </Text>
+      </Box>
 
-        {/* Certifications List */}
-        <Box paddingY={3} className={certListContainer}>
-          {sortedCertifications.map((cert) => (
-            <CertificateItem
-              key={cert.id}
-              title={cert.title}
-              provider={cert.provider}
-              date={cert.date}
-              link={cert.link}
-              length={cert.length}
-            />
-          ))}
-        </Box>
-      </Container>
+      {/* Certifications List */}
+      <Box className={certListContainer}>
+        {sortedCertifications.map((cert) => (
+          <CertificateItem
+            key={cert.id}
+            title={cert.title}
+            provider={cert.provider}
+            date={cert.date}
+            link={cert.link}
+            length={cert.length}
+          />
+        ))}
+      </Box>
     </Section>
   )
 }

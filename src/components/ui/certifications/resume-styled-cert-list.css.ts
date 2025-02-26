@@ -41,8 +41,6 @@ export const certItem = style({
   flexDirection: "row",
   paddingTop: theme.space[3],
   paddingBottom: theme.space[3],
-  paddingLeft: theme.space[1],
-  paddingRight: theme.space[1],
 
   transition: "background-color 0.3s ease, box-shadow 0.3s ease",
 
@@ -56,7 +54,6 @@ export const certItem = style({
     [media.small]: {
       flexDirection: "row",
       gap: theme.space[4],
-      padding: theme.space[3],
     },
   },
 })
@@ -80,7 +77,6 @@ export const certImage = style({
 })
 
 // Details section (title and provider/date)
-// Details section (title and provider/date)
 export const certDetails = style({
   flexGrow: 1,
   display: "flex",
@@ -88,13 +84,11 @@ export const certDetails = style({
   justifyContent: "space-between",
   gap: theme.space[2], // Adds spacing between child elements
   minWidth: "0",
-  paddingLeft: theme.space[2], // Adds padding for separation from the image
   color: theme.colors.text,
 
   "@media": {
     [media.small]: {
       minWidth: "100%", // Full width on small screens
-      paddingLeft: theme.space[1], // Adjust padding for smaller screens
     },
   },
 })

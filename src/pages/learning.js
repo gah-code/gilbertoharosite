@@ -35,11 +35,9 @@ function AboutHero(props) {
   const { heading, text, image } = mockAboutHero
 
   return (
-    <Section padding={1} background="background">
-      <Container>
-        <Heading className={styles.aboutHeroHeader}>{heading}</Heading>
-        <Text className={styles.aboutHeroText}>{text}</Text>
-      </Container>
+    <Section background="background">
+      <Heading className={styles.aboutHeroHeader}>{heading}</Heading>
+      <Text className={styles.aboutHeroText}>{text}</Text>
       {/* Image */}
       <Container width="tight">
         {/* {image?.url ? (
@@ -58,34 +56,25 @@ function AboutHero(props) {
         )}{" "}
       </Container> */}
       </Container>
-      <Container>
-        <Heading className={styles.aboutHeroHeader}>Enthusiasm</Heading>
-        <Text className={styles.aboutHeroText}>
-          My learning approach is centered around envisioning an interface I
-          wanted to develop, incorporating my approach. This method has helped
-          me navigate the vast landscape of trends and information, allowing me
-          to concentrate on what I needed to learn rather than what I wanted to
-          know when starting my training. I dedicated time to building on the
-          fundamentals from the ground up, which fueled my enthusiasm for
-          acquiring the ins and outs of knowledge related to front-end
-          engineering. I opted for project-based courses that involved hands-on
-          coding of web applications, following a some what linear path building
-          on CSS and Javascript while pursuing various side projects for deeper
-          specialization in frameworks, styling, and marketing enhancements.{" "}
-        </Text>
-        <Text className={styles.aboutHeroText}>
-          My learning focuses on creating web applications that are visually
-          appealing, function correctly, and support marketing objectives to
-          improve user experience and foster business growth.
-        </Text>
-        <Text className={styles.aboutHeroText}>
-          I am on a journey to become an impactful front-end contributor,
-          dedicated to creating engaging user experiences through expressive
-          design and engineering. My core passion lies in developing
-          user-centric patterns and data-driven solutions.
-        </Text>
-        <Text> Myspace mindset, with modern tech.</Text>
-      </Container>
+      <Heading className={styles.aboutHeroHeader}>Enthusiasm</Heading>
+      <Text className={styles.aboutHeroText}>
+        My learning approach focuses on finding solutions based on business and
+        marketing goals while building interfaces that have personality. This
+        method has enabled me to navigate the vast landscape of trends and
+        information, allowing me to concentrate on what I need to learn from
+        functional and branding perspectives. I emphasize building on the
+        fundamentals from the ground up, which has fueled my enthusiasm for
+        mastering the intricacies of front-end engineering.
+      </Text>
+      <Text className={styles.aboutHeroText}>
+        I chose project-based courses that involved hands-on coding of web
+        applications, following a somewhat linear path that built upon my
+        knowledge of CSS and JavaScript. Additionally, I pursued various side
+        projects to deepen my specialization in frameworks, styling, and
+        marketing enhancements.
+      </Text>
+
+      {/* TODO: TOOLS I USE */}
     </Section>
   )
 }
@@ -101,11 +90,17 @@ const Learning = ({ data }) => {
   }
   return (
     <Layout>
-      <Container>
+      <Container width="narrow">
         <AboutHero />
-        <ResumeStyledCertList />
-
         <SkillListGrid />
+        <ResumeStyledCertList />
+        <Text className={styles.aboutHeroText}>
+          I am on a journey to become an impactful front-end contributor,
+          dedicated to creating engaging user experiences through expressive
+          design and engineering. My core passion lies in developing
+          user-centric patterns and data-driven solutions.
+        </Text>
+        <Text>Myspace mindset, with modern tech.</Text>
       </Container>
     </Layout>
   )
