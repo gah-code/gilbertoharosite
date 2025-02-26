@@ -5,15 +5,16 @@ import { media } from "../ui.css"
 // Wrapper for the entire section
 export const certListSection = style({
   backgroundColor: theme.colors.active,
-  padding: theme.space[1],
-  maxWidth: theme.sizes.narrow,
+  // padding: theme.space[1],
+  maxWidth: theme.sizes.wide,
 })
 
 // Container for the certificate list
 export const certListContainer = style({
-  margin: "0 auto",
+  // margin: "0 auto", If center
   width: "100%",
-  maxWidth: "620px",
+  maxWidth: "980px",
+  marginBottom: theme.space[3],
 })
 
 export const buttonStyle = style({
@@ -38,7 +39,11 @@ export const certItem = style({
   gap: theme.space[3],
   borderBottom: "2px solid #e0e0e0",
   flexDirection: "row",
-  padding: theme.space[3],
+  paddingTop: theme.space[3],
+  paddingBottom: theme.space[3],
+  paddingLeft: theme.space[1],
+  paddingRight: theme.space[1],
+
   transition: "background-color 0.3s ease, box-shadow 0.3s ease",
 
   ":hover": {
@@ -51,6 +56,7 @@ export const certItem = style({
     [media.small]: {
       flexDirection: "row",
       gap: theme.space[4],
+      padding: theme.space[3],
     },
   },
 })
@@ -80,7 +86,6 @@ export const certDetails = style({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  // minWidth: "200px", // Prevent squeezing text too much
   gap: theme.space[2], // Adds spacing between child elements
   minWidth: "0",
   paddingLeft: theme.space[2], // Adds padding for separation from the image
@@ -102,6 +107,12 @@ export const certTitle = style({
   marginTop: theme.space[2],
   color: theme.colors.primary,
   lineHeight: theme.lineHeights.heading,
+
+  "@media": {
+    [media.small]: {
+      fontSize: theme.fontSizes[3],
+    },
+  },
 })
 
 // Provider, date, and hours with background styles
@@ -109,7 +120,7 @@ export const certProvider = style({
   display: "flex",
   alignItems: "center", // Align items vertically centered
   fontSize: theme.fontSizes[1],
-  gap: theme.space[1], // Add spacing between items
+  gap: theme.space[2], // Add spacing between items
   flexWrap: "wrap",
 
   "@media": {

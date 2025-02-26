@@ -181,17 +181,6 @@ export default function ResumeStyledCertList() {
     [sortOrder, sortByLength]
   )
 
-  // Memoized Handlers to Prevent Re-renders
-  const toggleSortOrder = useCallback(() => {
-    setSortByLength(false)
-    setSortOrder((prev) => (prev === "latest" ? "oldest" : "latest"))
-  }, [])
-
-  const toggleSortByLength = useCallback(() => {
-    setSortByLength(true)
-    setSortOrder("latest")
-  }, [])
-
   // Sorting Description
   const sortingDescription = sortByLength
     ? "Sorted by most hours spent"
@@ -200,41 +189,28 @@ export default function ResumeStyledCertList() {
       } completion date`
 
   return (
-    <Section style={{ backgroundColor: "#ddf3e", padding: "2rem 0" }}>
+    <Section style={{ backgroundColor: "#ddf3e", padding: "1rem 0" }}>
       <Container>
-        <Box center paddingY={4}>
+        <Box left paddingY={3}>
           <Heading as="h2" style={{ marginBottom: "1rem" }}>
-            My Certifications
+            Certifications
           </Heading>
-          <Text style={{ fontSize: "1rem", color: "#666" }}>
-            A list of all my certifications, more updates coming soon
+          <Text style={{ fontSize: "1rem", color: theme.colors.primary }}>
+            List of completed certifications as of {currentDate} and going
           </Text>
           <Text
             style={{
               fontWeight: "bold",
               color: theme.colors.text,
-              textAlign: "center",
-              padding: "0.2rem 0",
+              textAlign: "left",
             }}
           >
-            {totalHours}+ hours ⏳ spent as of {currentDate} and growing
+            {totalHours}+ hours spent
           </Text>
-
-          {/* <Box
-            center
-            className="buttonWrapper" // Add a custom class if you like
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "1rem",
-              margin: "2rem 0",
-              justifyContent: "center",
-            }}
-          ></Box> */}
         </Box>
 
         {/* Certifications List */}
-        <div className={certListContainer}>
+        <Box paddingY={3} className={certListContainer}>
           {sortedCertifications.map((cert) => (
             <CertificateItem
               key={cert.id}
@@ -245,135 +221,8 @@ export default function ResumeStyledCertList() {
               length={cert.length}
             />
           ))}
-        </div>
+        </Box>
       </Container>
     </Section>
   )
 }
-
-// ///////
-// import React, { useState, useMemo } from "react"
-// import { graphql, useStaticQuery } from "gatsby"
-// import { Container, Section, Box, Heading, Text, Button } from "../ui"
-// import { CertificateItem } from "./resume-styled-item"
-// import {
-//   certListContainer,
-//   buttonStyle,
-//   sortingDescriptionStyle,
-// } from "./resume-styled-cert-list.css.ts"
-
-// export default function ResumeStyledCertList() {
-//   // Combine state into a single object for better performance
-//   const [sortOptions, setSortOptions] = useState({
-//     field: "date",
-//     order: "DESC",
-//   })
-
-//   // Static Query (doesn't allow variables, so sorting is fixed)
-//   const data = useStaticQuery(graphql`
-//     query {
-//       allCertificationsJson(sort: { fields: date, order: DESC }) {
-//         nodes {
-//           id
-//           title
-//           provider
-//           date
-//           length
-//           image
-//           link
-//         }
-//       }
-//     }
-//   `)
-
-//   // Memoized sorting to prevent unnecessary recalculations
-//   const sortedCertifications = useMemo(
-//     () =>
-//       [...data.allCertificationsJson.nodes].sort((a, b) => {
-//         if (sortOptions.field === "length") {
-//           return sortOptions.order === "DESC"
-//             ? parseFloat(b.length) - parseFloat(a.length)
-//             : parseFloat(a.length) - parseFloat(b.length)
-//         }
-//         return sortOptions.order === "DESC"
-//           ? new Date(b.date) - new Date(a.date)
-//           : new Date(a.date) - new Date(b.date)
-//       }),
-//     [sortOptions, data.allCertificationsJson.nodes]
-//   )
-
-//   // 📝 Dynamic Sorting Description
-//   const sortingDescription = useMemo(() => {
-//     if (sortOptions.field === "length") {
-//       return "Sorting by courses with the most hours completed ⏳"
-//     }
-//     return sortOptions.order === "DESC"
-//       ? "My latest courses I've completed 📅"
-//       : "My oldest certifications first ⏪"
-//   }, [sortOptions])
-
-//   return (
-//     <Section style={{ backgroundColor: "#ddf3e", padding: "2rem 0" }}>
-//       <Container>
-//         <Box center paddingY={4}>
-//           <Heading as="h2" style={{ marginBottom: "1rem" }}>
-//             My Certifications
-//           </Heading>
-//           <Text>A list of all my certifications, more updates coming soon</Text>
-
-//           {/* Sorting Buttons */}
-//           <Box
-//             center
-//             style={{
-//               display: "flex",
-//               gap: "1rem",
-//               margin: "2rem 0",
-//               justifyContent: "center",
-//             }}
-//           >
-//             <Button
-//               className={buttonStyle}
-//               aria-label="Sort by latest or oldest"
-//               onClick={() =>
-//                 setSortOptions((prev) => ({
-//                   field: "date",
-//                   order: prev.order === "DESC" ? "ASC" : "DESC",
-//                 }))
-//               }
-//             >
-//               Sort by {sortOptions.order === "DESC" ? "Oldest" : "Latest"}{" "}
-//             </Button>
-
-//             <Button
-//               className={buttonStyle}
-//               aria-label="Sort by most hours"
-//               onClick={() => setSortOptions({ field: "length", order: "DESC" })}
-//             >
-//               Sort by Most Hours
-//             </Button>
-//           </Box>
-
-//           {/* Sorting Description */}
-//           <Text className={sortingDescriptionStyle}>{sortingDescription}</Text>
-//         </Box>
-
-//         {/* Certifications List */}
-// <div className={certListContainer}>
-//   {sortedCertifications.map(
-//     ({ id, title, provider, date, length, image, link }) => (
-//       <CertificateItem
-//         key={id}
-//         title={title}
-//         provider={provider}
-//         date={date}
-//         length={length}
-//         image={image}
-//         link={link}
-//       />
-//     )
-//   )}
-// </div>
-//       </Container>
-//     </Section>
-//   )
-// }
