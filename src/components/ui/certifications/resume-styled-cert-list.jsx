@@ -119,6 +119,16 @@ const certifications = [
     category: "JavaScript",
     length: "28.5",
   },
+  {
+    title: " The Ultimate React Course 2024: React, Next.js, Redux & More",
+    provider: "Udemy",
+    date: "03/21/2025",
+    image:
+      "https://udemy-certificate.s3.amazonaws.com/image/UC-ca655aae-adf4-4155-b1b2-24eae40ac009.jpg?v=1742544073000",
+    link: "https://www.udemy.com/certificate/UC-ca655aae-adf4-4155-b1b2-24eae40ac009/",
+    category: "React",
+    length: "84",
+  },
 ]
 
 // 📌 Total Hours Calculation (Only Once)
@@ -202,7 +212,7 @@ export default function ResumeStyledCertList() {
             textAlign: "left",
           }}
         >
-          {totalHours}+ hours spent
+          {totalHours}+ hours learning
         </Text>
       </Box>
 

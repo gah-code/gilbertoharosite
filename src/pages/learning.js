@@ -31,6 +31,180 @@ const mockAboutHero = {
   },
 }
 
+import {
+  heroStyles,
+  titleStyles,
+  subtitleStyles,
+  highlightedStyles,
+  descriptionStyles,
+  dataStyles,
+  skillListStyles,
+  skillStyles,
+  responsiveStyles,
+} from "../components/design-system/skill.css"
+
+const skills = [
+  {
+    skill: "HTML",
+    level: "advanced",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=html",
+  },
+
+  {
+    skill: "CSS",
+    level: "advanced",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=css",
+  },
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=js",
+  },
+  {
+    skill: "NextJs",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=nextjs",
+  },
+  {
+    skill: "Supabase",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=supabase",
+  },
+  {
+    skill: "TypeScript",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=typescript",
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=react",
+  },
+  {
+    skill: "React Query",
+    level: "beginner",
+    color: "",
+    icon: "",
+  },
+  {
+    skill: "Gatsby",
+    level: "advanced",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=gatsby",
+  },
+  {
+    skill: "SCSS",
+    level: "intermediate",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=sass",
+  },
+  {
+    skill: "GraphQL",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=graphql",
+  },
+  {
+    skill: "Storybook",
+    level: "beginner",
+    color: "",
+    icon: "",
+  },
+  {
+    skill: "Netlify",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=netlify",
+  },
+  {
+    skill: "Markdown",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=markdown",
+  },
+  {
+    skill: "NPM",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=npm",
+  },
+  {
+    skill: "WordPress",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=wordpress",
+  },
+  {
+    skill: "Tailwind",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=tailwind",
+  },
+  {
+    skill: "obsidian",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=obsidian",
+  },
+
+  {
+    skill: "PHP",
+    level: "beginner",
+    color: "",
+    icon: "https://skillicons.dev/icons?i=php",
+  },
+]
+
+function SkillSection() {
+  return (
+    <section className={heroStyles}>
+      <h1 className={titleStyles}>Welcome to My Skills</h1>
+      <h2 className={subtitleStyles}>A breakdown of my expertise</h2>
+      <div className={descriptionStyles}>Here are some of my skills:</div>
+      <div className={dataStyles}>
+        <SkillList />
+      </div>
+    </section>
+  )
+}
+
+function SkillList() {
+  return (
+    <div className={skillListStyles}>
+      {skills.map(({ skill, color, icon }) => (
+        <Skill key={skill} skill={skill} color={color} icon={icon} />
+      ))}
+    </div>
+  )
+}
+
+function Skill({ skill, color, icon }) {
+  return (
+    <div className={skillStyles} style={{ backgroundColor: color }}>
+      {icon && (
+        <img
+          src={icon}
+          alt={`${skill} icon`}
+          style={{
+            width: "23px",
+            height: "23px",
+            marginRight: "11px",
+            borderRadius: "10px",
+          }}
+        />
+      )}
+      <span>{skill}</span>
+    </div>
+  )
+}
+
 function AboutHero(props) {
   const { heading, text, image } = mockAboutHero
 
@@ -38,6 +212,7 @@ function AboutHero(props) {
     <Section background="background">
       <Heading className={styles.aboutHeroHeader}>{heading}</Heading>
       <Text className={styles.aboutHeroText}>{text}</Text>
+      <SkillList />
       {/* Image */}
       <Container width="tight">
         {/* {image?.url ? (
@@ -92,7 +267,7 @@ const Learning = ({ data }) => {
     <Layout>
       <Container width="narrow">
         <AboutHero />
-        <SkillListGrid />
+        {/* <SkillListGrid /> */}
         <ResumeStyledCertList />
         <Text className={styles.aboutHeroText}>
           I am on a journey to become an impactful front-end contributor,
