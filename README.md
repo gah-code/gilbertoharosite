@@ -1,6 +1,5 @@
 # My 2025 Website Update: Contentful-Powered Gatsby Site 1.3.0
 >
-> **Last Updated**: Feb 21, 2025
 
 ![Lighthouse Score](./light-house.png)
 
@@ -120,70 +119,67 @@ These content types (e.g., Homepage Hero, Feature List, CTA, LayoutHeader, Layou
     ├── .prettierignore            # Prettier ignore rules
     ├── .prettierrc.json           # Prettier configuration
     └── src/                       # Source code for the Gatsby site
-        ├── components/
-        │   ├── UILibraryShowcase.js   # Demonstrates various UI components
-        │   ├── fallback.js            # Fallback component for unknown block types
-        │   ├── head.js                # SEOHead component for meta tags
-        │   ├── sections.js           # Exports homepage sections (Hero, CTA, etc.)
-        │   ├── design-system/         # Vanilla Extract theming + base styles
+        ├── components/            # Reusable and layout components
+        │   ├── fallback.js        # Fallback component for unknown block types
+        │   ├── head.js            # SEOHead component for meta tags
+        │   ├── sections.js        # Exports homepage sections (Hero, CTA, etc.)
+        │   ├── blog/              # Blog post-specific components
+        │   │   ├── Card.js
+        │   │   ├── PostCard.jsx
+        │   │   └── PostCardSmall.jsx
+        │   ├── design-system/     # Vanilla Extract theming + base styles
         │   │   ├── 404.css.ts
+        │   │   ├── about-hero.css.ts
         │   │   ├── colors.css.ts
+        │   │   ├── skill.css.ts
         │   │   ├── styles.css.ts
         │   │   └── theme.css.ts
-        │   ├── layout/
-        │   │   ├── footer.js          # Global footer
-        │   │   ├── hero.js            # Example Hero layout or section
-        │   │   ├── layout.js          # Wraps each page with header/footer
+        │   ├── layout/            # Layout and navigation structure
+        │   │   ├── footer.js      # Global footer
+        │   │   ├── hero.js        # Hero layout section
+        │   │   ├── layout.js      # Wraps each page with header/footer
         │   │   ├── header/
         │   │   │   ├── header.css.ts
         │   │   │   └── header.js
         │   │   └── navigation/
+        │   │       ├── caret.css.ts
+        │   │       ├── caret.js
         │   │       ├── nav-item-group.css.ts
         │   │       └── nav-item-group.js
-        │   ├── post/                  # Blog post-specific components
-        │   │   ├── PostCard.js
-        │   │   └── PostCards.js
-        │   ├── segments/              # Reusable sectional blocks (about, feature, etc.)
-        │   │   ├── about/
-        │   │   │   ├── about-hero.css.ts
-        │   │   │   ├── about-hero.js
-        │   │   │   ├── about-leadership.js
-        │   │   │   ├── about-logo-list.js
-        │   │   │   ├── about-stat-list.css.ts
-        │   │   │   ├── about-stat-list.js
-        │   │   │   ├── resume-styled-cert-list.css.ts
-        │   │   │   ├── resume-styled-cert-list.js
-        │   │   │   └── skill-list-grid.js
-        │   │   ├── cv/
-        │   │   │   ├── CertificateList.js
-        │   │   │   └── ProjectList.js
-        │   │   └── feature/
-        │   │       ├── feature-list.js
-        │   │       └── feature.js
-        │   └── ui/                    # Generic UI building blocks (buttons, lists, etc.)
+        │   └── ui/                 # Generic UI components (buttons, lists, etc.)
         │       ├── benefit-list.js
         │       ├── brand-logo.js
-        │       ├── caret.css.ts
-        │       ├── caret.js
         │       ├── chevron-right.js
         │       ├── cta.js
         │       ├── logo-list.js
         │       ├── product-list.js
         │       ├── stat-list.js
-        │       ├── testimonial-list.js
         │       ├── ui.css.ts
-        │       └── ui.js
-        ├── pages/
-        │   ├── 404.js                 # Custom 404 page
-        │   ├── experience.js          # Sample experience page
-        │   ├── index.js               # Homepage
-        │   ├── learning.js            # Another top-level page
-        │   └── {Page.slug}.js         # Dynamically created from Contentful's "Page" type
-        └── templates/                 # Templates for dynamic page creation
-            ├── blog-category.js       # Lists posts under specific categories
-            ├── blog-index.js          # Main blog listing or "index" page
-            ├── blog-post.css.ts       # Styling for single blog posts
-            └── blog-post.js           # Template for rendering each Blog post
+        │       ├── ui.jsx
+        │       ├── certifications/
+        │       │   ├── resume-styled-cert-list.css.ts
+        │       │   ├── resume-styled-cert-list.jsx
+        │       │   └── resume-styled-item.js
+        │       ├── feature/
+        │       │   ├── feature-list.jsx
+        │       │   └── feature.jsx
+        │       └── skills/
+        │           ├── skill-list-grid.js
+        │           └── styles.css
+        ├── data/
+        │   └── certifications.json # Content data for certifications
+        ├── pages/                  # Gatsby pages mapped to routes
+        │   ├── 404.js              # Custom 404 page
+        │   ├── experience.js       # Experience page
+        │   ├── index.js            # Homepage
+        │   ├── learning.js         # Learning page
+        │   └── {Page.slug}.js      # Dynamically created pages from Contentful
+        └── templates/              # Templates for dynamic page creation
+            ├── RichTextRenderer.js # Renders rich text fields from Contentful
+            ├── blog-category.js    # Lists posts under specific categories
+            ├── blog-index.js       # Main blog listing or "index" page
+            ├── blog-post.css.ts    # Styling for single blog posts
+            └── blog-post.js        # Template for rendering individual blog posts
 
 ```
 
