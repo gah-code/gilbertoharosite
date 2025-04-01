@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^15.11.1",
+    "@contentful/rich-text-react-renderer": "^16.0.1",
+    "@contentful/rich-text-types": "^17.0.0",
     "@fontsource/dm-mono": "^4.5.9",
     "@fontsource/dm-sans": "^4.5.8",
     "@vanilla-extract/babel-plugin": "^1.2.0",
