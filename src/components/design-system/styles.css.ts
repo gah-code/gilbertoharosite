@@ -60,3 +60,17 @@ globalKeyframes("fadeOut", {
     visibility: "hidden",
   },
 })
+
+// // Link Style
+// globalStyle("a", {
+//   color: theme.colors.primary,
+//   textDecoration: "none",
+//   fontWeight: theme.fontWeights.medium,
+//   transition: "color 0.2s ease-in-out",
+// })
+
+// // Hover Effect for Links
+// globalStyle("a:hover", {
+//   color: theme.colors.primary,
+//   textDecoration: "underline",
+// })

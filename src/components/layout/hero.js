@@ -1,6 +1,8 @@
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as React from "react"
+import { motion } from "framer-motion"
+
 import {
   Box,
   ButtonList,
@@ -12,6 +14,39 @@ import {
   Subhead,
   Text,
 } from "../ui/ui"
+
+// Define staggered animation variants
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // Delay between each letter/child
+    },
+  },
+}
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
+}
+
+function SubheadMotion({ children, ...props }) {
+  return (
+    <motion.h2
+      initial="hidden"
+      animate="visible"
+      variants={staggerContainer}
+      {...props}
+    >
+      {children.split("").map((char, index) => (
+        <motion.span key={index} variants={letterVariants}>
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.h2>
+  )
+}
 
 export default function Hero({ image, kicker, h1, subhead, text, links }) {
   return (
@@ -31,7 +66,7 @@ export default function Hero({ image, kicker, h1, subhead, text, links }) {
               {kicker && <Kicker>{kicker}</Kicker>}
               {h1}
             </Heading>
-            <Subhead as="h2">{subhead}</Subhead>
+            <SubheadMotion as="h2">{subhead}</SubheadMotion>
             <Text as="p">{text}</Text>
             <ButtonList links={links} />
           </Box>

@@ -3,6 +3,13 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import isAbsoluteURL from "is-absolute-url"
 import * as React from "react"
 import * as styles from "./ui.css.ts"
+import { motion } from "framer-motion"
+
+// Define default animation variants
+const revealVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+}
 
 export const cx = (...args) => args.filter(Boolean).join(" ")
 
@@ -103,7 +110,16 @@ export function Nudge({ left, right, top, bottom, ...props }) {
 }
 
 export function Section(props) {
-  return <Box as="section" className={styles.section} {...props} />
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      variants={revealVariants}
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <Box as="section" className={styles.section} {...props} />
+    </motion.div>
+  )
 }
 
 export function Text({
