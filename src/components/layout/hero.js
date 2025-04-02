@@ -15,20 +15,26 @@ import {
   Text,
 } from "../ui/ui"
 
-// Define staggered animation variants
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15, // Delay between each letter/child
+      staggerChildren: 0.08, // Reduced delay between letters
     },
   },
 }
 
 const letterVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.15, // Faster transition
+      ease: "easeOut",
+    },
+  },
 }
 
 function SubheadMotion({ children, ...props }) {

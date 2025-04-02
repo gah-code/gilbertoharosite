@@ -13,6 +13,7 @@ import {
 import SEOHead from "../components/head"
 import SkillListGrid from "../components/ui/skills/skill-list-grid"
 import * as styles from "../components/design-system/about-hero.css.ts"
+import { motion } from "framer-motion"
 
 const mockAboutHero = {
   heading: "Learning Center.",
@@ -254,6 +255,28 @@ function AboutHero(props) {
   )
 }
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+}
+const fadeRight = {
+  hidden: { opacity: 0, x: 80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 50,
+      damping: 15,
+      opacity: { duration: 0.4 },
+    },
+  },
+}
+
 const Learning = ({ data }) => {
   const { site } = data
   const { siteMetadata } = site
@@ -266,9 +289,23 @@ const Learning = ({ data }) => {
   return (
     <Layout>
       <Container width="narrow">
-        <AboutHero />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+        >
+          <AboutHero />
+        </motion.div>
         {/* <SkillListGrid /> */}
-        <ResumeStyledCertList />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeRight}
+        >
+          <ResumeStyledCertList />
+        </motion.div>
         <Text className={styles.aboutHeroText}>
           I am on a journey to become an impactful front-end contributor,
           dedicated to creating engaging user experiences through expressive

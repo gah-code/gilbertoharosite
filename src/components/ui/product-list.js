@@ -1,4 +1,6 @@
 import * as React from "react"
+import { motion } from "framer-motion"
+
 import { graphql } from "gatsby"
 import {
   Container,
@@ -15,18 +17,25 @@ import {
 
 function Product(props) {
   return (
-    <Box center>
-      {props.image && (
-        <Icon
-          alt={props.image.alt}
-          image={props.image.gatsbyImageData}
-          size="large"
-        />
-      )}
-      <Subhead>{props.heading}</Subhead>
-      <Text>{props.text}</Text>
-      <LinkList links={props.links} />
-    </Box>
+    <motion.div
+    // initial={{ opacity: 0, x: -50 }}
+    // whileInView={{ opacity: 1, x: 0 }}
+    // viewport={{ once: true, amount: 0.2 }}
+    // transition={{ duration: 0.5, ease: "easeOut" }}
+    >
+      <Box center>
+        {props.image && (
+          <Icon
+            alt={props.image.alt}
+            image={props.image.gatsbyImageData}
+            size="large"
+          />
+        )}
+        <Subhead>{props.heading}</Subhead>
+        <Text>{props.text}</Text>
+        <LinkList links={props.links} />
+      </Box>
+    </motion.div>
   )
 }
 

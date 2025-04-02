@@ -2,7 +2,13 @@ import * as React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout/layout"
 import SEOHead, { normalizeUrl } from "../components/head"
-import { Container, Heading, Box, FlexList } from "../components/ui/ui"
+import {
+  Container,
+  Heading,
+  Box,
+  FlexList,
+  SuperHeading,
+} from "../components/ui/ui"
 import Card from "../components/blog/Card"
 
 // Sorting Utility: Featured posts appear first
@@ -85,12 +91,11 @@ export default function BlogIndex({ data }) {
     <Layout title="Blogs">
       <Container>
         <article>
-          <CategoryFilter categories={categories} />
-
           {/* ------- Main Blog Listing ------- */}
           <Box paddingY={4}>
             <Heading as="h1">Blogs</Heading>
             <BlogList posts={posts} />
+            <CategoryFilter categories={categories} />
           </Box>
         </article>
       </Container>
