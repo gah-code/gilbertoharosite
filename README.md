@@ -274,6 +274,8 @@ This project is licensed under **BSD Zero Clause License (0BSD)**. See [LICENSE]
   - [ ] Add `gatsby-plugin-preload-fonts`.
   - [ ] Optimize `gatsby-plugin-sharp` for images.
   - [ ] Use `gatsby-plugin-webpack-bundle-analyser-v2` to identify large bundles.
+  - [ ] Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity.
+  - [ ] Gatsby API Script Update
 - [ ] **Contentful Query Optimizations**
   - [ ] Fetch only necessary fields in GraphQL queries.
 - [ ] **Component Refactoring**
