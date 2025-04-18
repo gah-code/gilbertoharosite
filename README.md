@@ -19,6 +19,15 @@ This repository contains a **Gatsby** website integrated with **Contentful** for
 - **Dynamic Routing**: Gatsby’s `createPages` API in `gatsby-node.js` generates individual blog pages and category-based archives automatically.
 - **Responsive, Accessible UI**: Styles built with **Vanilla Extract** for consistent design tokens and fluid responsiveness.
 
+# 🔌 Contentful API Integration (Postman)
+
+- Postman allows you to quickly test and prototype Contentful API queries without writing code. You can:
+- Validate content structure before frontend integration
+- Debug or inspect specific entries and assets
+- Preview query filters, sorting, and field selections
+
+IN PROGRESS
+
 ## Core Technologies
 
 - **Gatsby**: React-based static site generator for high performance and speed.
