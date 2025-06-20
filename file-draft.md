@@ -227,3 +227,5 @@ Flag any screenshot that still shows “Page,” so the training team can update
 I will conclude with a few final notes and comments on this document, highlighting other ideas that may be useful. Most of the remaining bullet points focus on framing this training from a page perspective. This approach means that the core information and examples will not be put into practice for at least the next three weeks, as I understand that new hires typically start by working on flyouts instead of pages. This could lead to retention issues. I believe it is crucial to reinforce learning by having new hires practice what they have learned as soon as possible.
 
 Additionally, one of my biggest pet peeves is when sections are numbered out of order, which is the case for this entire section.
+
+--> To provide clarity and context, this review focuses on the first eight weeks of the onboarding and training program as experienced at the time of writing. As a new hire and trainee, I recognize that onboarding plays a critical role in long-term success, and each participant's engagement contributes meaningfully to the program’s overall effectiveness.
