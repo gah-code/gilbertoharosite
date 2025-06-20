@@ -176,3 +176,54 @@ gah-code-gilbertoharosite/
 - **Dynamic Content Updates**: Use Contentful Webhooks for real-time updates.
 
 This structure is optimized for scalability and performance, perfectly aligning with your goals for 2025. Let me know if you need further customization! 🚀
+
+---
+
+Opening Statement
+This review captures my first eight weeks in the CMS onboarding program. Drawing on my background in documentation, frontend development, AEM, and Agile/Scrum, I highlight what works, where friction occurs, and how we can accelerate ramp-up for future hires.
+
+Focus Areas
+Change-Management workflows
+Trainee resources & technical docs
+Stakeholder communication
+Core and extended AEM authoring features
+Each section uses concise bullet points and tags for quick reference, separating dense topics into standalone subsections when needed. The aim is to refine existing materials so that both new and seasoned Content Managers can navigate AEM smoothly within their first 60 days.
+
+Objectives & Scope
+By completing this section, I will be able to:
+Create, edit, publish, and archive Content Fragments needed for the Rome project’s Phase-1 deliverables (Days 1-60). (create → edit → publish → etc.)
+Filter out non-essential material outside the 60-day onboarding window to keep learning sharply focused.
+Navigate the fragment-first authoring environment—including folder structures, versioning, and CRUD operations—without additional assistance.
+Because Rome relies on a fragment-centric workflow, mastering fragment locations and lifecycle is foundational. Deeper technical topics (e.g., GraphQL, Network Debugging) will be covered in a later module.
+
+Starting with Rome CM Onboarding Checklist
+
+Onboarding Overview & Folder Structure
+The onboarding materials give a solid introduction to our tools and workflows. To help new team members feel even more at home, we could add a short visual guide to the folder hierarchy and naming conventions used in Rome’s fragment-first model. A quick reference table might look like this:
+
+table
+FolderPurposeHelpful Hint
+<!-- /Assets/<Channel>/Fragments Channel-specific Content Fragments Use lowercase kebab-case for clarity. -->
+<!-- /Assets/<Channel>/Images Image library for the channel Keep originals; AEM renditions handle resizing. -->
+/Assets/Shared Reusable fragments across channels Reference with Content Reference rather than duplicating.
+A brief walkthrough of this structure—before diving into creation steps—can save newcomers time and questions later on.
+
+Content Reference rather than duplicating.
+A brief walkthrough of this structure—before diving into creation steps—can save newcomers time and questions later on.
+Creation & Configuration Workflow
+One minor wording tweak would make the workflow section more straightforward for those coming from a page-centric background: replacing the term “Page” with “Content Fragment” wherever it appears. A side-by-side comparison (traditional page vs. fragment powering a flyout) would reinforce the idea that fragments are channel-agnostic and not tied to AEM Sites templates.
+
+Immediate improvements:
+Add a 15-minute “Hello Fragment” lab on Day 1. Trainees create, tag, and publish a simple hero fragment in the sandbox; success is confirmed when the fragment appears in the GraphQL response at /content/dam/rome//fragments.
+Teach flyout authoring before page assembly; move page-focused examples to a later module (Weeks 4–6).
+
+Channel-Independent Philosophy
+ Fragments can be delivered to any channel through Content Services or GraphQL endpoints. Emphasize the idea of “fragments first; pages optional” early in the course.
+Tone and Style Guidelines
+Capitalise “Content Fragment” consistently.
+Use direct language (“Fragments live in …”) instead of tentative phrasing.
+Flag any screenshot that still shows “Page,” so the training team can update it.
+
+I will conclude with a few final notes and comments on this document, highlighting other ideas that may be useful. Most of the remaining bullet points focus on framing this training from a page perspective. This approach means that the core information and examples will not be put into practice for at least the next three weeks, as I understand that new hires typically start by working on flyouts instead of pages. This could lead to retention issues. I believe it is crucial to reinforce learning by having new hires practice what they have learned as soon as possible.
+
+Additionally, one of my biggest pet peeves is when sections are numbered out of order, which is the case for this entire section.
