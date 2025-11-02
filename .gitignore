@@ -43,3 +43,4 @@ file-draft.md
 
 # Ignore lock files (optional based on your package manager)
 package-lock.json
+content.md
